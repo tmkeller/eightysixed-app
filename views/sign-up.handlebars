@@ -11,7 +11,6 @@
     </div>
   </nav>  
   
-  
   <div class="container">
   
     <div class="row">
@@ -22,28 +21,120 @@
     <form class="col s12">
       <div class="row">
         <div class="input-field col s8">
-          <input id="company_name" type="text" class="company_name">
-          <label for="company_name">Company Name</label>
+          <input placeholder="Company Name" id="company_name" type="text" class="company_name">
         </div>
       </div>
-      <div class="row">
+  <div class="row">
+    <a class='dropdown-trigger btn category' href='#' data-target='dropdown1'>Category</a>
+
+  <!-- Dropdown Structure -->
+  <ul id='dropdown1' class='dropdown-content'>
+    <li><a class="test restaurant" value="1"href="#!">Restaurant</a></li>
+    <li class="divider" tabindex="-1"></li>
+    <li><a class="test hotel" value="2" href="#!">Hotel</a></li>
+    <li class="divider" tabindex="-1"></li>
+    <li><a class="test cafe" value="3" href="#!">Cafe</a></li>
+    <li class="divider" tabindex="-1"></li>
+    <li><a class="test bar" value="4" href="#!">Bar</a></li>
+  </ul>
+  </div>
+      <div class="row"> 
+        <div class="input-field col s12">
+          <input placeholder="Address" id="textarea2" class="materialize-textarea address" data-length="120" style="padding: 0px;"   >
+        </div>
+      </div>
+
+      <div class="row"> 
+        <div class="input-field col s6">
+            <input placeholder="(optional)" id="textarea3" class="materialize-textarea addresstwo" data-length="120" style="padding: 0px;">
+        </div>
+        <div class="input-field col s6">
+            <input placeholder="City" id="textarea6" class="materialize-textarea city" data-length="120" style="padding: 0px;">
+        </div>
+      </div>
+<div class="row"> 
+<div class="input-field col s6">
+<select class="select">
+  
+<option class="st" value=""selected></option>
+<option class="st" value="Alabama">Alabama</option>
+<option class="st" value="Alaska">Alaska</option>
+<option class="st" value="Arizona">Arizona</option>
+<option class="st" value="Arkansas">Arkansas</option>
+<option class="st" value="California">California</option>
+<option class="st" value="Colorado">Colorado</option>
+<option class="st" value="Connecticut">Connecticut</option>
+<option class="st" value="Delware">Delaware</option>
+<option class="st" value="District of Columbia">District Of Columbia</option>
+<option class="st" value="Florida">Florida</option>
+<option class="st" value="Georgia">Georgia</option>
+<option class="st" value="Hawaii">Hawaii</option>
+<option class="st" value="Idaho">Idaho</option>
+<option class="st" value="Illinois">Illinois</option>
+<option class="st" value="Indiana">Indiana</option>
+<option class="st" value="Iowa">Iowa</option>
+<option class="st" value="Kansas">Kansas</option>
+<option class="st" value="Kentucky">Kentucky</option>
+<option class="st" value="Louisiana">Louisiana</option>
+<option class="st" value="Maine">Maine</option>
+<option class="st" value="Maryland">Maryland</option>
+<option class="st" value="Massachusetts">Massachusetts</option>
+<option class="st" value="Michigan">Michigan</option>
+<option class="st" value="Minnesota">Minnesota</option>
+<option class="st" value="Mississippi">Mississippi</option>
+<option class="st" value="Missouri">Missouri</option>
+<option class="st" value="Montana">Montana</option>
+<option class="st" value="Nebraska">Nebraska</option>
+<option class="st" value="Nevada">Nevada</option>
+<option class="st" value="New Hampshire">New Hampshire</option>
+<option class="st" value="New Jersey">New Jersey</option>
+<option class="st" value="New Mexico">New Mexico</option>
+<option class="st" value="New York">New York</option>
+<option class="st" value="North Carolina">North Carolina</option>
+<option class="st" value="North Dakota">North Dakota</option>
+<option class="st" value="Ohio">Ohio</option>
+<option class="st" value="Oklahoma">Oklahoma</option>
+<option class="st" value="Oregon">Oregon</option>
+<option class="st" value="Pennsylvania">Pennsylvania</option>
+<option class="st" value="Rhode Island">Rhode Island</option>
+<option class="st" value="South Carolina">South Carolina</option>
+<option class="st" value="South Dakota">South Dakota</option>
+<option class="st" value="Tennessee">Tennessee</option>
+<option class="st" value="Texas">Texas</option>
+<option class="st" value="Utah">Utah</option>
+<option class="st" value="Vermont">Vermont</option>
+<option class="st" value="Virginia">Virginia</option>
+<option class="st" value="Washington">Washington</option>
+<option class="st" value="West Virginia">West Virginia</option>
+<option class="st" value="Wisconsin">Wisconsin</option>
+<option class="st" value="Wyoming">Wyoming</option>
+</select>
+                                
+  </div>
+
+        <div class="input-field col s4">
+            <input placeholder="Zip" id="textarea5" class="materialize-textarea zip" data-length="120" style="padding: 0px;">
+        </div>
+      
+      <div class="input-field col s6">
+          <input placeholder="Telephone" id="icon_telephone" type="tel" class="validate phone">
+      </div>
+      <div class="input-field col s6">
+          <input placeholder="Website" class="validate websight">
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="password" type="password">     
-          <label for="password">Password</label>
+          <input placeholder="Email" id="email" type="email" class="validate company_email">
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input type="password" class="verify-password">
-          <label for="password">Confirm Password</label>
+          <input placeholder="Password" id="password" type="password">     
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="email" type="email" class="validate company_email">
-          <label for="email">Email</label>
+          <input placeholder="Confirm Password" type="password" class="verify-password">
         </div>
       </div>
       <div class="row">
