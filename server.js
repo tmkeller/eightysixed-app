@@ -1,7 +1,7 @@
 
 var express = require("express");
-const db = require("./models")
-db.sequelize.sync()
+// const db = require("./models")
+// db.sequelize.sync()
 
 // Sets up the Express App
 // =============================================================
@@ -29,8 +29,8 @@ require("./routes/api-routs.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync().then(function() {
+// db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT http://localhost:" + PORT);
   });
-});
+// });
