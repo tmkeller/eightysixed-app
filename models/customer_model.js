@@ -2,8 +2,7 @@ module.exports = function (sequelize, DataTypes) {
  
 
   const Customer = sequelize.define("Customer", {
-    name: {type: DataTypes.STRING, allowNull = false},
-    lastreview: DataTypes.TEXT, })
+    name: {type: DataTypes.STRING, allowNull = false}})
     
 
     Customer.associate -function(models){
