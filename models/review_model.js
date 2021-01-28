@@ -9,8 +9,8 @@ module.exports = function (sequelize, DataTypes) {
       pictwo: DataTypes.STRING})
   
       Review.associate -function(models){
-        Review.hasMany(models.comment_models, {onDelete: "cascade"})
-        Review.hasMany(models.customer_models, {onDelete: "cascade"})
+        Review.hasMany(models.comment_model, {onDelete: "cascade"})
+        Review.hasMany(models.customer_model, {onDelete: "cascade"})
 
         Review.belongsTo(models.Business, {foreignKey: {allowNull: false}})
       }
