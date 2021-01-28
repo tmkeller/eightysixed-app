@@ -3,7 +3,7 @@ module.exports = function (sequelize, DataTypes) {
 
   const Customer = sequelize.define("Customer", {
     name: {type: DataTypes.STRING, allowNull = false},
-    rating:{type: DataTypes.INTEGER, allowNull = false, validate: {min:0 , max:5 }},
+    rating:{type: DataTypes.INTEGER, allowNull = false, validate: {min:0 , max:10 }},
     lastreview: DataTypes.TEXT, })
     
 
