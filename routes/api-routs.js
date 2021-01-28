@@ -7,8 +7,8 @@ module.exports = function(app){
         res.render('index');
     })
 
-    app.get("/sign-in",function( req, res ) {
-        res.render('sign-in');
+    app.get("/sign-up",function( req, res ) {
+        res.render('sign-up');
     })
 
 

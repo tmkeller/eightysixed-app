@@ -1,8 +1,10 @@
-document.addEventListener('DOMContentLoaded', function() {
-    console.log("click")
-    var elems = document.querySelectorAll('.dropdown-trigger');
-    var instances = M.Dropdown.init(elems, "hover");
-
+$(document).ready( function() {
+    // The .dropdown() and .modal() functions were not working, so these initializations
+    // for dropdowns and modals had to be done in vanilla Javascript.
+    const dropdownElems = document.querySelectorAll('.dropdown-trigger');
+    const dropdownInstances = M.Dropdown.init(dropdownElems, "hover");
+    const modalElems = document.querySelectorAll('.modal');
+    const modalInstances = M.Modal.init(modalElems);
 
     // Submits sign-up form
     $(".sign-up-button").on("click", function(event){
