@@ -26,7 +26,7 @@ $(document).ready( function() {
     // Submits sign-up form
     $(".sign-up-button").on("click", function(event){
         event.preventDefault()
-        let pass = $("#password").val()
+        let pass = $(".password-company").val()
         let confirm = $(".verify-password").val()
         const companieData = {
             name: $(".company_name").val(),
@@ -55,4 +55,42 @@ $(document).ready( function() {
             $(".verify-password").addClass("invalid").val('').attr("placeholder", "Password does not match!")
         }
     })
+    ///////////////////Customer Profiles Below/////////////////
+    $(".customer-profile-button").on("click", function(event){
+        let customerPass = $(".c-verify-password").val()
+        event.preventDefault()
+        const customerProfile = {
+            first_name: $(".fName").val(),
+            last_name:$(".lName").val(),
+            email: $(".customer_email").val(),
+            password: $(".password-customer").val(),
+            pic: "placeholder"
+        }
+        console.log(customerProfile)
+        console.log(customerPass)
+        console.log($("c-verify-password").val())
+        if(customerPass === $(".password-customer").val()){
+            $(".verify-password").addClass("valid")
+            $.ajax({
+                url: "api/",
+                method: "POST",
+                data: customerProfile
+            })
+        } else {
+            // If password does not match
+            $(".c-verify-password").addClass("invalid").val('').attr("placeholder", "Password does not match!")
+        }
+
+    })
+     
+
+
+
+
+
+
+
+
+
+
 });
