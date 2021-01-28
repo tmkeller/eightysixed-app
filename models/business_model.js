@@ -6,6 +6,7 @@ module.exports = function (sequelize, DataTypes) {
     address: DataTypes.STRING,
     addresstwo: DataTypes.STRING,
     state: DataTypes.STRING,
+    city: DataTypes.STRING,
     zip: DataTypes.INTEGER,
     phone: DataTypes.INTEGER,
     category: DataTypes.STRING,
@@ -17,7 +18,7 @@ module.exports = function (sequelize, DataTypes) {
 })
 
     Business.associate -function(models){
-      Business.hasMany(models.Post, {onDelete: "cascade"})
+      Business.hasMany(models.review_models, {onDelete: "cascade"})
     }
 
     

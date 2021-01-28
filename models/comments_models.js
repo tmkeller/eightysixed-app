@@ -7,8 +7,8 @@ module.exports = function (sequelize, DataTypes) {
       
   
       Customer.associate -function(models){
-        Business.hasMany(models.Post, {onDelete: "cascade"})
-        Business.hasMany(models.Comments, {onDelete: "cascade"})
+        Business.hasMany(models.review_model, {onDelete: "cascade"})
+        Business.hasMany(models.comment_models, {onDelete: "cascade"})
       }
   
       
