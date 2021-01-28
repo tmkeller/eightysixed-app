@@ -10,7 +10,8 @@ module.exports = function (sequelize, DataTypes) {
     phone: DataTypes.INTEGER,
     category: DataTypes.STRING,
     website: DataTypes.STRING,
-    password: DataTypes.STRING
+    password: DataTypes.STRING,
+    pic: DataTypes.STRING
 
 
 })
