@@ -25,7 +25,7 @@ app.engine(
 );
 // Routes
 // =============================================================
-require("./routes/api-routs.js")(app);
+require("./routes/api-routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
