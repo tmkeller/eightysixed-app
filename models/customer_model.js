@@ -7,11 +7,10 @@ module.exports = function (sequelize, DataTypes) {
     pic: DataTypes.STRING,
   });
 
-  Customer.associate -
-    function (models) {
-      Business.hasMany(models.review_model, { onDelete: "cascade" });
-      Business.hasMany(models.comment_model, { onDelete: "cascade" });
-    };
+  Customer.associate = function (models) {
+    Business.hasMany(models.review_model, { onDelete: "cascade" });
+    Business.hasMany(models.comment_model, { onDelete: "cascade" });
+  };
 
   return Customer;
 };

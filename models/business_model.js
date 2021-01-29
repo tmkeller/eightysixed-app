@@ -18,9 +18,8 @@ module.exports = function (sequelize, DataTypes) {
     },
   });
 
-  Business.associate -
-    function (models) {
-      Business.hasMany(models.review_model, { onDelete: "cascade" });
-    };
+  Business.associate = function (models) {
+    Business.hasMany(models.review_model, { onDelete: "cascade" });
+  };
   return Business;
 };
