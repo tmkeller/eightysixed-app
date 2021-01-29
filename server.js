@@ -26,6 +26,11 @@ app.engine(
 // Routes
 // =============================================================
 require("./routes/api-routs.js")(app);
+require("./routes/business_api_routes.js")(app);
+require("./routes/comment_api_routes.js")(app);
+require("./routes/customer_api_route.js")(app);
+require("./routes/review_api_route.js")(app);
+
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
