@@ -20,6 +20,7 @@ module.exports = function (sequelize, DataTypes) {
 
   Business.associate = function (models) {
     Business.hasMany(models.Review, { onDelete: "cascade" });
+    Business.hasMany(models.Comment, { onDelete: "cascade" });
   };
   return Business;
 };

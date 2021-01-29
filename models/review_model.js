@@ -13,7 +13,6 @@ module.exports = function (sequelize, DataTypes) {
 
   Review.associate = function (models) {
     Review.hasMany(models.Comment, { onDelete: "cascade" });
-    Review.hasMany(models.Customer, { onDelete: "cascade" });
 
     Review.belongsTo(models.Business, { foreignKey: { allowNull: false } });
   };
