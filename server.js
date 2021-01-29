@@ -25,7 +25,7 @@ app.engine(
 );
 // Routes
 // =============================================================
-require("./routes/api-routs.js")(app);
+require("./routes/api-routes.js")(app);
 require("./routes/business_api_routes.js")(app);
 require("./routes/comment_api_routes.js")(app);
 require("./routes/customer_api_route.js")(app);
