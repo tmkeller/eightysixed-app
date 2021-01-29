@@ -8,8 +8,7 @@ module.exports = function (sequelize, DataTypes) {
   });
 
   Customer.associate = function (models) {
-    Business.hasMany(models.Review, { onDelete: "cascade" });
-    Business.hasMany(models.Comment, { onDelete: "cascade" });
+    Customer.hasMany(models.Comment, { onDelete: "cascade" });
   };
 
   return Customer;
