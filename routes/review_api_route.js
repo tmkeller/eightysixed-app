@@ -1,6 +1,6 @@
 // requires the model folder
 
-const db = require("../models/review_model");
+const db = require("../models");
 
 module.exports = function (app) {
   // create route for adding to the table Review in the db:

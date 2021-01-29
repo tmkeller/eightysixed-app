@@ -1,6 +1,6 @@
 // requires the model folder
 
-const db = require("../models/comment_model");
+const db = require("../models");
 
 module.exports = function (app) {
   // create route for adding to the table Comment in the db:
