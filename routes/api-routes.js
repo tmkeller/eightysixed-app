@@ -6,7 +6,8 @@ module.exports = function(app){
         db.Customer.findAll().then( data => {
             const jsonData = data.map( obj => obj.toJSON());
             const hbsObj = {
-                guests: jsonData
+                guests: jsonData,
+                logged_in: false
             }
             console.log( data );
             res.render('index', hbsObj );
