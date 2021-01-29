@@ -4,8 +4,9 @@ module.exports = function(app){
 
     app.get( "/", function( req, res ) {
         db.Customer.findAll().then( data => {
+            const jsonData = data.map( obj => obj.toJSON());
             const hbsObj = {
-                
+                guests: jsonData
             }
             console.log( data );
             res.render('index', hbsObj );
