@@ -1,5 +1,6 @@
 // requires the model folder
 
+const { request } = require("express");
 const db = require("../models");
 
 module.exports = function (app) {
@@ -27,6 +28,23 @@ module.exports = function (app) {
         throw err;
       });
   });
+
+  app.post("/api/customer/search", async (req, res) => {
+    console.log(req.body)
+    const data = await db.Customer.findOne({
+      where: {
+        email: req.body.email,
+        password: req.body.password
+      }
+
+    })
+    
+      res
+      .status(200)
+      .json(data)
+      
+      
+  })
 
   // update route for updating the info in the table Customer in the db: WIP
   app.put("/api/customer/:id", async (req, res) => {

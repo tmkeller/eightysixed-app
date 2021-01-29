@@ -16,12 +16,14 @@ $(document).ready( function() {
     })
 
     $(".test").on("click", function(event){
+       
         categoryArray.unshift($(event.target).text())
         console.log(categoryArray)
         if(categoryArray.length > 1){
             categoryArray.pop()
             console.log(categoryArray)
         }
+    
     })
     // Submits sign-up form
     $(".sign-up-button").on("click", function(event){
@@ -84,14 +86,5 @@ $(document).ready( function() {
 
     })
      
-
-
-
-
-
-
-
-
-
 
 });

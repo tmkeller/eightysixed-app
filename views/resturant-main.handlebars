@@ -1,0 +1,63 @@
+<nav class="green">
+  <div class="nav-wrapper">
+    <a href="#!" class="brand-logo left"><i class="material-icons">cloud</i>Logo</a>
+    <ul class="right ">
+        <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Account</a>
+        <!-- Dropdown Structure -->
+        <ul id='dropdown1' class='dropdown-content'>
+          <li><a href="#!">two</a></li>
+          <li class="divider" tabindex="-1"></li>
+          <li><a href="#!">three</a></li>
+          <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
+          <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
+        </ul>
+        <li><a href="sass.html"><i class="material-icons">search</i></a></li>
+        <li><a href="badges.html"><i class="material-icons">view_module</i></a></li>
+        <li><a href="collapsible.html"><i class="material-icons">refresh</i></a></li>
+        <li><a href="mobile.html"><i class="material-icons">more_vert</i></a></li>
+        <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Sign in</a>
+    </ul>
+  </div>
+</nav>
+<div class="row">
+    <div class="col m6">
+        <p>{{name}}</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col s6 m6">
+        <img src="http://placekitten.com/500/200" style="max-width: 100%;">
+    </div>
+    <div class="col s6 m6">
+      <div class="card-panel teal">
+        <form >
+           <div class="row">
+             <input placeholder="First Name" type="text" class="f-customer-name">
+           </div>
+           <div class="row">
+             <input placeholder="Last Name" type="text" class="l-customer-name">
+           </div>
+          <div class="row">
+             <input placeholder="comment" type="text" class="commentAboutCus" style="word-wrap: break-word">
+          </div>
+          <div class="row">
+              <div class="col m4">
+                <input placeholder="How many stars? " type="text" class="stars">
+              </div>
+              <div class=" col m5">
+
+              </div>
+              <div class="col m3">
+                <a class="btn-floating btn-large waves-effect waves-light red add_customer_button"><i class="material-icons">add</i></a>
+              </div>
+         </div>
+        </div>
+            
+        </form>
+      </div>
+    </div>
+</div>
+
+<div class="row">
+  {{> guest-loop }}
+</div>
