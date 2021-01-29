@@ -39,6 +39,7 @@ $(document).ready( function() {
             category: categoryArray.toString(),
             website: $(".websight").val(),
             password: pass,
+            pic: "placeholder",
             email: $(".company_email").val()
 
         }
@@ -46,7 +47,7 @@ $(document).ready( function() {
         if(pass === confirm){
             $(".verify-password").addClass("valid")
             $.ajax({
-                url: "api/",
+                url: "/api/business",
                 method: "POST",
                 data: companieData
             })
@@ -72,7 +73,7 @@ $(document).ready( function() {
         if(customerPass === $(".password-customer").val()){
             $(".verify-password").addClass("valid")
             $.ajax({
-                url: "api/",
+                url: "/api/customer",
                 method: "POST",
                 data: customerProfile
             })
