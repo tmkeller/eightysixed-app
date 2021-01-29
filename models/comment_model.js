@@ -4,11 +4,10 @@ module.exports = function (sequelize, DataTypes) {
     body: { type: DataTypes.TEXT, allowNull: false },
   });
 
-  Comment.associate -
-    function (models) {
-      Business.hasMany(models.review_model, { onDelete: "cascade" });
-      Business.hasMany(models.comment_model, { onDelete: "cascade" });
-    };
+  Comment.associate = function (models) {
+    Comment.belongsTo(models.Review, { onDelete: "cascade" });
+    Comment.belongsTo(models.Customer, { onDelete: "cascade" });
+  };
 
   return Comment;
 };

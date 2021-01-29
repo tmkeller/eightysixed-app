@@ -5,16 +5,13 @@ const db = require("../models");
 module.exports = function (app) {
   // create route for adding to the table business in the db:
   app.post("/api/business", async (req, res) => {
-    const data = await db.Business.create(req.body);
-    res
-      .status(200)
-      .json(data)
-      .catch((err) => {
-        res.status(500);
-        console.err(err);
-        throw err;
-      });
+    const data = await db.Business.create(req.body).catch((err) => {
+      res.status(500);
+      console.error(err);
+    });
+    res.status(200).json(data);
   });
+
   // get route for reading the whole table business in the db:
   app.get("/api/business", async (req, res) => {
     const data = await db.Business.findall();

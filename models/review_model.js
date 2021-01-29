@@ -11,13 +11,11 @@ module.exports = function (sequelize, DataTypes) {
     pictwo: DataTypes.STRING,
   });
 
-  Review.associate -
-    function (models) {
-      Review.hasMany(models.comment_model, { onDelete: "cascade" });
-      Review.hasMany(models.customer_model, { onDelete: "cascade" });
+  Review.associate = function (models) {
+    Review.hasMany(models.Comment, { onDelete: "cascade" });
 
-      Review.belongsTo(models.Business, { foreignKey: { allowNull: false } });
-    };
+    Review.belongsTo(models.Business, { foreignKey: { allowNull: false } });
+  };
 
   return Review;
 };
