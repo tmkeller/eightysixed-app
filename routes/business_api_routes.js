@@ -18,7 +18,7 @@ module.exports = function (app) {
   // get route for reading the whole table business in the db:
   app.get("/api/business", async (req, res) => {
     const data = await db.Business.findall();
-    res
+    res.render("index", data)
       .status(200)
       .json(data)
       .catch((err) => {
