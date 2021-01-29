@@ -1,9 +1,15 @@
-const db = require("../models/index");
+const db = require("../models");
 
 module.exports = function(app){
 
     app.get( "/", function( req, res ) {
-        res.render('index' );
+        db.Customer.findAll().then( data => {
+            const hbsObj = {
+                
+            }
+            console.log( data );
+            res.render('index', hbsObj );
+        })
     })
 
     app.get("/sign-up",function( req, res ) {
