@@ -26,6 +26,7 @@ module.exports = function (app) {
       res.status(404).send("username or password is incorrect");
     } else {
       if (bcrypt.compareSync(req.body.password, data.password)) {
+        req.session.business = { id: data.id, email: data.email };
         res.status(200).json(data);
       } else {
         res.status(401).send("username or password is incorrect");
@@ -40,6 +41,11 @@ module.exports = function (app) {
       console.error(err);
     });
     res.render("index", data).status(200).json(data);
+  });
+
+  // cookies and session storage
+  app.get("/readsessions/business", (req, res) => {
+    res.json(req.session);
   });
 
   // update route for updating the info in the table business in the db: WIP

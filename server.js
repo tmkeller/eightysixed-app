@@ -1,5 +1,6 @@
 var express = require("express");
 const db = require("./models");
+const session = require("express-session");
 
 // Sets up the Express App
 // =============================================================
@@ -11,6 +12,15 @@ var PORT = process.env.PORT || 8080;
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: false,
+    saveUninilialized: true,
+    cookie: { maxAge: 1000 * 60 * 60 * 2 },
+  })
+);
 
 // Static directory
 app.use(express.static("public"));
