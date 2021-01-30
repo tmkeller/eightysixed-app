@@ -1,3 +1,5 @@
+const bcrypt = require("bcrypt");
+
 module.exports = function (sequelize, DataTypes) {
   const Business = sequelize.define("Business", {
     name: { type: DataTypes.STRING, allowNull: false },
@@ -22,5 +24,14 @@ module.exports = function (sequelize, DataTypes) {
     Business.hasMany(models.Review, { onDelete: "cascade" });
     Business.hasMany(models.Comment, { onDelete: "cascade" });
   };
+
+  Business.beforeCreate(function (business) {
+    business.password = bcrypt.hashSync(
+      business.password,
+      bcrypt.genSaltSync(10),
+      null
+    );
+  });
+
   return Business;
 };
