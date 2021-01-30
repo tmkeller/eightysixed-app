@@ -18,6 +18,7 @@ $(document).ready( function() {
     $(".test").on("click", function(event){
        
         categoryArray.unshift($(event.target).text())
+        $(".dropdown-trigger").html(categoryArray[0])
         console.log(categoryArray)
         if(categoryArray.length > 1){
             categoryArray.pop()
