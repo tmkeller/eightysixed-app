@@ -15,8 +15,8 @@ $(document).ready( function() {
     
     })
 
-    $(".test").on("click", function(event){
-       
+    $(".ctgy").on("click", function(event){
+       $(".dropdown-trigger").html($(event.target).text())
         categoryArray.unshift($(event.target).text())
         console.log(categoryArray)
         if(categoryArray.length > 1){
