@@ -9,12 +9,25 @@ $(document).ready( function() {
     const formElems = document.querySelectorAll('select');
     const formInstances = M.FormSelect.init(formElems, "click");
 
+    $(".test").on('click', function() {
+     $("#modal1").hide()
+      });
+
+
+
+
+
+
     $(".select").on("change", function(event){
         var conceptName = $(".select").find(":selected").text()
         console.log($(this).val())
     
     })
 
+    $(".customer_select").on("change", function(event){
+      console.log($(this).val())
+    })
+  
     $(".ctgy").on("click", function(event){
        $(".dropdown-trigger").html($(event.target).text())
         categoryArray.unshift($(event.target).text())
@@ -41,7 +54,7 @@ $(document).ready( function() {
             category: categoryArray.toString(),
             website: $(".websight").val(),
             password: pass,
-            pic: "placeholder",
+            pic: $(".company_image").val(),
             email: $(".company_email").val()
 
         }
@@ -65,9 +78,13 @@ $(document).ready( function() {
         const customerProfile = {
             first_name: $(".fName").val(),
             last_name:$(".lName").val(),
+            // email: $(".customer_email").val(),
+            // password: $(".password-customer").val(),
+            pic: $(".customer_image").val(),
             email: $(".customer_email").val(),
-            password: $(".password-customer").val(),
-            pic: "placeholder"
+            zip: $(".customer_zip").val(),
+            city: $(".customer_city").val(),
+            state: $(".customer_select").val()
         }
         console.log(customerProfile)
         console.log(customerPass)
