@@ -17,6 +17,7 @@ module.exports = function(app){
     app.get("/sign-up",function( req, res ) {
         res.render('sign-up');
     })
+  
     app.get("/customer-profile",function( req, res ) {
         res.render('customer-profile');
     })
