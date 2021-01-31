@@ -11,9 +11,9 @@ $(document).ready( function() {
     const formElems = document.querySelectorAll('select');
     const formInstances = M.FormSelect.init(formElems, "click");
 
-    $(".test").on('click', function() {
-        $("#modal1").hide()
-    });
+    // $(".test").on('click', function() {
+    //     $("#modal1").hide()
+    // });
 
     $(".select").on("change", function(event){
         var conceptName = $(".select").find(":selected").text()
