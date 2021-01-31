@@ -7,20 +7,30 @@ module.exports = function(app){
             const jsonData = data.map( obj => obj.toJSON());
             const hbsObj = {
                 guests: jsonData,
-                logged_in: false
+                user: ( req.session.user || req.session.business )
             }
-            console.log( data );
+            console.log( hbsObj );
             res.render('index', hbsObj );
         })
     })
 
     app.get("/sign-up",function( req, res ) {
-        res.render('sign-up');
-    })
-  
+        const hbsObj = {
+            user: ( req.session.user || req.session.business )
+        }
+        res.render('sign-up', hbsObj);
+    });
     app.get("/customer-profile",function( req, res ) {
-        res.render('customer-profile');
-    })
+        const hbsObj = {
+            user: ( req.session.user || req.session.business )
+        }
+        res.render('customer-profile', hbsObj);
+    });
+
+    app.get( '/logout', ( req, res ) => {
+        req.session.destroy();
+        res.redirect( "/" );
+    });
 
     // placeholder code to test with.
         // let vars = {

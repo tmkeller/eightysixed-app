@@ -10,8 +10,8 @@ $(document).ready( function() {
     const formInstances = M.FormSelect.init(formElems, "click");
 
     $(".test").on('click', function() {
-     $("#modal1").hide()
-      });
+        $("#modal1").hide()
+    });
 
 
     $(".select").on("change", function(event){
@@ -21,11 +21,11 @@ $(document).ready( function() {
     })
 
     $(".customer_select").on("change", function(event){
-      console.log($(this).val())
+        console.log($(this).val())
     })
   
     $(".ctgy").on("click", function(event){
-       $(".dropdown-trigger").html($(event.target).text())
+        $(".dropdown-trigger").html($(event.target).text())
         categoryArray.unshift($(event.target).text())
         console.log(categoryArray)
         if(categoryArray.length > 1){
@@ -80,8 +80,6 @@ $(document).ready( function() {
             // email: $(".customer_email").val(),
             // password: $(".password-customer").val(),
             pic: $(".customer_image").val()
-
-            
         }
         console.log(customerProfile)
         console.log(customerPass)
@@ -97,14 +95,5 @@ $(document).ready( function() {
             // If password does not match
             $(".c-verify-password").addClass("invalid").val('').attr("placeholder", "Password does not match!")
         }
-
     })
-     
-
 });
-
-
-
-
-
-
