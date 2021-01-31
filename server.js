@@ -40,10 +40,11 @@ require("./routes/business_api_routes.js")(app);
 require("./routes/comment_api_routes.js")(app);
 require("./routes/customer_api_route.js")(app);
 require("./routes/review_api_route.js")(app);
+require("./routes/backend-get-routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({ force: false }).then(function () {
+db.sequelize.sync({ force: false}).then(function () {
   app.listen(PORT, function () {
     console.log("App listening on PORT http://localhost:" + PORT);
   });

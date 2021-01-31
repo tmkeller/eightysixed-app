@@ -1,4 +1,6 @@
+const ids = localStorage.getItem("id")
 $(document).ready( function() {
+   
     const categoryArray = []
     // The .dropdown() and .modal() functions were not working, so these initializations
     // for dropdowns and modals had to be done in vanilla Javascript.
@@ -20,6 +22,7 @@ $(document).ready( function() {
 
     $(".customer_select").on("change", function(event){
       console.log($(this).val())
+      
     })
   
     $(".ctgy").on("click", function(event){
@@ -34,6 +37,8 @@ $(document).ready( function() {
     })
     // Submits sign-up form
     $(".sign-up-button").on("click", function(event){
+       
+        
         event.preventDefault()
         let pass = $(".password-company").val()
         let confirm = $(".verify-password").val()
@@ -73,33 +78,30 @@ $(document).ready( function() {
         }
     })
     ///////////////////Customer Profiles Below/////////////////
-    $(".customer-profile-button").on("click", function(event){
-        let customerPass = $(".c-verify-password").val()
+    $(".add_customer_button").on("click", function(event){
         event.preventDefault()
+        console.log(ids)
         const customerProfile = {
             first_name: $(".fName").val(),
             last_name:$(".lName").val(),
-            // email: $(".customer_email").val(),
+            city: $(".customer_city").val(),
+            state: $(".customer_select").val(),
+            zip5: $(".customer_zip").val(),
+            email: $(".customer_email").val(),
             // password: $(".password-customer").val(),
             pic: $(".customer_image").val(),
-            email: $(".customer_email").val(),
-            zip: $(".customer_zip").val(),
-            city: $(".customer_city").val(),
-            state: $(".customer_select").val()
+            BusinessId: ids
+            
         }
+       
+         
         console.log(customerProfile)
-        console.log(customerPass)
-        console.log($("c-verify-password").val())
-        if(customerPass === $(".password-customer").val()){
-            $(".verify-password").addClass("valid")
+
             $.ajax({
                 url: "/api/customer",
                 method: "POST",
                 data: customerProfile
             })
-        } else {
-            // If password does not match
-            $(".c-verify-password").addClass("invalid").val('').attr("placeholder", "Password does not match!")
-        }
+       
     })   
 });
