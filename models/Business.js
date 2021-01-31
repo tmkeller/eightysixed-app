@@ -13,6 +13,7 @@ module.exports = function (sequelize, DataTypes) {
     website: DataTypes.STRING,
     password: DataTypes.STRING,
     pic: DataTypes.STRING,
+
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -21,9 +22,8 @@ module.exports = function (sequelize, DataTypes) {
   });
 
   Business.associate = function (models) {
-    Business.hasMany(models.Customer, {onDelete: "cascade"});
-    Business.hasMany(models.Review, {onDelete: "cascade" });
-    Business.hasMany(models.Comment, { onDelete: "cascade" });
+    Business.hasMany(models.Review);
+    Business.hasMany(models.Comment);
   };
 
   Business.beforeCreate(function (business) {
