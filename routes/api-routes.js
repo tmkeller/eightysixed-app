@@ -14,17 +14,31 @@ module.exports = function(app){
         })
     })
 
-    app.get("/sign-up",function( req, res ) {
-        const hbsObj = {
-            user: ( req.session.user || req.session.business )
-        }
-        res.render('sign-up', hbsObj);
-    });
+    // Commenting this out because we're doing sign-ups from the nav bar dropdown.
+    // app.get("/sign-up",function( req, res ) {
+    //     const hbsObj = {
+    //         user: ( req.session.user || req.session.business )
+    //     }
+    //     res.render('sign-up', hbsObj);
+    // });
+
     app.get("/customer-profile",function( req, res ) {
         const hbsObj = {
             user: ( req.session.user || req.session.business )
         }
         res.render('customer-profile', hbsObj);
+    });
+
+    app.get("/business-main",function( req, res ) {
+        if ( !req.session.business ) {
+            res.status( 401 ).send( "You must log in first." );
+            res.render( "/" );
+        } else {
+            const hbsObj = {
+                user: ( req.session.user || req.session.business )
+            }
+            res.render('business-main', hbsObj);
+        }
     });
 
     app.get( '/logout', ( req, res ) => {
