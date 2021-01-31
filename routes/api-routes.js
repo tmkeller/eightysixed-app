@@ -9,7 +9,7 @@ module.exports = function(app){
                 guests: jsonData,
                 user: ( req.session.user || req.session.business )
             }
-            console.log( data );
+            console.log( hbsObj );
             res.render('index', hbsObj );
         })
     })
@@ -25,6 +25,11 @@ module.exports = function(app){
             user: ( req.session.user || req.session.business )
         }
         res.render('customer-profile', hbsObj);
+    });
+
+    app.get( '/logout', ( req, res ) => {
+        req.session.destroy();
+        res.redirect( "/" );
     });
 
     // placeholder code to test with.
