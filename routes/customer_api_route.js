@@ -49,6 +49,18 @@ module.exports = function (app) {
     res.status(200).json(data);
   });
 
+  app.get( "/api/customer/:id", async (req, res) => {
+    const data = await db.Customer.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).catch(( err ) => {
+      res.status( 500 );
+      console.error( err );
+    });
+    res.status( 200 ).json( data );
+  })
+
   app.post("/api/customer/search", async (req, res) => {
     console.log(req.body);
     const data = await db.Customer.findOne({
@@ -76,7 +88,7 @@ module.exports = function (app) {
   });
 
   // delete route for deleting the info in the table Customer in the db:
-  app.put("/api/customer/:id", async (req, res) => {
+  app.delete("/api/customer/:id", async (req, res) => {
     const data = await db.Customer.destroy({
       where: { id: req.params.id },
     }).catch((err) => {

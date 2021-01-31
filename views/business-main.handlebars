@@ -1,68 +1,33 @@
-<nav class="green">
-  <div class="nav-wrapper">
-    <a href="#!" class="brand-logo left"><i class="material-icons">cloud</i>Logo</a>
-    <ul class="right ">
-
-      <li><a href="/sign-in">Sign in</a></li>
-
-    </ul>
-  </div>
-</nav>
-
-<div class="container">
-  <div class="row">
-    <div class="col offset-m3 s12 m6">
-      <div class="card-panel teal z-depth-5 ">
-    <div class="row" style="display: flex; justify-content: center">
-    <div class="switch">
-    <label>
-      Business account
-      <input type="checkbox" class="toggle">
-      <span class="lever"></span>
-      Customer account
-    </label>
+<div class="row">
+    <div class="col m6">
+        <p>{{data}}</p>
     </div>
+</div>
+<div class="row">
+    <div class="col s6 m6">
+        <img src="http://placekitten.com/500/200" style="max-width: 100%;">
     </div>
-
-        <div class="row">
-          <form class="col s12">
-            <div class="row">
-              <div class="input-field col s8" style="margin: 2px 0px 2px 0px">
-                <input placeholder="Company Name" id="company_name" type="text" class="company_name">
-              </div>
-                <a class='dropdown-trigger btn category' href='#' data-target='dropdown1' style="margin: 2px 0px 2px 0px">Category</a>
-
-              <!-- Dropdown Structure -->
-              <ul id='dropdown1' class='dropdown-content'>
-                <li><a class="ctgy restaurant" value="1"href="#!">Restaurant</a></li>
-                <li class="divider" tabindex="-1"></li>
-                <li><a class="ctgy hotel" value="2" href="#!">Hotel</a></li>
-                <li class="divider" tabindex="-1"></li>
-                <li><a class="ctgy cafe" value="3" href="#!">Cafe</a></li>
-                <li class="divider" tabindex="-1"></li>
-                <li><a class="ctgy bar" value="4" href="#!">Bar</a></li>
-              </ul>
+    <div class="col s6 m6">
+      <div class="card-panel teal">
+<form >
+                 <div class="row">
+            <div class="input-field col s6">
+            <input placeholder="First Name" id="first_name" type="text" class="validate fName">
             </div>
-           
-
-            
-            <div class="row"> 
-              <div class="input-field col s12" style="margin: 2px 0px 2px 0px">
-                <input placeholder="Address" id="textarea2" class="materialize-textarea address" data-length="120" style="padding: 0px;"   >
-              </div>
+            <div class="input-field col s6">
+            <input placeholder="Last Name"id="last_name" type="text" class="validate lName">
             </div>
+          </div>
 
             <div class="row"> 
+          
               <div class="input-field col s6" style="margin: 2px 0px 2px 0px">
-                <input placeholder="(optional)" id="textarea3" class="materialize-textarea addresstwo" data-length="120" style="padding: 0px;">
-              </div>
-              <div class="input-field col s6" style="margin: 2px 0px 2px 0px">
-                <input placeholder="City" id="textarea6" class="materialize-textarea city" data-length="120" style="padding: 0px;">
+                <input placeholder="City"  class="materialize-textarea customer_city" data-length="120" style="padding: 0px;">
               </div>
             </div>
             <div class="row"> 
               <div class="input-field col s6" style="margin: 2px 0px 2px 0px">
-                <select class="select">
+                <select class="customer_select">
                 <option class="st" value=""disabled selected></option>State></option>
                 <option class="st" value="Alabama">Alabama</option>
                 <option class="st" value="Alaska">Alaska</option>
@@ -119,43 +84,63 @@
               </div>
                       
               <div class="input-field col s4" style="margin: 2px 0px 2px 0px">
-                <input placeholder="Zip" id="textarea5" class="materialize-textarea zip" data-length="120" style="padding: 0px; height: 44px">
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s6" style="margin: 2px 0px 2px 0px">
-                <input placeholder="Telephone" id="icon_telephone" type="tel" class="validate phone" style="padding: 0px; height: 25px">
-              </div>
-              <div class="input-field col s6" style="margin: 2px 0px 2px 0px;">
-                <input placeholder="Website" class="validate websight" style="padding: 0px; height: 25px">
+                <input placeholder="Zip"  class="materialize-textarea customer_zip" data-length="120" style="padding: 0px; height: 44px">
               </div>
             </div>
             <div class="row">
               <div class="input-field col s12" style="margin: 2px;">
-                <input placeholder="Email" id="email" type="email" class="validate company_email" style="padding: 0px; height: 25px">
+                <input placeholder="Email" type="email" class="validate customer_email" style="padding: 0px; height: 25px">
               </div>
             </div>
             <div class="row">
-              <div class="input-field col s12" style="margin: 2px;">
-                <input placeholder="Password" id="password" type="password" class="password-company" style="padding: 0px; height: 25px">     
+            <div class="col m8">
+            <div class="file-field input-field">
+              <div class="btn btn-small">
+              <span>File</span>
+              <input type="file">
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate customer_image" type="text">
               </div>
             </div>
-            <div class="row">
-              <div class="input-field col s12" style="margin: 2px;">
-                <input placeholder="Confirm Password" type="password" class="verify-password" style="padding: 0px; height: 25px">
-              </div>
             </div>
-            <div class="row">
-              <button class="btn col m4 waves-effect waves-light btn-small sign-up-button"  name="action">Submit
-                <i class="material-icons right">send</i>
-              </button>
+              <div class="col m3" style="float:right">
+                <a class="btn-floating btn-large waves-effect waves-light red add_customer_button"><i class="material-icons">add</i></a>
+              </div>
               <p class="invalid"></p>
             </div>
-          </form>
-        </div>
+            
+        </form>
       </div>
     </div>
-  </div>
+</div>
 
+<div class="row">
+  {{> guest-loop }}
+</div>
+<div class="row">
+
+
+<div class="row">
+    {{#each customers}}
+        <div class="col s12 m4 l3 xl3">
+            <div class="card">
+                <div class="card-image">
+                    <img src="https://placekitten.com/300/300">
+                    <span class="card-title">{{first_name}} {{last_name}}</span>
+                </div>
+                <div class="card-content">
+                    <p>{{#if city}}{{city}} {{/if}}{{#if state}}{{state}}{{/if}}</p>
+                    <div style="height: 36px; width: {{ star_width }}; overflow-x: hidden">
+                        <img src="/assets/stars.png" alt="stars" style="height: 100%;">
+                    </div>
+                </div>
+                <div class="card-action">
+                    <a href="/customer-profile/{{ id }}">View Profile</a>
+                </div>
+            </div>
+        </div>
+    {{/each}}
 </div>
   
+</div>

@@ -11,3 +11,7 @@ body{
 .header_title{
     font-family: 'Annie Use Your Telescope', cursive;
 }
+
+.dropdown-span {
+    color: black;
+}

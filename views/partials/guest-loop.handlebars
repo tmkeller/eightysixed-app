@@ -7,11 +7,13 @@
                     <span class="card-title">{{first_name}} {{last_name}}</span>
                 </div>
                 <div class="card-content">
-                    <p>{{top_comment}}</p><br>
-                    <img src="/assets/favourites.png" alt="stars" style="width:20px">
+                    <p>{{#if city}}{{city}} {{/if}}{{#if state}}{{state}}{{/if}}</p>
+                    <div style="height: 36px; width: {{ star_width }}; overflow-x: hidden">
+                        <img src="/assets/stars.png" alt="stars" style="height: 100%;">
+                    </div>
                 </div>
                 <div class="card-action">
-                    <a href="#">View Profile</a>
+                    <a href="/customer-profile/{{ id }}">View Profile</a>
                 </div>
             </div>
         </div>

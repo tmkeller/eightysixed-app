@@ -13,6 +13,7 @@ module.exports = function (sequelize, DataTypes) {
     website: DataTypes.STRING,
     password: DataTypes.STRING,
     pic: DataTypes.STRING,
+
     email: {
       type: DataTypes.STRING,
       allowNull: false,

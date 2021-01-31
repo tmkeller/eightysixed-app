@@ -1,22 +1,43 @@
-{{!-- <div class="container sign_up_sheet">
-  <div class="row">
-    <form class="col s12">
+
+<div class="card sign_up_sheet" style="margin: 50px">
+  <form class="row" style="max-width: 70%;">
       <div class="row">
-        <div class="input-field col s6">
-        <input placeholder={{#if first_name}}"{{ first_name }}"{{else}}"First name"{{/if}} id="first_name" type="text" class="validate fName">
+          <div class="input-field col s8" style="margin: 2px 0px 2px 0px">
+              <input placeholder="Company Name" id="company_name" type="text" class="company_name">
+          </div>
+            <a class='dropdown-trigger btn category' href='#' data-target='dropdown2' style="margin: 2px 0px 2px 0px">Category</a>
+
+          <!-- Dropdown Structure -->
+            <ul id='dropdown2' class='dropdown-content'>
+            <li><a class="ctgy restaurant" value="1"href="#!">Restaurant</a></li>
+            <li class="divider" tabindex="-1"></li>
+            <li><a class="ctgy hotel" value="2" href="#!">Hotel</a></li>
+            <li class="divider" tabindex="-1"></li>
+            <li><a class="ctgy cafe" value="3" href="#!">Cafe</a></li>
+            <li class="divider" tabindex="-1"></li>
+            <li><a class="ctgy bar" value="4" href="#!">Bar</a></li>
+            </ul>
+      </div>
+           
+
+            
+      <div class="row"> 
+        <div class="input-field col s12" style="margin: 2px 0px 2px 0px">
+          <input placeholder="Address" id="textarea2" class="materialize-textarea address" data-length="120" style="padding: 0px;"   >
         </div>
-        <div class="input-field col s6">
-        <input placeholder={{#if last_name}}"{{ last_name }}"{{else}}"Last name"{{/if}} id="last_name" type="text" class="validate lName">
+      </div>
+
+      <div class="row"> 
+        <div class="input-field col s6" style="margin: 2px 0px 2px 0px">
+          <input placeholder="(optional)" id="textarea3" class="materialize-textarea addresstwo" data-length="120" style="padding: 0px;">
+        </div>
+        <div class="input-field col s6" style="margin: 2px 0px 2px 0px">
+          <input placeholder="City" id="textarea6" class="materialize-textarea city" data-length="120" style="padding: 0px;">
         </div>
       </div>
       <div class="row"> 
         <div class="input-field col s6" style="margin: 2px 0px 2px 0px">
-          <input placeholder="City" id="city" class="materialize-textarea customer_city" data-length="120" style="padding: 0px;">
-        </div>
-      </div>
-      <div class="row"> 
-        <div class="input-field col s6" style="margin: 2px 0px 2px 0px">
-          <select class="customer_select">
+          <select class="select">
           <option class="st" value=""disabled selected></option>State></option>
           <option class="st" value="Alabama">Alabama</option>
           <option class="st" value="Alaska">Alaska</option>
@@ -70,69 +91,55 @@
           <option class="st" value="Wisconsin">Wisconsin</option>
           <option class="st" value="Wyoming">Wyoming</option>
           </select>
-        </div>     
+        </div>
+                
         <div class="input-field col s4" style="margin: 2px 0px 2px 0px">
-          <input placeholder="Zip" id="zip" class="materialize-textarea customer_zip" data-length="120" style="padding: 0px; height: 44px">
+          <input placeholder="Zip" id="textarea5" class="materialize-textarea zip" data-length="120" style="padding: 0px; height: 44px">
+        </div>
+      </div>
+      <div class="row">
+          <div class="input-field col s6" style="margin: 2px 0px 2px 0px">
+              <input placeholder="Telephone" id="icon_telephone" type="tel" class="validate phone" style="padding: 0px; height: 25px">
+          </div>
+          <div class="input-field col s6" style="margin: 2px 0px 2px 0px;">
+              <input placeholder="Website" class="validate websight" style="padding: 0px; height: 25px">
+          </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12" style="margin: 2px;">
+          <input placeholder="Email"  type="email" class="validate company_email" style="padding: 0px; height: 25px">
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12" style="margin: 2px;">
-          <input placeholder="Email" id="customer_email" type="email" class="validate customer_email" style="padding: 0px; height: 25px">
+          <input placeholder="Password"  type="password" class="password-company" style="padding: 0px; height: 25px">     
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12" style="margin: 2px;">
+          <input placeholder="Confirm Password" type="password" class="verify-password" style="padding: 0px; height: 25px">
         </div>
       </div>
       <div class="row">
         <div class="col m8">
           <div class="file-field input-field">
-            <div class="btn btn-small">
-              <span>File</span>
-              <input type="file">
-            </div>
-            <div class="file-path-wrapper">
-              <input class="file-path validate customer_image" type="text">
-            </div>
+              <div class="btn btn-small">
+                <span>File</span>
+                <input type="file">
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate company_image" type="text">
+              </div>
           </div>
         </div>
-        <button class="btn col m4 waves-effect waves-light btn-small customer-profile-button"  name="action">Submit
-          <i class="material-icons right">send</i>
-        </button>
+          <button class="btn col m4 waves-effect waves-light btn-small sign-up-button"  name="action">Submit
+            <i class="material-icons right">send</i>
+          </button>
         <p class="invalid"></p>
       </div>
-    </form>
-  </div>
+  </form>
 </div>
-</div> --}}
+   
 
-<div class="container centered-panel">
-  <div class="row">
-    <div class="col s4">
-      <img src="/assets/customers/placeholder.png" alt="Customer image">
-    </div>
-    <div class="col s8">
-      <h2>{{first_name}} {{last_name}}</h2>
-      <ul>
-        <li>
-          <div style="height: 36px; width: {{ star_width }}; overflow-x: hidden">
-            <img src="/assets/stars.png" alt="stars" style="height: 100%;">
-          </div>
-        </li>
-        <li>{{#if city}}{{city}} {{/if}}{{#if state}}{{state}}{{/if}}</li>
-        <li>{{ createdAt }}</li>
-        <li>{{ updatedAt }}</li>
-      </ul>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <h2>Reviews</h2>
-    </div>
-  </div>
-  {{#each reviews}}
-    <div class="row">
-      <div class="col s3">
-        <p>Rating: {{ rating }}</p>
-        <p>By: {{ business }}</p>
-      </div>
-      <div class="col s9"><p>{{ text }}</p></div>
-    </div>
-  {{/each}}
-</div>
+
+  
