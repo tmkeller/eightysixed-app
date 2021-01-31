@@ -17,9 +17,11 @@ $(".sign-button").on("click", function(event){
             password: $(".sign_pass").val()
         }).then(response=>{
             console.log(response)
+            window.location.href = "/";
         }).fail( err => {
             console.log( "Sign in failed" );
             console.log( err );
+            alert( "Sign-in failed");
         })
     }
 
@@ -33,9 +35,11 @@ $(".sign-button").on("click", function(event){
             password: $(".sign_pass").val()
         }).then(response=>{
             console.log(response)
+            window.location.href = "/";
         }).fail( err => {
             console.log( "Sign in failed" );
             console.log( err );
+            alert( "Sign-in failed" );
         })
     }
 })
