@@ -23,6 +23,7 @@ app.use(
 );
 
 // Static directory
+app.use(express.static(__dirname + '/public'))
 app.use(express.static("public"));
 /////////////////////////////////
 const handlebars = require("express-handlebars");
