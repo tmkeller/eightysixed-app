@@ -89,6 +89,11 @@ module.exports = function(app){
     });
 
     app.get("/business-main",function( req, res ) {
+        db.Customer.findAll({
+            where:{
+                BusinessId: req.params.id
+            }
+        }).then(data=>{console.log(data)})
         if ( !req.session.business ) {
             res.status( 401 ).send( "You must log in first." );
             res.render( "/" );
@@ -96,6 +101,9 @@ module.exports = function(app){
             const hbsObj = {
                 user: ( req.session.user || req.session.business )
             }
+            console.log(req.body)
+
+            console.log(hbsObj)
             res.render('business-main', hbsObj);
         }
     });

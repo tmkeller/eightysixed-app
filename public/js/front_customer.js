@@ -35,13 +35,19 @@ $(".sign-button").on("click", function(event){
             email: $(".sign_email").val(),
             password: $(".sign_pass").val()
         }).then(response=>{
-            console.log(response)
-            window.location.href = "/business-main";
+            localStorage.setItem("id", response.id)
+            $.get("/business-main/" + ids, {
+            }).then(res=>{
+             window.location.href = "/business-main/" +ids;
+            })
+
         }).fail( err => {
             console.log( "Sign in failed" );
             console.log( err );
             alert( "Sign-in failed" );
         })
+
     }
 })
+
 
