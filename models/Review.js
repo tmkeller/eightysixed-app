@@ -12,9 +12,8 @@ module.exports = function (sequelize, DataTypes) {
   });
 
   Review.associate = function (models) {
-    Review.hasMany(models.Comment, { onDelete: "cascade" });
-
-    Review.belongsTo(models.Business, { foreignKey: { allowNull: false } });
+    Review.belongsTo(models.Business);
+    Review.hasMany(models.Comment);
   };
 
   return Review;

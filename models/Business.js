@@ -21,8 +21,8 @@ module.exports = function (sequelize, DataTypes) {
   });
 
   Business.associate = function (models) {
-    Business.hasMany(models.Review, { onDelete: "cascade" });
-    Business.hasMany(models.Comment, { onDelete: "cascade" });
+    Business.hasMany(models.Review);
+    Business.hasMany(models.Comment);
   };
 
   Business.beforeCreate(function (business) {
