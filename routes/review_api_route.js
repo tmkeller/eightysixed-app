@@ -40,7 +40,7 @@ module.exports = function (app) {
   // get route for reading the all reviews from a business *************************************************************************************************************************** var busId not created yet currently being used as a place holder
   app.get("/api/review/business", async (req, res) => {
     const data = await db.Review.findAll({
-      where: { busId: req.body.busId },
+      include: [db.Business],
     }).catch((err) => {
       res.status(500);
       console.error(err);
