@@ -6,8 +6,7 @@ module.exports = function(app){
         db.Customer.findAll().then( data => {
             const jsonData = data.map( obj => obj.toJSON());
             const hbsObj = {
-                guests: jsonData,
-                logged_in: false
+                guests: jsonData
             }
             console.log( data );
             res.render('index', hbsObj );
@@ -16,10 +15,11 @@ module.exports = function(app){
 
     app.get("/sign-up",function( req, res ) {
         res.render('sign-up');
-    })
+    });
+
     app.get("/customer-profile",function( req, res ) {
         res.render('customer-profile');
-    })
+    });
 
     // placeholder code to test with.
         // let vars = {
