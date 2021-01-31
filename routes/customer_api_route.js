@@ -50,7 +50,11 @@ module.exports = function (app) {
   });
 
   app.get( "/api/customer/:id", async (req, res) => {
-    const data = await db.Customer.findOne().catch(( err ) => {
+    const data = await db.Customer.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).catch(( err ) => {
       res.status( 500 );
       console.error( err );
     });
