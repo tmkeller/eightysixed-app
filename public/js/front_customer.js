@@ -8,7 +8,8 @@ $(".switch").on("change", function(event){
 })
 
 $(".sign-button").on("click", function(event){
-    event.preventDefault()
+    event.preventDefault();
+
     if(accountValue[0] === true){
         console.log("customer click");
         console.log("event in front_customer.js")
@@ -17,7 +18,7 @@ $(".sign-button").on("click", function(event){
             password: $(".sign_pass").val()
         }).then(response=>{
             console.log(response)
-            window.location.href = "/";
+            window.location.href = "/customer-profile";
         }).fail( err => {
             console.log( "Sign in failed" );
             console.log( err );
@@ -35,7 +36,7 @@ $(".sign-button").on("click", function(event){
             password: $(".sign_pass").val()
         }).then(response=>{
             console.log(response)
-            window.location.href = "/";
+            window.location.href = "/business-main";
         }).fail( err => {
             console.log( "Sign in failed" );
             console.log( err );
