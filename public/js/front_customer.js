@@ -1,4 +1,3 @@
-
 const accountValue = [false]
 $(".switch").on("change", function(event){
     event.preventDefault()
@@ -8,54 +7,36 @@ $(".switch").on("change", function(event){
     }
 })
 
-    $(".sign-button").on("click", function(event){
+$(".sign-button").on("click", function(event){
     event.preventDefault()
     if(accountValue[0] === true){
-    console.log("customer clickclick")
-    const sign_in = {
-        email: $(".sign_email").val(),
-        password: $(".sign_pass").val()
-    }
-   console.log("event in fron_customer")
-    $.ajax({
-        url: "/api/customer/search",
-        method: "POST",
-        data: sign_in
-    }).then(response=>{
-        console.log(response)
-        if(response.email === $(".sign_email").val() && response.password === $(".sign_pass").val()){
-            console.log("success")
-        }else{
-            console.log("fail")
-        }
-
-    })
-   
+        console.log("customer click");
+        console.log("event in front_customer.js")
+        $.post( "/api/customer/login", {
+            email: $(".sign_email").val(),
+            password: $(".sign_pass").val()
+        }).then(response=>{
+            console.log(response)
+        }).fail( err => {
+            console.log( "Sign in failed" );
+            console.log( err );
+        })
     }
 
     if(accountValue[0] === false){
-    event.preventDefault()
-    console.log("business click")
-    console.log("click")
-    const sign_in = {
-        email: $(".sign_email").val(),
-        password: $(".sign_pass").val()
+        event.preventDefault()
+        console.log("business click")
+        console.log("click")
+        console.log("event in front_customer.js")
+        $.post( "/api/business/login", {
+            email: $(".sign_email").val(),
+            password: $(".sign_pass").val()
+        }).then(response=>{
+            console.log(response)
+        }).fail( err => {
+            console.log( "Sign in failed" );
+            console.log( err );
+        })
     }
-   console.log("event in fron_customer")
-    $.ajax({
-        url: "/api/customer/search",
-        method: "POST",
-        data: sign_in
-    }).then(response=>{
-        console.log(response)
-        if(response.email === $(".sign_email").val() && response.password === $(".sign_pass").val()){
-            console.log("success")
-        }else{
-            console.log("fail")
-        }
-
-    })
-    }
-
 })
 

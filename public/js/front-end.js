@@ -10,18 +10,12 @@ $(document).ready( function() {
     const formInstances = M.FormSelect.init(formElems, "click");
 
     $(".test").on('click', function() {
-     $("#modal1").hide()
-      });
-
-
-
-
-
+        $("#modal1").hide()
+    });
 
     $(".select").on("change", function(event){
         var conceptName = $(".select").find(":selected").text()
         console.log($(this).val())
-    
     })
 
     $(".customer_select").on("change", function(event){
@@ -43,7 +37,7 @@ $(document).ready( function() {
         event.preventDefault()
         let pass = $(".password-company").val()
         let confirm = $(".verify-password").val()
-        const companieData = {
+        const companyData = {
             name: $(".company_name").val(),
             address: $(".address").val(),
             addresstwo: $(".addresstwo").val(),
@@ -58,13 +52,20 @@ $(document).ready( function() {
             email: $(".company_email").val()
 
         }
-        console.log(companieData)
+        console.log(companyData)
         if(pass === confirm){
             $(".verify-password").addClass("valid")
             $.ajax({
                 url: "/api/business",
                 method: "POST",
-                data: companieData
+                data: companyData
+            }).then( data => {
+                console.log( "Signed up!" );
+                window.location.href = "/";
+            }).fail( err => {
+                console.log( "Signup failed." );
+                console.log( err );
+                alert( "Signup failed" );
             })
         } else {
             // If password does not match
@@ -100,8 +101,5 @@ $(document).ready( function() {
             // If password does not match
             $(".c-verify-password").addClass("invalid").val('').attr("placeholder", "Password does not match!")
         }
-
-    })
-     
-
+    })   
 });
