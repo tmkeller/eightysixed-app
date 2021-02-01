@@ -1,4 +1,4 @@
-USE DATABASE turn_tables_db;
+USE turn_tables_db;
 
 INSERT INTO `businesses` (`name`, `address`, `state`, `city`, `zip5`, `phone`, `category`, `website`, `email`, `password`, `createdAt`, `updatedAt`) VALUES
 ("Shea's Bar","123 Alki Ave","Washington","Seattle","98116","2065551212","Bar","http://sheashoes.com","silmarile@hotmail.com","password", "2021-01-28 15:00:00", "2021-01-28 15:00:00"),
