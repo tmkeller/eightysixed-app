@@ -16,7 +16,7 @@ module.exports = function(app){
             }
             if ( req.session.customer ) {
                 hbsObj.customer = req.session.customer;
-            } else if (req.session.business ) {
+            } else if ( req.session.business ) {
                 hbsObj.business = req.session.business;
             }
             console.log( hbsObj );
@@ -90,25 +90,49 @@ module.exports = function(app){
         });
     });
 
-    app.get("/business-main",function( req, res ) {
-        db.Customer.findAll({
-            where:{
-                BusinessId: req.params.id
-            }
-        }).then(data=>{console.log(data)})
+    app.get("/business-main", function( req, res ) {
         if ( !req.session.business ) {
             res.redirect( "/" );
         } else {
-            const hbsObj = {}; // empty object, in case we want to add something to it.
-            if ( req.session.customer ) {
-                hbsObj.customer = req.session.customer;
-            } else if (req.session.business ) {
-                hbsObj.business = req.session.business;
-            }
-            console.log(req.body)
+            db.Customer.findAll({
+                where:{
+                    BusinessId: req.session.business.id
+                }
+            }).then( data => {
 
-            console.log(hbsObj)
-            res.render('business-main', hbsObj);
+                db.Review.findAll().then( reviews => {
+                    const jsonReviews = reviews.map( ( obj ) => {
+                        return obj.toJSON();
+                    });
+
+                    const customers = data.map( ( obj ) => {
+                        jsonObj = obj.toJSON();
+                        let num = 0;
+                        let total = jsonReviews.reduce( ( total, review ) => {
+                            console.log( "review", review );
+                            console.log( "custObj", jsonObj );
+                            if ( review.CustomerId === jsonObj.id ) {
+                                num++;
+                                console.log( "total", total, "rating", review.rating );
+                                return total + review.rating;
+                            }
+                        })
+                        console.log( "num", num );
+                        let average = total/num;
+                        jsonObj.star_width = Math.floor((average/5) * 187) + "px";
+                        return jsonObj;
+                    });
+
+                    const hbsObj = {
+                        customers,
+                        business: req.session.business
+                    };
+
+                    console.log( "reviews", jsonReviews );
+                    console.log("hbsObj", hbsObj)
+                    res.render('business-main', hbsObj); 
+                })
+            })
         }
     });
 

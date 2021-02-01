@@ -26,11 +26,6 @@ module.exports = function (app) {
     res.status(200).json(data);
   });
 
-<<<<<<< HEAD
-  // get route for reading the whole table Review in the db:
-  app.get("/api/review", async (req, res) => {
-    const data = await db.Review.findall().catch((err) => {
-=======
   // get route for reading the all similar zip codes.
   app.get("/api/review/zip", async (req, res) => {
     const data = await db.Review.findAll({
@@ -47,7 +42,6 @@ module.exports = function (app) {
     const data = await db.Review.findAll({
       include: [db.Business],
     }).catch((err) => {
->>>>>>> db0079d4b18bdc7dd62d43bb999ce2fdc5632836
       res.status(500);
       console.error(err);
     });
