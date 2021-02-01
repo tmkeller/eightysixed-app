@@ -13,7 +13,6 @@ module.exports = function (sequelize, DataTypes) {
     website: DataTypes.STRING,
     password: DataTypes.STRING,
     pic: DataTypes.STRING,
-
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -22,8 +21,8 @@ module.exports = function (sequelize, DataTypes) {
   });
 
   Business.associate = function (models) {
-    Business.hasMany(models.Review);
-    Business.hasMany(models.Comment);
+    Business.hasMany(models.Review, { onDelete: "cascade" });
+    Business.hasMany(models.Customer);
   };
 
   Business.beforeCreate(function (business) {
@@ -31,7 +30,15 @@ module.exports = function (sequelize, DataTypes) {
       business.password,
       bcrypt.genSaltSync(10),
       null
-    );
+      );
+  });
+
+  Business.beforeUpdate(function (business) {
+    business.password = bcrypt.hashSync(
+      business.password,
+      bcrypt.genSaltSync(10),
+      null
+      );
   });
 
   return Business;

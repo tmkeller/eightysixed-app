@@ -8,23 +8,27 @@ module.exports = function (sequelize, DataTypes) {
     city: DataTypes.STRING,
     state: DataTypes.STRING,
     zip5: DataTypes.INTEGER,
-    email: DataTypes.STRING,
+    email: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      validate: { isEmail: true },
+    },
     password: DataTypes.STRING,
-    pic: DataTypes.STRING,
+    pic: DataTypes.STRING
   });
 
   Customer.associate = function (models) {
+    Customer.belongsTo(models.Business);
     Customer.hasMany(models.Comment, { onDelete: "cascade" });
     Customer.hasMany(models.Review)
-    Customer.belongsTo(models.Business)
   };
 
-  // Customer.beforeCreate(function (customer) {
-  //   customer.password = bcrypt.hashSync(
-  //     customer.password,
-  //     bcrypt.genSaltSync(10),
-  //     null
-  //   );
-  // });
-  return Customer;
+  Customer.beforeCreate(function (customer) {
+     if (customer.password) {
+       customer.password = bcrypt.hashSync(customer.password,
+       bcrypt.genSaltSync(10),
+       null)};
+
+})
+return Customer;
 };
