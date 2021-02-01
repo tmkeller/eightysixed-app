@@ -11,6 +11,7 @@ module.exports = function (app) {
     });
     res.status(200).json(data);
   });
+
   // get route for reading the whole table Review in the db:
   app.get("/api/review", async (req, res) => {
     const data = await db.Review.findall().catch((err) => {

@@ -17,7 +17,7 @@ app.use(
   session({
     secret: "keyboard cat",
     resave: false,
-    saveUninilialized: true,
+    saveUninitialized: true,
     cookie: { maxAge: 1000 * 60 * 60 * 2 },
   })
 );
@@ -43,6 +43,8 @@ require("./routes/review_api_route.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
+
+// Change force: to true if it's cool for the site to remove database items.
 db.sequelize.sync({ force: false }).then(function () {
   app.listen(PORT, function () {
     console.log("App listening on PORT http://localhost:" + PORT);
