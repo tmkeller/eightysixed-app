@@ -33,41 +33,18 @@ module.exports = function(app){
     // });
 
     app.get("/customer-profile/:id",function( req, res ) {
-        db.Customer.findOne( {
+        db.Customer.findOne({
             where: {
                 id: req.params.id
-            }
+            },
+            include:[db.Review]
         }).then( userData => {
+            console.log(userData)
             if ( !userData ) {
                 res.status( 404 ).send( "no such user" );
             } else {
-                // These reviews are test code. Delete them when we can get the reviews.
-                const reviews = [
-                    {
-                        business: "Red Mill Burgers",
-                        rating: 1.2,
-                        text: "I heard he hates children."
-                    },
-                    {
-                        business: "Canlis",
-                        rating: 2.1,
-                        text: "Tips well but bit a guy once."
-                    },
-                    {
-                        business: "Mr. Gyros",
-                        rating: 1.8,
-                        text: "Smells bad, but low-maintenance."
-                    }
-                ];
-                let sum = 0;
-                let num = 0;
-                for ( let i = 0; i < reviews.length; i++ ) {
-                    console.log( reviews[ i ].rating );
-                    sum += reviews[ i ].rating;
-                    num++;
-                }
-                let star_width = Math.floor((sum/num/5) * 187) + "px";
-                console.log( sum/num );
+
+                const reviews = userData.Reviews.map((obj)=>{return obj.toJSON()})
                 const hbsObj = {
                     id: userData.dataValues.id,
                     first_name: userData.dataValues.first_name,
@@ -81,61 +58,43 @@ module.exports = function(app){
                     createdAt: userData.dataValues.updatedAt,
                     updatedAt: userData.dataValues.createdAt,
                     reviews: reviews,
-                    star_width: star_width
+                    user: ( req.session.user || req.session.business )
                 }
                 res.render( 'customer-profile', hbsObj );
+         
             }
+ 
         }).catch( err => {
             res.status( 500 ).json( err );
         });
     });
 
-    // app.get("/business-main", function( req, res ) {
-    //     if ( !req.session.business ) {
-    //         res.redirect( "/" );
-    //     } else {
-    //         db.Customer.findAll({
-    //             where:{
-    //                 BusinessId: req.session.business.id
-    //             }
-    //         }).then( data => {
 
-    //             db.Review.findAll().then( reviews => {
-    //                 const jsonReviews = reviews.map( ( obj ) => {
-    //                     return obj.toJSON();
-    //                 });
 
-    //                 const customers = data.map( ( obj ) => {
-    //                     jsonObj = obj.toJSON();
-    //                     let num = 0;
-    //                     let total = jsonReviews.reduce( ( total, review ) => {
-    //                         console.log( "review", review );
-    //                         console.log( "custObj", jsonObj );
-    //                         if ( review.CustomerId === jsonObj.id ) {
-    //                             num++;
-    //                             console.log( "total", total, "rating", review.rating );
-    //                             return total + review.rating;
-    //                         }
-    //                     })
-    //                     console.log( "num", num );
-    //                     let average = total/num;
-    //                     jsonObj.star_width = Math.floor((average/5) * 187) + "px";
-    //                     return jsonObj;
-    //                 });
 
-    //                 const hbsObj = {
-    //                     customers,
-    //                     business: req.session.business
-    //                 };
 
-    //                 console.log( "reviews", jsonReviews );
-    //                 console.log("hbsObj", hbsObj)
-    //                 res.render('business-main', hbsObj); 
-    //             })
-    //         })
-    //     }
-    // });
 
+
+
+    app.get("/business-main",function( req, res ) {
+        db.Customer.findAll({
+            where:{
+                BusinessId: req.params.id
+            }
+        }).then(data=>{console.log(data)})
+        if ( !req.session.business ) {
+            res.status( 401 ).send( "You must log in first." );
+            res.render( "/" );
+        } else {
+            const hbsObj = {
+                user: ( req.session.user || req.session.business )
+            }
+            console.log(req.body)
+
+            console.log(hbsObj)
+            res.render('business-main', hbsObj);
+        }
+    });
 
     app.get( '/logout', ( req, res ) => {
         req.session.destroy();

@@ -20,9 +20,11 @@ $(".add_review_button").on("click", function(event){
       method: "POST",
       data: addCustomerByRest
   }).then(response=>{
+    location.reload()
      console.log(response)
-     location.reload()
+     
   })
 })
 
 })
+
