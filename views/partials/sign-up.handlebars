@@ -138,8 +138,11 @@
               </div>
           </div>
         </div>
-          <button class="btn col m4 waves-effect waves-light btn-small sign-up-button"  name="action">Submit
-            <i class="material-icons right">send</i>
+          <button 
+            class="btn col m4 waves-effect waves-light btn-small {{#if businessData}}update-button{{else}}sign-up-button{{/if}}"  
+            name="action">
+              Submit
+              <i class="material-icons right">send</i>
           </button>
         <p class="invalid"></p>
       </div>
