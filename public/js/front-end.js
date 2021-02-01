@@ -11,9 +11,7 @@ $(document).ready( function() {
     const formElems = document.querySelectorAll('select');
     const formInstances = M.FormSelect.init(formElems, "click");
 
-    // $(".test").on('click', function() {
-    //     $("#modal1").hide()
-    // });
+
 
     $(".select").on("change", function(event){
         var conceptName = $(".select").find(":selected").text()
@@ -84,6 +82,7 @@ $(document).ready( function() {
         const customerProfile = {
             first_name: $(".fName").val(),
             last_name:$(".lName").val(),
+            isClaimed: false,
             city: $(".customer_city").val(),
             state: $(".customer_select").val(),
             zip5: $(".customer_zip").val(),
@@ -101,6 +100,8 @@ $(document).ready( function() {
                 url: "/api/customer",
                 method: "POST",
                 data: customerProfile
+            }).then(res=>{
+                location.reload()
             })
        
     })   

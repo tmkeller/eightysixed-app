@@ -18,12 +18,12 @@ module.exports = function (sequelize, DataTypes) {
     Customer.belongsTo(models.Business)
   };
 
-  Customer.beforeCreate(function (customer) {
-    customer.password = bcrypt.hashSync(
-      customer.password,
-      bcrypt.genSaltSync(10),
-      null
-    );
-  });
+  // Customer.beforeCreate(function (customer) {
+  //   customer.password = bcrypt.hashSync(
+  //     customer.password,
+  //     bcrypt.genSaltSync(10),
+  //     null
+  //   );
+  // });
   return Customer;
 };

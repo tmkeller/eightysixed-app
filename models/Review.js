@@ -13,6 +13,7 @@ module.exports = function (sequelize, DataTypes) {
 
   Review.associate = function (models) {
     Review.belongsTo(models.Business, { onDelete: "cascade" });
+    Review.belongsTo(models.Customer, { onDelete: "cascade" });
     Review.hasMany(models.Comment, { onDelete: "cascade" });
   };
 
