@@ -36,6 +36,10 @@ module.exports = function(app){
                 // customer: req.session.customer
                 business: req.session.business
             };
+            if ( hbsObj.businessData.state ) {
+                const state = hbsObj.businessData.state.replace( / /g, "");
+                hbsObj.businessData[state] = true;
+            }
             console.log( "hbsObj", hbsObj );
             res.render('business-main', hbsObj);
         }
