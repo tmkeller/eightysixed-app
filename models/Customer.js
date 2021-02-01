@@ -10,8 +10,7 @@ module.exports = function (sequelize, DataTypes) {
     zip5: DataTypes.INTEGER,
     email: {
       type: DataTypes.STRING,
-      allowNull: true,
-      validate: { isEmail: true },
+      allowNull: true
     },
     password: DataTypes.STRING,
     pic: DataTypes.STRING
