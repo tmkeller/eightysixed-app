@@ -3,7 +3,6 @@ const db = require("../models");
 module.exports = function(app){
 
     app.get("/business-main/:id",function( req, res ) {
-        console.log(req.params.id)
         db.Customer.findAll({
             where:{
                 BusinessId: req.params.id

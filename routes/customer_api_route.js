@@ -60,6 +60,24 @@ module.exports = function (app) {
     });
     res.status( 200 ).json( data );
   })
+//////////customer search on business page////////
+  app.get( "/search-results/:first_name", async (req, res) => {
+    console.log(req.params)
+     db.Customer.findAll({
+      where: {
+        first_name: req.params.first_name
+      }
+    }).then(data => {
+      const jsonData = data.map((obj) =>{ return obj.toJSON()})
+      const hbsObj = {
+        guests: jsonData,
+        user: ( req.session.user || req.session.business )
+      }
+      console.log(hbsObj)
+      res.render('search-results', hbsObj);
+    })
+    
+  })
 
   app.post("/api/customer/search", async (req, res) => {
     console.log(req.body);

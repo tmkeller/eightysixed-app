@@ -1,6 +1,6 @@
 const ids = localStorage.getItem("id")
+
 $(document).ready( function() {
-   
     const categoryArray = []
     // The .dropdown() and .modal() functions were not working, so these initializations
     // for dropdowns and modals had to be done in vanilla Javascript.

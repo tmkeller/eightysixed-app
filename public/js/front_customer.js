@@ -1,3 +1,5 @@
+
+
 const accountValue = [false]
 $(".switch").on("change", function(event){
     event.preventDefault()
@@ -32,10 +34,11 @@ $(".sign-button").on("click", function(event){
             email: $(".sign_email").val(),
             password: $(".sign_pass").val()
         }).then(response=>{
-            localStorage.setItem("id", response.id)
-            $.get("/business-main/" + ids, {
-            }).then(res=>{
-             window.location.href = "/business-main/" + ids ;
+            console.log(response.id)
+            $.get("/business-main/" + response.id, {
+            }).then(res=>{ 
+               window.location.href = "/business-main/" + response.id;
+               localStorage.setItem("id", response.id)
             
             })
 
@@ -48,4 +51,18 @@ $(".sign-button").on("click", function(event){
     }
 })
 
+////////////////////////////////////////////////////////////////////////////////
+$(".customer_search").on("click", function(event){
+   
+    event.preventDefault()
+    
+   console.log($(".firstName-search").val()) 
+    $.get( "/search-results/" + $(".firstName-search").val(), {
 
+    }).then(res => {
+        console.log(res)
+        window.location.href = "/search-results/" + $(".firstName-search").val()
+        $(".firstName-search").val('')
+
+    })
+})

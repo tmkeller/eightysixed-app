@@ -1,3 +1,8 @@
+$(".customer-review").on("click", function(event){
+    const customerReviewId = $(event.target).attr("data-id")
+    console.log(customerReviewId)
+
+
 $(".add_review_button").on("click", function(event){
   event.preventDefault()
   console.log("front_review.js log")
@@ -7,7 +12,7 @@ $(".add_review_button").on("click", function(event){
     rating: $(".stars").val(),
     pic: $(".customer_image_review").val(),
     BusinessId: ids,
-    CustomerId: $(".testerniner").attr("data-value")
+    CustomerId: customerReviewId 
     
   }
   $.ajax({
@@ -18,4 +23,6 @@ $(".add_review_button").on("click", function(event){
      console.log(response)
      location.reload()
   })
+})
+
 })
