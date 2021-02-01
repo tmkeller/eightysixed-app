@@ -42,14 +42,21 @@
         </ul>
     </div>
     </nav>
+    {{!-- sign in modal --}}
     <div id="modal1" class="modal">
     {{> sign-in }}
     </div>
+    {{!-- modal for adding business --}}
     <div id="modal2" class="modal">
     {{> sign-up }}
     </div>
+    {{!-- modal for adding gust --}}
     <div id="modal3" class="modal">
     {{> add-guest }}
+    </div>
+    {{!-- modal for adding review --}}
+    <div id="modal4" class="modal">
+    {{> add-review-modal }}
     </div>
     <!-- Main Body of the site -->
     {{{ body }}}

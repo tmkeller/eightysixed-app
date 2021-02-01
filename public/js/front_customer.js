@@ -11,7 +11,6 @@ $(".sign-button").on("click", function(event){
     event.preventDefault();
 
     if(accountValue[0] === true){
-        console.log("customer click");
         console.log("event in front_customer.js")
         $.post( "/api/customer/login", {
             email: $(".sign_email").val(),
@@ -28,8 +27,6 @@ $(".sign-button").on("click", function(event){
 
     if(accountValue[0] === false){
         event.preventDefault()
-        console.log("business click")
-        console.log("click")
         console.log("event in front_customer.js")
         $.post( "/api/business/login", {
             email: $(".sign_email").val(),
@@ -38,7 +35,8 @@ $(".sign-button").on("click", function(event){
             localStorage.setItem("id", response.id)
             $.get("/business-main/" + ids, {
             }).then(res=>{
-             window.location.href = "/business-main/" +ids;
+             window.location.href = "/business-main/" + ids ;
+            
             })
 
         }).fail( err => {
