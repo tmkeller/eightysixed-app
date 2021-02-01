@@ -55,7 +55,7 @@ module.exports = function (app) {
   ////////////////////////////////////////////////////////////////
   // cookies and session storage
   app.get("/readsessions/business", (req, res) => {
-    res.json(req.session);
+    res.json(req.session).send(req.session.email);
   });
 
   // update route for updating the info in the table business in the db: WIP

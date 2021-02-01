@@ -91,6 +91,11 @@ module.exports = function(app){
     });
 
     app.get("/business-main",function( req, res ) {
+        db.Customer.findAll({
+            where:{
+                BusinessId: req.params.id
+            }
+        }).then(data=>{console.log(data)})
         if ( !req.session.business ) {
             res.redirect( "/" );
         } else {
@@ -100,6 +105,9 @@ module.exports = function(app){
             } else if (req.session.business ) {
                 hbsObj.business = req.session.business;
             }
+            console.log(req.body)
+
+            console.log(hbsObj)
             res.render('business-main', hbsObj);
         }
     });

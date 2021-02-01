@@ -27,7 +27,7 @@
             <li class="divider" tabindex="-1"></li>
             <li><a href="#!">three</a></li>
             <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
-            <li><a href="/logout"><button>Logout</button></a></li>
+            <li><a href="/logout" class="logout"><button>Logout</button></a></li>
             </ul>
             <li><a href="sass.html"><i class="material-icons">search</i></a></li>
             <li><a href="badges.html"><i class="material-icons">view_module</i></a></li>
@@ -60,11 +60,21 @@
         </ul>
     </div>
     </nav>
+    {{!-- sign in modal --}}
     <div id="modal1" class="modal">
     {{> sign-in }}
     </div>
+    {{!-- modal for adding business --}}
     <div id="modal2" class="modal">
     {{> sign-up }}
+    </div>
+    {{!-- modal for adding gust --}}
+    <div id="modal3" class="modal">
+    {{> add-guest }}
+    </div>
+    {{!-- modal for adding review --}}
+    <div id="modal4" class="modal">
+    {{> add-review-modal }}
     </div>
     <!-- Main Body of the site -->
     {{{ body }}}

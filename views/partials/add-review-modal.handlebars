@@ -1,0 +1,41 @@
+
+<div class="card" style="margin: 50px">
+    <form class="row" style="max-width: 70%;">
+
+      <div class="row" style="display: flex; justify-content:center"> 
+        <div class="input-field col s6" style="margin: 2px 0px 2px 0px">
+          <input placeholder="title" class="materialize-textarea title" data-length="120">
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="textarea1" class="materialize-textarea content"></textarea>
+          <label for="textarea1">Textarea</label>
+        </div>
+      </div>
+
+      <div class="row" style="display: flex; justify-content:space-between">
+        <div class="input-field col s2" style="margin: 2px;">
+          <input placeholder="Stars" class="validate stars" style="padding: 0px; height: 25px">
+        </div>
+        <div class="col m8">
+          <div class="file-field input-field">
+            <div class="btn btn-small">
+              <span>img</span>
+              <input type="file">
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate customer_image_review" type="text">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        
+        <button class="btn col m4 waves-effect waves-light btn-small add_review_button"  name="action">Submit
+          <i class="material-icons right">send</i>
+        </button>
+        <p class="invalid"></p>
+      </div>
+    </form>
+  </div>

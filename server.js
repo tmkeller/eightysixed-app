@@ -40,12 +40,18 @@ require("./routes/business_api_routes.js")(app);
 require("./routes/comment_api_routes.js")(app);
 require("./routes/customer_api_route.js")(app);
 require("./routes/review_api_route.js")(app);
+require("./routes/backend-get-routes.js")(app);
+require("./routes/backend-delete-routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
+<<<<<<< HEAD
 
 // Change force: to true if it's cool for the site to remove database items.
 db.sequelize.sync({ force: false }).then(function () {
+=======
+db.sequelize.sync({ force:false}).then(function () {
+>>>>>>> db0079d4b18bdc7dd62d43bb999ce2fdc5632836
   app.listen(PORT, function () {
     console.log("App listening on PORT http://localhost:" + PORT);
   });
