@@ -90,53 +90,6 @@ module.exports = function(app){
         });
     });
 
-    // app.get("/business-main", function( req, res ) {
-    //     if ( !req.session.business ) {
-    //         res.redirect( "/" );
-    //     } else {
-    //         db.Customer.findAll({
-    //             where:{
-    //                 BusinessId: req.session.business.id
-    //             }
-    //         }).then( data => {
-
-    //             db.Review.findAll().then( reviews => {
-    //                 const jsonReviews = reviews.map( ( obj ) => {
-    //                     return obj.toJSON();
-    //                 });
-
-    //                 const customers = data.map( ( obj ) => {
-    //                     jsonObj = obj.toJSON();
-    //                     let num = 0;
-    //                     let total = jsonReviews.reduce( ( total, review ) => {
-    //                         console.log( "review", review );
-    //                         console.log( "custObj", jsonObj );
-    //                         if ( review.CustomerId === jsonObj.id ) {
-    //                             num++;
-    //                             console.log( "total", total, "rating", review.rating );
-    //                             return total + review.rating;
-    //                         }
-    //                     })
-    //                     console.log( "num", num );
-    //                     let average = total/num;
-    //                     jsonObj.star_width = Math.floor((average/5) * 187) + "px";
-    //                     return jsonObj;
-    //                 });
-
-    //                 const hbsObj = {
-    //                     customers,
-    //                     business: req.session.business
-    //                 };
-
-    //                 console.log( "reviews", jsonReviews );
-    //                 console.log("hbsObj", hbsObj)
-    //                 res.render('business-main', hbsObj); 
-    //             })
-    //         })
-    //     }
-    // });
-
-
     app.get( '/logout', ( req, res ) => {
         req.session.destroy();
         res.redirect( "/" );
