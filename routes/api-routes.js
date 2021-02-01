@@ -12,9 +12,12 @@ module.exports = function(app){
             });
             console.log( jsonData );
             const hbsObj = {
-                guests: jsonData,
-                user: ( req.session.user || req.session.business ),
-
+                guests: jsonData
+            }
+            if ( req.session.customer ) {
+                hbsObj.customer = req.session.customer;
+            } else if ( req.session.business ) {
+                hbsObj.business = req.session.business;
             }
             console.log( hbsObj );
             res.render('index', hbsObj );
@@ -78,8 +81,7 @@ module.exports = function(app){
                     createdAt: userData.dataValues.updatedAt,
                     updatedAt: userData.dataValues.createdAt,
                     reviews: reviews,
-                    star_width: star_width,
-                    user: ( req.session.user || req.session.business )
+                    star_width: star_width
                 }
                 res.render( 'customer-profile', hbsObj );
             }
@@ -88,6 +90,51 @@ module.exports = function(app){
         });
     });
 
+    // app.get("/business-main", function( req, res ) {
+    //     if ( !req.session.business ) {
+    //         res.redirect( "/" );
+    //     } else {
+    //         db.Customer.findAll({
+    //             where:{
+    //                 BusinessId: req.session.business.id
+    //             }
+    //         }).then( data => {
+
+    //             db.Review.findAll().then( reviews => {
+    //                 const jsonReviews = reviews.map( ( obj ) => {
+    //                     return obj.toJSON();
+    //                 });
+
+    //                 const customers = data.map( ( obj ) => {
+    //                     jsonObj = obj.toJSON();
+    //                     let num = 0;
+    //                     let total = jsonReviews.reduce( ( total, review ) => {
+    //                         console.log( "review", review );
+    //                         console.log( "custObj", jsonObj );
+    //                         if ( review.CustomerId === jsonObj.id ) {
+    //                             num++;
+    //                             console.log( "total", total, "rating", review.rating );
+    //                             return total + review.rating;
+    //                         }
+    //                     })
+    //                     console.log( "num", num );
+    //                     let average = total/num;
+    //                     jsonObj.star_width = Math.floor((average/5) * 187) + "px";
+    //                     return jsonObj;
+    //                 });
+
+    //                 const hbsObj = {
+    //                     customers,
+    //                     business: req.session.business
+    //                 };
+
+    //                 console.log( "reviews", jsonReviews );
+    //                 console.log("hbsObj", hbsObj)
+    //                 res.render('business-main', hbsObj); 
+    //             })
+    //         })
+    //     }
+    // });
 
 
     app.get( '/logout', ( req, res ) => {
@@ -95,29 +142,7 @@ module.exports = function(app){
         res.redirect( "/" );
     });
 
-    // placeholder code to test with.
-        // let vars = {
-        //     logged_in: true,
-        //     guests: [
-        //         {
-        //             first_name: "Joe",
-        //             last_name: "Joesson",
-        //             pic: "http://placekitten.com/300/300",
-        //             top_comment: '"This kitten is cute, but he tore up my couch."'
-        //         },
-        //         {
-        //             first_name: "Tim",
-        //             last_name: "Timsson",
-        //             pic: "http://placekitten.com/300/300",
-        //             top_comment: '"Fuzzy and snuggly, but tried to tip me with a dead mouse."'
-        //         },
-        //         {
-        //             first_name: "Jack",
-        //             last_name: "Jacksson",
-        //             pic: "http://placekitten.com/300/300",
-        //             top_comment: '"Came in with muddy paws and refused to wear a mask."'
-        //         }
-        //     ]
-        // }
-        // console.log( vars );
+    app.get( '/:id', ( req, res ) => {
+        res.redirect( "/" );
+    })
 }
