@@ -1,9 +1,16 @@
 
 <div class="card sign_up_sheet" style="margin: 50px">
-  <form class="row" style="max-width: 70%;">
+  <form class="row sign-up-form" style="max-width: 70%;">
       <div class="row">
+          {{#if businessData}}
+            <style>
+              .sign-up-form input::placeholder {
+                color: black;
+              }
+            </style>
+          {{/if}}
           <div class="input-field col s8" style="margin: 2px 0px 2px 0px">
-              <input placeholder="Company Name" id="company_name" type="text" class="company_name">
+              <input placeholder="{{#if businessData}}{{businessData.name}}{{else}}Name{{/if}}" id="company_name" type="text" class="company_name">
           </div>
             <a class='dropdown-trigger btn category' href='#' data-target='dropdown2' style="margin: 2px 0px 2px 0px">Category</a>
 
@@ -19,26 +26,23 @@
             </ul>
       </div>
            
-
-            
       <div class="row"> 
         <div class="input-field col s12" style="margin: 2px 0px 2px 0px">
-          <input placeholder="Address" id="textarea2" class="materialize-textarea address" data-length="120" style="padding: 0px;"   >
+          <input placeholder="{{#if businessData}}{{businessData.address}}{{else}}Address{{/if}}" id="textarea2" class="materialize-textarea address" data-length="120" style="padding: 0px;"   >
         </div>
       </div>
-
       <div class="row"> 
         <div class="input-field col s6" style="margin: 2px 0px 2px 0px">
-          <input placeholder="(optional)" id="textarea3" class="materialize-textarea addresstwo" data-length="120" style="padding: 0px;">
+          <input placeholder="{{#if businessData}}{{businessData.addresstwo}}{{else}}Address 2 (optional){{/if}}" id="textarea3" class="materialize-textarea addresstwo" data-length="120" style="padding: 0px;">
         </div>
         <div class="input-field col s6" style="margin: 2px 0px 2px 0px">
-          <input placeholder="City" id="textarea6" class="materialize-textarea city" data-length="120" style="padding: 0px;">
+          <input placeholder="{{#if businessData}}{{businessData.city}}{{else}}City{{/if}}" id="textarea6" class="materialize-textarea city" data-length="120" style="padding: 0px;">
         </div>
       </div>
       <div class="row"> 
         <div class="input-field col s6" style="margin: 2px 0px 2px 0px">
           <select class="select">
-          <option class="st" value=""disabled selected></option>State></option>
+          <option class="st" value="" disabled selected></option>State</option>
           <option class="st" value="Alabama">Alabama</option>
           <option class="st" value="Alaska">Alaska</option>
           <option class="st" value="Arizona">Arizona</option>
@@ -94,20 +98,20 @@
         </div>
                 
         <div class="input-field col s4" style="margin: 2px 0px 2px 0px">
-          <input placeholder="Zip" id="textarea5" class="materialize-textarea zip" data-length="120" style="padding: 0px; height: 44px">
+          <input placeholder="{{#if businessData}}{{businessData.zip5}}{{else}}Zip{{/if}}" id="textarea5" class="materialize-textarea zip" data-length="120" style="padding: 0px; height: 44px">
         </div>
       </div>
       <div class="row">
           <div class="input-field col s6" style="margin: 2px 0px 2px 0px">
-              <input placeholder="Telephone" id="icon_telephone" type="tel" class="validate phone" style="padding: 0px; height: 25px">
+              <input placeholder="{{#if businessData}}{{businessData.phone}}{{else}}Phone{{/if}}" id="icon_telephone" type="tel" class="validate phone" style="padding: 0px; height: 25px">
           </div>
           <div class="input-field col s6" style="margin: 2px 0px 2px 0px;">
-              <input placeholder="Website" class="validate websight" style="padding: 0px; height: 25px">
+              <input placeholder="{{#if businessData}}{{businessData.website}}{{else}}Website{{/if}}" class="validate websight" style="padding: 0px; height: 25px">
           </div>
       </div>
       <div class="row">
         <div class="input-field col s12" style="margin: 2px;">
-          <input placeholder="Email"  type="email" class="validate company_email" style="padding: 0px; height: 25px">
+          <input placeholder="{{#if businessData}}{{businessData.email}}{{else}}Email{{/if}}"  type="email" class="validate company_email" style="padding: 0px; height: 25px">
         </div>
       </div>
       <div class="row">
