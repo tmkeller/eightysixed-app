@@ -11,13 +11,13 @@ module.exports = function (sequelize, DataTypes) {
     phone: DataTypes.STRING,
     category: DataTypes.STRING,
     website: DataTypes.STRING,
-    password: DataTypes.STRING,
-    pic: DataTypes.STRING,
     email: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: { isEmail: true },
     },
+    password: DataTypes.STRING,
+    pic: DataTypes.STRING,
   });
 
   Business.associate = function (models) {
