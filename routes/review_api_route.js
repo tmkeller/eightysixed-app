@@ -48,7 +48,8 @@ module.exports = function (app) {
     res.status(200).json(data);
   });
 
-  // update route for updating the info in the table Review in the db: WIP
+
+//////////////////////////////////////////////////////////////////
   app.put("/api/review/:id", async (req, res) => {
     const data = await db.Review.update(req.body, {
       where: { id: req.body.id },
