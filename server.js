@@ -45,7 +45,9 @@ require("./routes/backend-delete-routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({ force:false}).then(function () {
+
+// Change force: to true if it's cool for the site to remove database items.
+db.sequelize.sync({ force: false }).then(function () {
   app.listen(PORT, function () {
     console.log("App listening on PORT http://localhost:" + PORT);
   });

@@ -1,7 +1,20 @@
 
 <div class="row">
-    <div class="col s12 m12" style="padding: 0%;">
-        <img src="http://placekitten.com/1200/400" style="max-width: 100%;">
+    <div class="col s4" style="padding: 0%;">
+        <!-- src="{{ pic }}" -->
+        <img src="https://placekitten.com/200/300" alt="Profile Picture">
+    </div>
+    <div class="col s8">
+        <p>Business name: {{ businessData.name }}</p>
+        <p>Address1: {{ businessData.address }}</p>
+        <p>Address2: {{ businessData.addresstwo }}</p>
+        <p>State: {{ businessData.state }}</p>
+        <p>City: {{ businessData.city }}</p>
+        <p>Zip: {{ businessData.zip5 }}</p>
+        <p>Phone: {{ businessData.phone }}</p>
+        <p>Category: {{ businessData.category }}</p>
+        <p>Website: {{ businessData.website }}</p>
+        <p>Email: {{ businessData.email }}</p>
     </div>
 </div>
 <div class="row" style="display: flex; justify-content:center">

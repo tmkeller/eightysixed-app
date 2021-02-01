@@ -12,9 +12,12 @@ module.exports = function(app){
             });
             console.log( jsonData );
             const hbsObj = {
-                guests: jsonData,
-                user: ( req.session.user || req.session.business ),
-
+                guests: jsonData
+            }
+            if ( req.session.customer ) {
+                hbsObj.customer = req.session.customer;
+            } else if ( req.session.business ) {
+                hbsObj.business = req.session.business;
             }
             console.log( hbsObj );
             res.render('index', hbsObj );
@@ -98,4 +101,7 @@ module.exports = function(app){
         res.redirect( "/" );
     });
 
+    app.get( '/:id', ( req, res ) => {
+        res.redirect( "/" );
+    })
 }
