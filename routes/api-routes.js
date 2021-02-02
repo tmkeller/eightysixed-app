@@ -13,10 +13,10 @@ module.exports = function(app){
             const hbsObj = {
                 guests: jsonData
             }
-            if ( req.session.customer ) {
-                hbsObj.customer = req.session.customer;
-            } else if ( req.session.business ) {
+            if ( req.session.business ) {
                 hbsObj.business = req.session.business;
+            } else if ( req.session.customer ) {
+                hbsObj.customer = req.session.customer;
             }
             res.render('index', hbsObj );
         })
@@ -60,8 +60,12 @@ module.exports = function(app){
                     pic: userData.dataValues.pic,
                     createdAt: userData.dataValues.updatedAt,
                     updatedAt: userData.dataValues.createdAt,
-                    reviews: reversedReviews,
-                    user:  (req.session.business || req.session.user)
+                    reviews: reversedReviews
+                }
+                if ( req.session.business ) {
+                    hbsObj.business = req.session.business;
+                } else if ( req.session.customer ) {
+                    hbsObj.customer = req.session.customer;
                 }
                 res.render( 'customer-profile', hbsObj );
          
@@ -71,13 +75,6 @@ module.exports = function(app){
             res.status( 500 ).json( err );
         });
     });
-
-
-
-
-
-
-
 
     app.get("/business-main",function( req, res ) {
         db.Customer.findAll({
