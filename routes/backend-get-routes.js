@@ -41,22 +41,15 @@ module.exports = function(app){
             res.render('business-main', hbsObj);
         } else {
             // Gonna replace this with a 404 page.
-            db.Customer.findAll().then( data => {
-                const jsonData = data.map( ( obj ) => {
-                    obj.avg_rating = 4.6; // This is test code. Delete it when we can get average ratings.
-                    obj.dataValues.star_width = Math.floor((obj.avg_rating/5) * 187) + "px";
-                    return obj.toJSON();
-                });
-                const hbsObj = {
-                    guests: jsonData
-                }
-                if ( req.session.business ) {
-                    hbsObj.business = req.session.business;
-                } else if ( req.session.customer ) {
-                    hbsObj.customer = req.session.customer;
-                }
-                res.render('index', hbsObj );
-            })
+            const hbsObj = {
+                text: "business"
+            }
+            if ( req.session.business ) {
+                hbsObj.business = req.session.business;
+            } else if ( req.session.customer ) {
+                hbsObj.customer = req.session.customer;
+            }
+            res.render( "404", hbsObj )
         }
     });
 };
