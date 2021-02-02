@@ -34,62 +34,98 @@ module.exports = function(app){
     //     res.render('sign-up', hbsObj);
     // });
 
-    app.get("/customer-profile/:id",function( req, res ) {
-           console.log(req.session.business)
-        db.Customer.findOne({
-            where: {
+    app.get("/customer-profile/:id", async function( req, res ) {
+        const customer = await db.Customer.findOne({
+            where:{
                 id: req.params.id
             },
-            include:[db.Review]
-        }).then( userData => {
-            if ( !userData ) {
-                res.status( 404 ).send( "no such user" );
-            } else {
-
-                const reviews = userData.Reviews.map((obj)=>{return obj.toJSON()})
-                const reversedReviews = reviews.reverse()
-                const hbsObj = {
-                    id: userData.dataValues.id,
-                    first_name: userData.dataValues.first_name,
-                    last_name: userData.dataValues.last_name,
-                    city: userData.dataValues.city,
-                    state: userData.dataValues.state,
-                    zip: userData.dataValues.zip5,
-                    email: userData.dataValues.email,
-                    password: userData.dataValues.password,
-                    pic: userData.dataValues.pic,
-                    createdAt: userData.dataValues.updatedAt,
-                    updatedAt: userData.dataValues.createdAt,
-                    reviews: reversedReviews
-                }
-                if ( req.session.business ) {
-                    hbsObj.business = req.session.business;
-                } else if ( req.session.customer ) {
-                    hbsObj.customer = req.session.customer;
-                }
-                res.render( 'customer-profile', hbsObj );
-         
-            }
- 
+            include: [db.Review]
         }).catch( err => {
             res.status( 500 ).json( err );
         });
-    });
 
-    app.get("/business-main",function( req, res ) {
-        db.Customer.findAll({
-            where:{
-                BusinessId: req.params.id
-            }
-        }).then(data=>{console.log(data)})
-        if ( !req.session.business ) {
-            res.status( 401 ).send( "You must log in first." );
-            res.render( "/" );
+        let business;
+        if ( req.session.business ) {
+            business = await db.Business.findOne({
+                where: {
+                    id: req.session.business.id
+                }
+            }).catch( err => {
+                res.status( 500 ).json( err );
+            });
+        }
+        
+        if ( !customer ) {
+            // The following code should be replaced with an actual 404 page.
+            res.status( 404 ).send( "no such user" );
         } else {
+            const reviews = customer.Reviews.map( ( obj )=>{ return obj.toJSON()})
+            const reversedReviews = reviews.reverse()
             const hbsObj = {
-                user: ( req.session.user || req.session.business )
+                id: customer.dataValues.id,
+                first_name: customer.dataValues.first_name,
+                last_name: customer.dataValues.last_name,
+                city: customer.dataValues.city,
+                state: customer.dataValues.state,
+                zip: customer.dataValues.zip5,
+                email: customer.dataValues.email,
+                password: customer.dataValues.password,
+                pic: customer.dataValues.pic,
+                createdAt: customer.dataValues.updatedAt,
+                updatedAt: customer.dataValues.createdAt,
+                reviews: reversedReviews,
             }
+            if ( business ) {
+                hbsObj.businessData = business.toJSON()
+            }
+            if ( req.session.business ) {
+                hbsObj.business = req.session.business;
+            } else if ( req.session.customer ) {
+                hbsObj.customer = req.session.customer;
+            }
+            console.log( business );
+            res.render( 'customer-profile', hbsObj );
+        }
+    })
 
+    app.get("/business-main", async function( req, res ) {
+        if ( !req.session.business ) {
+            res.redirect( "/401" );
+        } else {
+            const customers = await db.Customer.findAll({
+                where:{
+                    BusinessId: req.session.business.id
+                }
+            }).catch( err => {
+                res.status( 500 ).json( err );
+            });
+            const business = await db.Business.findOne({
+                where: {
+                    id: req.session.business.id
+                }
+            }).catch( err => {
+                res.status( 500 ).json( err );
+            });
+
+            const jsonData = customers.map(( obj ) => {
+                let newObj = obj.toJSON();
+                // Placeholder code for the star width.
+                newObj.star_width = Math.floor((3/5) * 187) + "px";
+                return newObj;
+            });
+            const hbsObj = await {
+                businessData: business.toJSON(),
+                customers: jsonData,
+                // This is necessary any time you're rendering a page
+                // where the user should be logged in. Looks like this for customers:
+                // customer: req.session.customer
+                business: req.session.business
+            };
+            if ( hbsObj.businessData.state ) {
+                const state = hbsObj.businessData.state.replace( / /g, "");
+                hbsObj.businessData[state] = true;
+            }
+            console.log( "hbsObj", hbsObj );
             res.render('business-main', hbsObj);
         }
     });
@@ -100,6 +136,12 @@ module.exports = function(app){
     });
 
     app.get( '/:id', ( req, res ) => {
-        res.redirect( "/" );
+        const hbsObj = {};
+        if ( req.session.business ) {
+            hbsObj.business = req.session.business;
+        } else if ( req.session.customer ) {
+            hbsObj.customer = req.session.customer;
+        }
+        res.render( "index", hbsObj );
     })
 }
