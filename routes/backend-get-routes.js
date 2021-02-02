@@ -3,31 +3,28 @@ const db = require("../models");
 module.exports = function(app){
 
     app.get("/business-main/:id", async function( req, res ) {
-        console.log(req.params.id)
-        if ( !req.session.business ) {
-            res.redirect( "/401" );
-        } else {
-            const customers = await db.Customer.findAll({
-                where:{
-                    BusinessId: req.params.id
-                }
-            }).catch( err => {
-                res.status( 500 ).json( err );
-            });
-            const business = await db.Business.findOne({
-                where: {
-                    id: req.params.id
-                }
-            }).catch( err => {
-                res.status( 500 ).json( err );
-            });
+        const customers = await db.Customer.findAll({
+            where:{
+                BusinessId: req.params.id
+            }
+        }).catch( err => {
+            res.status( 500 ).json( err );
+        });
+        const business = await db.Business.findOne({
+            where: {
+                id: req.params.id
+            }
+        }).catch( err => {
+            res.status( 500 ).json( err );
+        });
 
-            const jsonData = customers.map(( obj ) => {
-                let newObj = obj.toJSON();
-                // Placeholder code for the star width.
-                newObj.star_width = Math.floor((3/5) * 187) + "px";
-                return newObj;
-            });
+        const jsonData = customers.map(( obj ) => {
+            let newObj = obj.toJSON();
+            // Placeholder code for the star width.
+            newObj.star_width = Math.floor((3/5) * 187) + "px";
+            return newObj;
+        });
+        if ( business ) {
             const hbsObj = await {
                 businessData: business.toJSON(),
                 customers: jsonData,
@@ -42,6 +39,24 @@ module.exports = function(app){
             }
             console.log( "hbsObj", hbsObj );
             res.render('business-main', hbsObj);
+        } else {
+            // Gonna replace this with a 404 page.
+            db.Customer.findAll().then( data => {
+                const jsonData = data.map( ( obj ) => {
+                    obj.avg_rating = 4.6; // This is test code. Delete it when we can get average ratings.
+                    obj.dataValues.star_width = Math.floor((obj.avg_rating/5) * 187) + "px";
+                    return obj.toJSON();
+                });
+                const hbsObj = {
+                    guests: jsonData
+                }
+                if ( req.session.business ) {
+                    hbsObj.business = req.session.business;
+                } else if ( req.session.customer ) {
+                    hbsObj.customer = req.session.customer;
+                }
+                res.render('index', hbsObj );
+            })
         }
     });
 };
