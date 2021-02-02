@@ -52,7 +52,7 @@ require("./routes/backend-delete-routes.js")(app);
 // =============================================================
 
 // Change force: to true if it's cool for the site to remove database items.
-db.sequelize.sync({ force: false }).then(function () {
+db.sequelize.sync({ force: false}).then(function () {
   app.listen(PORT, function () {
     console.log("App listening on PORT http://localhost:" + PORT);
   });

@@ -3,6 +3,7 @@ const db = require("../models");
 module.exports = function(app){
 
     app.get("/business-main/:id", async function( req, res ) {
+        console.log(req.params.id)
         if ( !req.session.business ) {
             res.redirect( "/401" );
         } else {
