@@ -26,7 +26,20 @@ module.exports = function (app) {
       res.status(404).send("username or password is incorrect");
     } else {
       if (bcrypt.compareSync(req.body.password, data.password)) {
-        req.session.business = { id: data.id, email: data.email };
+        req.session.business = {
+          id: data.id,
+          name: data.name,
+          email: data.email,
+          address: data.address,
+          addresstwo: data.addresstwo,
+          state: data.state,
+          city: data.city,
+          zip5: data.zip5,
+          phone: data.phone,
+          category: data.category,
+          website: data.website,
+          pic: data.pic,
+        };
         res.status(200).json(data);
       } else {
         res.status(401).send("username or password is incorrect");
