@@ -51,6 +51,7 @@ module.exports = function (app) {
 
 //////////////////////////////////////////////////////////////////
   app.put("/api/review", async (req, res) => {
+    console.log(req.body)
     const data = await db.Review.update(
       {title: req.body.title,
       body: req.body.body,
