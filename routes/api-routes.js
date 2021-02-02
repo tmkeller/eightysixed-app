@@ -23,7 +23,23 @@ module.exports = function(app){
     })
 
     app.get( "/401", function( req, res ) {
+        const hbsObj = {};
+        if ( req.session.business ) {
+            hbsObj.business = req.session.business;
+        } else if ( req.session.customer ) {
+            hbsObj.customer = req.session.customer;
+        }
         res.render( "401" );
+    })
+
+    app.get( "/404", function( req, res ) {
+        const hbsObj = {};
+        if ( req.session.business ) {
+            hbsObj.business = req.session.business;
+        } else if ( req.session.customer ) {
+            hbsObj.customer = req.session.customer;
+        }
+        res.render( "404" );
     })
 
     // Commenting this out because we're doing sign-ups from the nav bar dropdown.
@@ -56,8 +72,10 @@ module.exports = function(app){
         }
         
         if ( !customer ) {
-            // The following code should be replaced with an actual 404 page.
-            res.status( 404 ).send( "no such user" );
+            const hbsObj = {
+                text: "customer"
+            }
+            res.render( "404", hbsObj );
         } else {
             const reviews = customer.Reviews.map( ( obj )=>{ return obj.toJSON()})
             const reversedReviews = reviews.reverse()
@@ -90,7 +108,7 @@ module.exports = function(app){
 
     app.get("/business-main", async function( req, res ) {
         if ( !req.session.business ) {
-            res.redirect( "/401" );
+            res.render( "401" );
         } else {
             const customers = await db.Customer.findAll({
                 where:{
@@ -142,6 +160,6 @@ module.exports = function(app){
         } else if ( req.session.customer ) {
             hbsObj.customer = req.session.customer;
         }
-        res.render( "index", hbsObj );
+        res.render( "404", hbsObj );
     })
 }
