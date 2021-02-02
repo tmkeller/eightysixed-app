@@ -1,3 +1,6 @@
+
+
+
 $(".customer-review").on("click", function(event){
     const customerReviewId = $(event.target).attr("data-id")
     console.log(customerReviewId)
@@ -44,7 +47,7 @@ $(".delete_review").on("click", function(event){
 
 
 })
-
+const editReview = []
 $(".edit_review").on("click", function(event){
   const reviewId = $(event.target).attr("data-reviewId")
   console.log (reviewId)
@@ -59,35 +62,35 @@ $(".edit_review").on("click", function(event){
     $("#stars").val(res.rating);
     $("#customer_image_review").val(res.pic);
 
-    const editedReview = {
-      id: reviewId,
-      title: res.title,
-      body: res.body,
-      rating: res.rating,
-      pic:res.pic
-    }
 
-      
-   $(".edit_review_button").on("click", function(event){
-    console.log (reviewId)
-    $.ajax({
-      url: "/api/review",
-      method: "PUT",
-      data: editedReview
-    }).then(res=>{
-      console.log("success")
-      console.log(res)
-      // location.reload()
-    })
-
-
-   })
-
-
+    $(".edit_review_button").on("click", function(event){
+      event.preventDefault()
+    
+      const newEdit = {
+        id:reviewId,
+        title: $("#title").val(),
+        body: $("#content").val(),
+        rating: $("#stars").val(),
+        pic: $("#customer_image_review").val()
+    
+      }
+    
+    
+    
+      $.ajax({
+        url: "/api/review",
+        method: "PUT",
+        data: newEdit
+      }).then(res=>{
+        console.log("success")
+        console.log(res)
+        location.reload()
+      })
+    
+    
+     })
 
   })
-
-
 })
 
 
