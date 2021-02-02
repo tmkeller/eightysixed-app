@@ -1,3 +1,4 @@
+
 const db = require("../models");
 
 module.exports = function(app){
@@ -7,10 +8,8 @@ module.exports = function(app){
             const jsonData = data.map( ( obj ) => {
                 obj.avg_rating = 4.6; // This is test code. Delete it when we can get average ratings.
                 obj.dataValues.star_width = Math.floor((obj.avg_rating/5) * 187) + "px";
-                console.log( obj );
                 return obj.toJSON();
             });
-            console.log( jsonData );
             const hbsObj = {
                 guests: jsonData
             }
@@ -19,7 +18,6 @@ module.exports = function(app){
             } else if ( req.session.business ) {
                 hbsObj.business = req.session.business;
             }
-            console.log( hbsObj );
             res.render('index', hbsObj );
         })
     })
@@ -37,18 +35,19 @@ module.exports = function(app){
     // });
 
     app.get("/customer-profile/:id",function( req, res ) {
+           console.log(req.session.business)
         db.Customer.findOne({
             where: {
                 id: req.params.id
             },
             include:[db.Review]
         }).then( userData => {
-            console.log(userData)
             if ( !userData ) {
                 res.status( 404 ).send( "no such user" );
             } else {
 
                 const reviews = userData.Reviews.map((obj)=>{return obj.toJSON()})
+                const reversedReviews = reviews.reverse()
                 const hbsObj = {
                     id: userData.dataValues.id,
                     first_name: userData.dataValues.first_name,
@@ -61,8 +60,8 @@ module.exports = function(app){
                     pic: userData.dataValues.pic,
                     createdAt: userData.dataValues.updatedAt,
                     updatedAt: userData.dataValues.createdAt,
-                    reviews: reviews,
-                    user: ( req.session.user || req.session.business )
+                    reviews: reversedReviews,
+                    user:  (req.session.business || req.session.user)
                 }
                 res.render( 'customer-profile', hbsObj );
          
@@ -93,9 +92,7 @@ module.exports = function(app){
             const hbsObj = {
                 user: ( req.session.user || req.session.business )
             }
-            console.log(req.body)
 
-            console.log(hbsObj)
             res.render('business-main', hbsObj);
         }
     });

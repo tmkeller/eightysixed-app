@@ -21,3 +21,8 @@ h1 {
 .dropdown-span {
     color: black;
 }
+p {
+    word-break: break-all;
+    white-space: normal;
+}
+

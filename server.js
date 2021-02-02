@@ -26,6 +26,7 @@ app.use(
 app.use(express.static("public"));
 /////////////////////////////////
 const handlebars = require("express-handlebars");
+
 //Sets our app to use the handlebars engine
 app.set("view engine", "handlebars");
 //Sets handlebars configurations (we will go through them later on)
