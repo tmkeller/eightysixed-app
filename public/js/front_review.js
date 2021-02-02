@@ -28,3 +28,6 @@ $(".add_review_button").on("click", function(event){
 
 })
 
+Handlebars.registerHelper('isdefined', function (value) {
+  return value !== undefined;
+});
