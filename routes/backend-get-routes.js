@@ -40,6 +40,7 @@ module.exports = function(app){
             console.log( "hbsObj", hbsObj );
             res.render('business-main', hbsObj);
         } else {
+            // Gonna replace this with a 404 page.
             db.Customer.findAll().then( data => {
                 const jsonData = data.map( ( obj ) => {
                     obj.avg_rating = 4.6; // This is test code. Delete it when we can get average ratings.
