@@ -1,22 +1,21 @@
-
 <div class="card" style="margin: 50px">
     <form class="row" style="max-width: 70%;">
 
       <div class="row" style="display: flex; justify-content:center"> 
         <div class="input-field col s6" style="margin: 2px 0px 2px 0px">
-          <input placeholder="title" class="materialize-textarea title" data-length="120">
+          <input id="title" placeholder="title" class="materialize-textarea title" data-length="120">
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <textarea  class="materialize-textarea content"></textarea>
-          <label for="content">Review</label>
+          <textarea id="content" class="materialize-textarea content"></textarea>
+          <label for="content">Textarea</label>
         </div>
       </div>
 
       <div class="row" style="display: flex; justify-content:space-between">
         <div class="input-field col s2" style="margin: 2px;">
-          <input placeholder="Stars" class="validate stars" style="padding: 0px; height: 25px">
+          <input placeholder="Stars" id="stars" class="validate stars" style="padding: 0px; height: 25px">
         </div>
         <div class="col m8">
           <div class="file-field input-field">
@@ -25,14 +24,14 @@
               <input type="file">
             </div>
             <div class="file-path-wrapper">
-              <input class="file-path validate customer_image_review" type="text">
+              <input id="customer_image_review" class="file-path validate customer_image_review" type="text">
             </div>
           </div>
         </div>
       </div>
       <div class="row">
         
-        <button class="btn col m4 waves-effect waves-light btn-small add_review_button"  name="action">Submit
+        <button class="btn col m4 waves-effect waves-light btn-small edit_review_button"  name="action">Submit
           <i class="material-icons right">send</i>
         </button>
         <p class="invalid"></p>

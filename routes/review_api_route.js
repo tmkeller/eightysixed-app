@@ -50,9 +50,24 @@ module.exports = function (app) {
 
 
 //////////////////////////////////////////////////////////////////
-  app.put("/api/review/:id", async (req, res) => {
-    const data = await db.Review.update(req.body, {
-      where: { id: req.body.id },
+  app.put("/api/review", async (req, res) => {
+    const data = await db.Review.update(
+      {title: req.body.title,
+      body: req.body.body,
+      rating: req.body.rating,
+      pic: req.body.pic},{
+      where: { id: req.body.id }
+    }).catch((err) => {
+      res.status(500);
+      console.error(err);
+    });
+    res.status(200).json(data);
+  });
+
+  app.get("/api/review/:id", async (req, res) => {
+    console.log(req.params.id)
+    const data = await db.Review.findOne({
+      where: { id: req.params.id},
     }).catch((err) => {
       res.status(500);
       console.error(err);
@@ -61,7 +76,7 @@ module.exports = function (app) {
   });
 
   // delete route for deleting the info in the table Review in the db:
-  app.put("/api/review/:id", async (req, res) => {
+  app.delete("/api/review/:id", async (req, res) => {
     const data = await db.Review.destroy({
       where: { id: req.params.id },
     }).catch((err) => {
