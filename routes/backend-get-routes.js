@@ -44,7 +44,12 @@ module.exports = function(app){
             const hbsObj = {
                 text: "business"
             }
-            res.render( "/404", hbsObj )
+            if ( req.session.business ) {
+                hbsObj.business = req.session.business;
+            } else if ( req.session.customer ) {
+                hbsObj.customer = req.session.customer;
+            }
+            res.render( "404", hbsObj )
         }
     });
 };

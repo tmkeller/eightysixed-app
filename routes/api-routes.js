@@ -29,7 +29,7 @@ module.exports = function(app){
         } else if ( req.session.customer ) {
             hbsObj.customer = req.session.customer;
         }
-        res.render( "401" );
+        res.render( "401", hbsObj );
     })
 
     app.get( "/404", function( req, res ) {
@@ -39,7 +39,7 @@ module.exports = function(app){
         } else if ( req.session.customer ) {
             hbsObj.customer = req.session.customer;
         }
-        res.render( "404" );
+        res.render( "404", hbsObj );
     })
 
     // Commenting this out because we're doing sign-ups from the nav bar dropdown.
