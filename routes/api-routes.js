@@ -1,13 +1,24 @@
 
 const db = require("../models");
-
+const {
+    score,
+    rate,
+    average
+  } = require('average-rating');
 module.exports = function(app){
 
+
     app.get( "/", function( req, res ) {
-        db.Customer.findAll().then( data => {
+        db.Customer.findAll({include: [db.Review]}).then( data => {
+            
+              
             const jsonData = data.map( ( obj ) => {
-                obj.avg_rating = 4.6; // This is test code. Delete it when we can get average ratings.
-                obj.dataValues.star_width = Math.floor((obj.avg_rating/5) * 187) + "px";
+              
+                const revav = obj.Reviews.map( ( rev ) => {
+                    return rev.rating
+                  });
+                let cusAverage = average(revav)
+                obj.dataValues.star_width = Math.floor((cusAverage/5) * 187) + "px";
                 return obj.toJSON();
             });
             const hbsObj = {
@@ -82,6 +93,11 @@ module.exports = function(app){
             }
             res.render( "404", hbsObj );
         } else {
+            const revav = customer.Reviews.map( ( rev ) => {
+                return rev.rating
+              });
+            let cusAverage = average(revav)
+
             const reviews = customer.Reviews.map( ( obj )=>{ return obj.toJSON()})
             const reversedReviews = reviews.reverse()
             const hbsObj = {
@@ -98,6 +114,7 @@ module.exports = function(app){
                 updatedAt: customer.dataValues.createdAt,
                 reviews: reversedReviews,
             }
+            hbsObj.star_width = Math.floor((cusAverage/5) * 187) + "px";
             if ( business ) {
                 hbsObj.businessData = business.toJSON()
             }
