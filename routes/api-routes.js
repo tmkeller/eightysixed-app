@@ -24,6 +24,10 @@ module.exports = function(app){
         })
     })
 
+    app.get( "/401", function( req, res ) {
+        res.render( "401" );
+    })
+
     // Commenting this out because we're doing sign-ups from the nav bar dropdown.
     // app.get("/sign-up",function( req, res ) {
     //     const hbsObj = {

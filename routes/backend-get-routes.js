@@ -4,8 +4,7 @@ module.exports = function(app){
 
     app.get("/business-main/:id", async function( req, res ) {
         if ( !req.session.business ) {
-            res.status( 401 ).send( "You must log in first." );
-            res.render( "/" );
+            res.redirect( "/401" );
         } else {
             const customers = await db.Customer.findAll({
                 where:{
