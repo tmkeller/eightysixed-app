@@ -35,9 +35,8 @@ $(document).ready( function() {
     })
     // Submits sign-up form
     $(".sign-up-button").on("click", function(event){
-       
-        
         event.preventDefault()
+
         let pass = $(".password-company").val()
         let confirm = $(".verify-password").val()
         const companyData = {
@@ -53,7 +52,6 @@ $(document).ready( function() {
             password: pass,
             pic: $(".company_image").val(),
             email: $(".company_email").val()
-
         }
         console.log(companyData)
         if(pass === confirm){
@@ -75,6 +73,49 @@ $(document).ready( function() {
             $(".verify-password").addClass("invalid").val('').attr("placeholder", "Password does not match!")
         }
     })
+
+    $(".update-button").on("click", function(event){
+        event.preventDefault()
+
+        let pass = $(".password-company").val()
+        let confirm = $(".verify-password").val()
+        const companyData = {
+            id: $( ".update-button" ).attr( "data-id" ),
+            name: $(".company_name").val(),
+            address: $(".address").val(),
+            addresstwo: $(".addresstwo").val(),
+            city: $(".city").val(),
+            state: $(".select").val(),
+            zip5: $(".zip").val(),
+            phone: $(".phone").val(),
+            category: categoryArray.toString(),
+            website: $(".websight").val(),
+            pic: $(".company_image").val(),
+            email: $(".company_email").val()
+        }
+        if ( pass ) {
+            companyData.password = pass;
+        }
+        console.log(companyData);
+        if ( pass === confirm ) {
+            $(".verify-password").addClass("valid")
+            $.ajax({
+                url: "/api/business/" + $( "#su-submit-button" ).attr( "data-id" ),
+                method: "PUT",
+                data: companyData
+            }).then( data => {
+                console.log( "Profile updated!" );
+                window.location.href = "/";
+            }).fail( err => {
+                console.log( "Update failed." );
+                console.log( err );
+                alert( "Update failed." );
+            });
+        } else {
+        //     // If password does not match
+            $(".verify-password").addClass("invalid").val('').attr("placeholder", "Password does not match!")
+        }
+    })
     ///////////////////Customer Profiles Below/////////////////
     $(".add_customer_button").on("click", function(event){
         event.preventDefault()
@@ -92,7 +133,6 @@ $(document).ready( function() {
             BusinessId: ids
             
         }
-       
          
         console.log(customerProfile)
 

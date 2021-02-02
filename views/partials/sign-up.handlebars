@@ -1,12 +1,18 @@
 
 <div class="card sign_up_sheet" style="margin: 50px">
-  <form class="row" style="max-width: 70%;">
+  <form class="row sign-up-form" style="max-width: 70%;">
       <div class="row">
+          {{#if businessData}}
+            <style>
+              .sign-up-form input::placeholder {
+                color: black;
+              }
+            </style>
+          {{/if}}
           <div class="input-field col s8" style="margin: 2px 0px 2px 0px">
-              <input placeholder="Company Name" id="company_name" type="text" class="company_name">
+              <input placeholder="Name" id="company_name" type="text" class="company_name" value="{{#if businessData}}{{businessData.name}}{{/if}}">
           </div>
             <a class='dropdown-trigger btn category' href='#' data-target='dropdown2' style="margin: 2px 0px 2px 0px">Category</a>
-
           <!-- Dropdown Structure -->
             <ul id='dropdown2' class='dropdown-content'>
             <li><a class="ctgy restaurant" value="1"href="#!">Restaurant</a></li>
@@ -19,95 +25,94 @@
             </ul>
       </div>
            
-
-            
       <div class="row"> 
         <div class="input-field col s12" style="margin: 2px 0px 2px 0px">
-          <input placeholder="Address" id="textarea2" class="materialize-textarea address" data-length="120" style="padding: 0px;"   >
+          <input placeholder="Address" id="textarea2" class="materialize-textarea address" data-length="120" style="padding: 0px;" value="{{#if businessData}}{{businessData.address}}{{/if}}" >
         </div>
       </div>
-
       <div class="row"> 
         <div class="input-field col s6" style="margin: 2px 0px 2px 0px">
-          <input placeholder="(optional)" id="textarea3" class="materialize-textarea addresstwo" data-length="120" style="padding: 0px;">
+          <input placeholder="Address 2 (optional)" id="textarea3" class="materialize-textarea addresstwo" data-length="120" style="padding: 0px;" value="{{#if businessData}}{{businessData.addresstwo}}{{/if}}">
         </div>
         <div class="input-field col s6" style="margin: 2px 0px 2px 0px">
-          <input placeholder="City" id="textarea6" class="materialize-textarea city" data-length="120" style="padding: 0px;">
+          <input placeholder="City" id="textarea6" class="materialize-textarea city" data-length="120" style="padding: 0px;" value="{{#if businessData}}{{businessData.city}}{{/if}}">
         </div>
       </div>
       <div class="row"> 
         <div class="input-field col s6" style="margin: 2px 0px 2px 0px">
           <select class="select">
-          <option class="st" value=""disabled selected></option>State></option>
-          <option class="st" value="Alabama">Alabama</option>
-          <option class="st" value="Alaska">Alaska</option>
-          <option class="st" value="Arizona">Arizona</option>
-          <option class="st" value="Arkansas">Arkansas</option>
-          <option class="st" value="California">California</option>
-          <option class="st" value="Colorado">Colorado</option>
-          <option class="st" value="Connecticut">Connecticut</option>
-          <option class="st" value="Delware">Delaware</option>
-          <option class="st" value="District of Columbia">District Of Columbia</option>
-          <option class="st" value="Florida">Florida</option>
-          <option class="st" value="Georgia">Georgia</option>
-          <option class="st" value="Hawaii">Hawaii</option>
-          <option class="st" value="Idaho">Idaho</option>
-          <option class="st" value="Illinois">Illinois</option>
-          <option class="st" value="Indiana">Indiana</option>
-          <option class="st" value="Iowa">Iowa</option>
-          <option class="st" value="Kansas">Kansas</option>
-          <option class="st" value="Kentucky">Kentucky</option>
-          <option class="st" value="Louisiana">Louisiana</option>
-          <option class="st" value="Maine">Maine</option>
-          <option class="st" value="Maryland">Maryland</option>
-          <option class="st" value="Massachusetts">Massachusetts</option>
-          <option class="st" value="Michigan">Michigan</option>
-          <option class="st" value="Minnesota">Minnesota</option>
-          <option class="st" value="Mississippi">Mississippi</option>
-          <option class="st" value="Missouri">Missouri</option>
-          <option class="st" value="Montana">Montana</option>
-          <option class="st" value="Nebraska">Nebraska</option>
-          <option class="st" value="Nevada">Nevada</option>
-          <option class="st" value="New Hampshire">New Hampshire</option>
-          <option class="st" value="New Jersey">New Jersey</option>
-          <option class="st" value="New Mexico">New Mexico</option>
-          <option class="st" value="New York">New York</option>
-          <option class="st" value="North Carolina">North Carolina</option>
-          <option class="st" value="North Dakota">North Dakota</option>
-          <option class="st" value="Ohio">Ohio</option>
-          <option class="st" value="Oklahoma">Oklahoma</option>
-          <option class="st" value="Oregon">Oregon</option>
-          <option class="st" value="Pennsylvania">Pennsylvania</option>
-          <option class="st" value="Rhode Island">Rhode Island</option>
-          <option class="st" value="South Carolina">South Carolina</option>
-          <option class="st" value="South Dakota">South Dakota</option>
-          <option class="st" value="Tennessee">Tennessee</option>
-          <option class="st" value="Texas">Texas</option>
-          <option class="st" value="Utah">Utah</option>
-          <option class="st" value="Vermont">Vermont</option>
-          <option class="st" value="Virginia">Virginia</option>
-          <option class="st" value="Washington">Washington</option>
-          <option class="st" value="West Virginia">West Virginia</option>
-          <option class="st" value="Wisconsin">Wisconsin</option>
-          <option class="st" value="Wyoming">Wyoming</option>
+          {{#unless businessData}}
+            <option class="st" value="State" disabled selected>State</option>
+          {{/unless}}
+          <option class="st" value="Alabama" {{#if businessData.Alabama}}selected{{/if}}>Alabama</option>
+          <option class="st" value="Alaska" {{#if businessData.Alaska}}selected{{/if}}>Alaska</option>
+          <option class="st" value="Arizona" {{#if businessData.Arizona}}selected{{/if}}>Arizona</option>
+          <option class="st" value="Arkansas" {{#if businessData.Arkansas}}selected{{/if}}>Arkansas</option>
+          <option class="st" value="California" {{#if businessData.California}}selected{{/if}}>California</option>
+          <option class="st" value="Colorado" {{#if businessData.Colorado}}selected{{/if}}>Colorado</option>
+          <option class="st" value="Connecticut" {{#if businessData.Connecticut}}selected{{/if}}>Connecticut</option>
+          <option class="st" value="Delware" {{#if businessData.Delaware}}selected{{/if}}>Delaware</option>
+          <option class="st" value="District of Columbia" {{#if businessData.DistrictofColumbia}}selected{{/if}}>District Of Columbia</option>
+          <option class="st" value="Florida" {{#if businessData.Florida}}selected{{/if}}>Florida</option>
+          <option class="st" value="Georgia" {{#if businessData.Georgia}}selected{{/if}}>Georgia</option>
+          <option class="st" value="Hawaii" {{#if businessData.Hawaii}}selected{{/if}}>Hawaii</option>
+          <option class="st" value="Idaho" {{#if businessData.Idaho}}selected{{/if}}>Idaho</option>
+          <option class="st" value="Illinois" {{#if businessData.Illinois}}selected{{/if}}>Illinois</option>
+          <option class="st" value="Indiana" {{#if businessData.Indiana}}selected{{/if}}>Indiana</option>
+          <option class="st" value="Iowa" {{#if businessData.Iowa}}selected{{/if}}>Iowa</option>
+          <option class="st" value="Kansas" {{#if businessData.Kansas}}selected{{/if}}>Kansas</option>
+          <option class="st" value="Kentucky" {{#if businessData.Kentucky}}selected{{/if}}>Kentucky</option>
+          <option class="st" value="Louisiana" {{#if businessData.Louisiana}}selected{{/if}}>Louisiana</option>
+          <option class="st" value="Maine" {{#if businessData.Maine}}selected{{/if}}>Maine</option>
+          <option class="st" value="Maryland" {{#if businessData.Maryland}}selected{{/if}}>Maryland</option>
+          <option class="st" value="Massachusetts" {{#if businessData.Massachusetts}}selected{{/if}}>Massachusetts</option>
+          <option class="st" value="Michigan" {{#if businessData.Michigan}}selected{{/if}}>Michigan</option>
+          <option class="st" value="Minnesota" {{#if businessData.Minnesota}}selected{{/if}}>Minnesota</option>
+          <option class="st" value="Mississippi" {{#if businessData.Mississippi}}selected{{/if}}>Mississippi</option>
+          <option class="st" value="Missouri" {{#if businessData.Missouri}}selected{{/if}}>Missouri</option>
+          <option class="st" value="Montana" {{#if businessData.Montana}}selected{{/if}}>Montana</option>
+          <option class="st" value="Nebraska" {{#if businessData.Nebraska}}selected{{/if}}>Nebraska</option>
+          <option class="st" value="Nevada" {{#if businessData.Nevada}}selected{{/if}}>Nevada</option>
+          <option class="st" value="New Hampshire" {{#if businessData.NewHampshire}}selected{{/if}}>New Hampshire</option>
+          <option class="st" value="New Jersey" {{#if businessData.NewJersey}}selected{{/if}}>New Jersey</option>
+          <option class="st" value="New Mexico" {{#if businessData.NewMexico}}selected{{/if}}>New Mexico</option>
+          <option class="st" value="New York" {{#if businessData.NewYork}}selected{{/if}}>New York</option>
+          <option class="st" value="North Carolina" {{#if businessData.NorthCarolina}}selected{{/if}}>North Carolina</option>
+          <option class="st" value="North Dakota" {{#if businessData.NorthDakota}}selected{{/if}}>North Dakota</option>
+          <option class="st" value="Ohio" {{#if businessData.Ohio}}selected{{/if}}>Ohio</option>
+          <option class="st" value="Oklahoma" {{#if businessData.Oklahoma}}selected{{/if}}>Oklahoma</option>
+          <option class="st" value="Oregon" {{#if businessData.Oregon}}selected{{/if}}>Oregon</option>
+          <option class="st" value="Pennsylvania" {{#if businessData.Pennsylvania}}selected{{/if}}>Pennsylvania</option>
+          <option class="st" value="Rhode Island" {{#if businessData.RhodeIsland}}selected{{/if}}>Rhode Island</option>
+          <option class="st" value="South Carolina" {{#if businessData.SouthCarolina}}selected{{/if}}>South Carolina</option>
+          <option class="st" value="South Dakota" {{#if businessData.SouthDakota}}selected{{/if}}>South Dakota</option>
+          <option class="st" value="Tennessee" {{#if businessData.Tennessee}}selected{{/if}}>Tennessee</option>
+          <option class="st" value="Texas" {{#if businessData.Texas}}selected{{/if}}>Texas</option>
+          <option class="st" value="Utah" {{#if businessData.Utah}}selected{{/if}}>Utah</option>
+          <option class="st" value="Vermont" {{#if businessData.Vermont}}selected{{/if}}>Vermont</option>
+          <option class="st" value="Virginia" {{#if businessData.Virginia}}selected{{/if}}>Virginia</option>
+          <option class="st" value="Washington" {{#if businessData.Washington}}selected{{/if}}>Washington</option>
+          <option class="st" value="West Virginia" {{#if businessData.WestVirginia}}selected{{/if}}>West Virginia</option>
+          <option class="st" value="Wisconsin" {{#if businessData.Wisconsin}}selected{{/if}}>Wisconsin</option>
+          <option class="st" value="Wyoming" {{#if businessData.Wyoming}}selected{{/if}}>Wyoming</option>
           </select>
         </div>
                 
         <div class="input-field col s4" style="margin: 2px 0px 2px 0px">
-          <input placeholder="Zip" id="textarea5" class="materialize-textarea zip" data-length="120" style="padding: 0px; height: 44px">
+          <input placeholder="Zip" id="textarea5" class="materialize-textarea zip" data-length="120" style="padding: 0px; height: 44px" value="{{#if businessData}}{{businessData.zip5}}{{/if}}">
         </div>
       </div>
       <div class="row">
           <div class="input-field col s6" style="margin: 2px 0px 2px 0px">
-              <input placeholder="Telephone" id="icon_telephone" type="tel" class="validate phone" style="padding: 0px; height: 25px">
+              <input placeholder="Phone" id="icon_telephone" type="tel" class="validate phone" style="padding: 0px; height: 25px" value="{{#if businessData}}{{businessData.phone}}{{/if}}">
           </div>
           <div class="input-field col s6" style="margin: 2px 0px 2px 0px;">
-              <input placeholder="Website" class="validate websight" style="padding: 0px; height: 25px">
+              <input placeholder="Website" class="validate websight" style="padding: 0px; height: 25px" value="{{#if businessData}}{{businessData.website}}{{/if}}">
           </div>
       </div>
       <div class="row">
         <div class="input-field col s12" style="margin: 2px;">
-          <input placeholder="Email"  type="email" class="validate company_email" style="padding: 0px; height: 25px">
+          <input placeholder="Email"  type="email" class="validate company_email" style="padding: 0px; height: 25px" value="{{#if businessData}}{{businessData.email}}{{/if}}">
         </div>
       </div>
       <div class="row">
@@ -132,8 +137,11 @@
               </div>
           </div>
         </div>
-          <button class="btn col m4 waves-effect waves-light btn-small sign-up-button"  name="action">Submit
-            <i class="material-icons right">send</i>
+          <button 
+            class="btn col m4 waves-effect waves-light btn-small {{#if businessData}}update-button{{else}}sign-up-button{{/if}}"  
+            name="action" {{#if businessData.id}}data-id="{{businessData.id}}"{{/if}} >
+              Submit
+              <i class="material-icons right">send</i>
           </button>
         <p class="invalid"></p>
       </div>
