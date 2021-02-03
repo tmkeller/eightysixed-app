@@ -4,16 +4,17 @@
         <img src="{{ businessData.profilePic }}">
     </div>
     <div class="col s8">
-        <p>Business name: {{ businessData.name }}</p>
-        <p>Address1: {{ businessData.address }}</p>
-        <p>Address2: {{ businessData.addresstwo }}</p>
-        <p>State: {{ businessData.state }}</p>
-        <p>City: {{ businessData.city }}</p>
+        <h4>{{ businessData.name }}</h4>
+        <p>{{ businessData.address }}</p>
+        <p>{{ businessData.addresstwo }}</p>
+        <p>{{ businessData.city }},{{ businessData.state }} </p>
+        {{!-- <p>{{ businessData.state }}</p> --}}
+        {{!-- <p>City: {{ businessData.city }}</p> --}}
         <p>Zip: {{ businessData.zip5 }}</p>
         <p>Phone: {{ businessData.phone }}</p>
         <p>Category: {{ businessData.category }}</p>
-        <p>Website: {{ businessData.website }}</p>
-        <p>Email: {{ businessData.email }}</p>
+        <a href="{{ businessData.website }}">{{ businessData.website }}</a>
+        <a href="mailto:{{ businessData.email }}">{{ businessData.email }}</a>
     </div>
 </div>
 <div class="row" style="display: flex; justify-content:center">
@@ -40,7 +41,7 @@
                     <img src="/assets/stars.png" alt="stars" style="height: 100%;">
                 </div>
             </div>
-            <div class="card-action">
+            <div class="card-action" style="display: flex; justify-content:space-between">
                 <a href="/customer-profile/{{ id }}">View Profile</a>
                 <a href="#modal4" data-id="{{id}}" class="modal-trigger customer-review">Review</a>
 
