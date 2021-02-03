@@ -129,7 +129,6 @@ module.exports = function (app) {
         password: customer.dataValues.password,
         pic: ( customer.dataValues.pic || '/assets/icons/icon-default-cust.jpg' ),
         star_width: star_width,
-        business: customer.dataValues.BusinessId,
         createdAt: customer.dataValues.updatedAt,
         updatedAt: customer.dataValues.createdAt,
         reviews: reversedReviews,
