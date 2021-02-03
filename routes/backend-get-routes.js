@@ -20,9 +20,12 @@ module.exports = function (app) {
     });
 
     const jsonData = customers.map((obj) => {
-      let newObj = obj.toJSON();
-      // Placeholder code for the star width.
-      newObj.star_width = Math.floor((3 / 5) * 187) + "px";
+      const newObj = obj.toJSON();
+      let avg_rating = 4.6; // This is test code. Delete it when we can get average ratings.
+      newObj.star_width = Math.floor((avg_rating / 5) * 187) + "px";
+      if ( !newObj.pic ) {
+        newObj.pic = '/assets/icons/icon-default-cust.jpg'
+      }
       return newObj;
     });
     if (business) {
@@ -38,9 +41,9 @@ module.exports = function (app) {
         const state = hbsObj.businessData.state.replace(/ /g, "");
         hbsObj.businessData[state] = true;
       }
+      console.log( jsonData )
       res.render("business-main", hbsObj);
     } else {
-      // Gonna replace this with a 404 page.
       const hbsObj = {
         text: "business",
       };

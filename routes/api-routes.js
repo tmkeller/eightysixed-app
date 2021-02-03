@@ -8,7 +8,7 @@ module.exports = function (app) {
       const jsonData = data.map((obj) => {
         const newObj = obj.toJSON();
         let avg_rating = 4.6; // This is test code. Delete it when we can get average ratings.
-        obj.star_width = Math.floor((avg_rating / 5) * 187) + "px";
+        newObj.star_width = Math.floor((avg_rating / 5) * 187) + "px";
         if ( !newObj.pic ) {
           newObj.pic = '/assets/icons/icon-default-cust.jpg'
         }
@@ -22,7 +22,6 @@ module.exports = function (app) {
       } else if (req.session.customer) {
         hbsObj.customer = req.session.customer;
       }
-      console.log( jsonData );
       res.render("index", hbsObj);
     });
   });
@@ -95,7 +94,7 @@ module.exports = function (app) {
         zip: customer.dataValues.zip5,
         email: customer.dataValues.email,
         password: customer.dataValues.password,
-        pic: customer.dataValues.pic,
+        pic: ( customer.dataValues.pic || '/assets/icons/icon-default-cust.jpg' ),
         createdAt: customer.dataValues.updatedAt,
         updatedAt: customer.dataValues.createdAt,
         reviews: reversedReviews,
@@ -132,10 +131,13 @@ module.exports = function (app) {
         res.status(500).json(err);
       });
 
-      const jsonData = customers.map((obj) => {
-        let newObj = obj.toJSON();
-        // Placeholder code for the star width.
-        newObj.star_width = Math.floor((3 / 5) * 187) + "px";
+      const jsonData = data.map((obj) => {
+        const newObj = obj.toJSON();
+        let avg_rating = 4.6; // This is test code. Delete it when we can get average ratings.
+        obj.star_width = Math.floor((avg_rating / 5) * 187) + "px";
+        if ( !newObj.pic ) {
+          newObj.pic = '/assets/icons/icon-default-cust.jpg'
+        }
         return newObj;
       });
       const hbsObj = await {
