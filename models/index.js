@@ -1,5 +1,7 @@
 "use strict";
 
+// adds requirements for the different libraries we use and lets us communicate with the DB through sequelize
+
 const fs = require("fs");
 const path = require("path");
 const Sequelize = require("sequelize");

@@ -1,3 +1,4 @@
+// exports the module of the table structure
 module.exports = function (sequelize, DataTypes) {
   const Review = sequelize.define("Review", {
     title: { type: DataTypes.STRING, allowNull: false },
@@ -11,6 +12,7 @@ module.exports = function (sequelize, DataTypes) {
     pictwo: DataTypes.STRING,
   });
 
+  // ties the Customer with a foreign key to the Business table and the Customer table connects them to Comment
   Review.associate = function (models) {
     Review.belongsTo(models.Business, { onDelete: "cascade" });
     Review.belongsTo(models.Customer, { onDelete: "cascade" });

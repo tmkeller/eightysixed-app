@@ -37,28 +37,19 @@ module.exports = function (app) {
     res.status(200).json(data);
   });
 
-  // get route for reading the all reviews from a business *************************************************************************************************************************** var busId not created yet currently being used as a place holder
-  app.get("/api/review/business", async (req, res) => {
-    const data = await db.Review.findAll({
-      include: [db.Business],
-    }).catch((err) => {
-      res.status(500);
-      console.error(err);
-    });
-    res.status(200).json(data);
-  });
-
-
-//////////////////////////////////////////////////////////////////
+  // update route for updating review
   app.put("/api/review", async (req, res) => {
-    console.log(req.body)
     const data = await db.Review.update(
-      {title: req.body.title,
-      body: req.body.body,
-      rating: req.body.rating,
-      pic: req.body.pic},{
-      where: { id: req.body.id }
-    }).catch((err) => {
+      {
+        title: req.body.title,
+        body: req.body.body,
+        rating: req.body.rating,
+        pic: req.body.pic,
+      },
+      {
+        where: { id: req.body.id },
+      }
+    ).catch((err) => {
       res.status(500);
       console.error(err);
     });
@@ -66,9 +57,8 @@ module.exports = function (app) {
   });
 
   app.get("/api/review/:id", async (req, res) => {
-    console.log(req.params.id)
     const data = await db.Review.findOne({
-      where: { id: req.params.id},
+      where: { id: req.params.id },
     }).catch((err) => {
       res.status(500);
       console.error(err);
