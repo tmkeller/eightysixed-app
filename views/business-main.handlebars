@@ -1,8 +1,7 @@
-
 <div class="row">
     <div class="col s4" style="padding: 0%;">
         <!-- src="{{ pic }}" -->
-        <img src="https://placekitten.com/200/300" alt="Profile Picture">
+        <img src="{{profilePic}}">
     </div>
     <div class="col s8">
         <p>Business name: {{ businessData.name }}</p>
@@ -18,13 +17,13 @@
     </div>
 </div>
 <div class="row" style="display: flex; justify-content:center">
-   <a class="waves-effect waves-light btn add_cus modal-trigger" href="#modal3">Add Customer</a>
-           <div class="input-field col s6">
-          <i class="material-icons prefix">account_circle</i>
-          <input id="icon_prefix"  class="firstName-search"type="text" class="validate">
-          <label for="icon_prefix">First Name</label>
-        </div>
-   <a  class="waves-effect waves-light btn customer_search">Customer Search</a>
+    <a class="waves-effect waves-light btn add_cus modal-trigger" href="#modal3">Add Customer</a>
+    <div class="input-field col s6">
+        <i class="material-icons prefix">account_circle</i>
+        <input id="icon_prefix" class="firstName-search" type="text" class="validate">
+        <label for="icon_prefix">First Name</label>
+    </div>
+    <a class="waves-effect waves-light btn customer_search">Customer Search</a>
 </div>
 
 
@@ -32,26 +31,26 @@
 <hr>
 <div class="row">
     {{#each customers}}
-        <div class="col s12 m4 l3 xl3">
-            <div class="card">
-                <div class="card-image">
-                    <img src="https://placekitten.com/300/300">
-                    <span class="card-title">{{first_name}} {{last_name}}</span>
-                </div>
-                <div class="card-content">
-                    <p>{{#if city}}{{city}} {{/if}}{{#if state}}{{state}}{{/if}}</p>
-                    <div style="height: 36px; width: {{ star_width }}; overflow-x: hidden">
-                        <img src="/assets/stars.png" alt="stars" style="height: 100%;">
-                    </div>
-                </div>
-                <div class="card-action">
-                    <a href="/customer-profile/{{ id }}">View Profile</a>
-                    <a href="#modal4" data-id="{{id}}" class="modal-trigger customer-review">Review</a>
-                    
+    <div class="col s12 m4 l3 xl3">
+        <div class="card">
+            <div class="card-image">
+                <img src="{{pic}}">
+                <span class="card-title">{{first_name}} {{last_name}}</span>
+            </div>
+            <div class="card-content">
+                <p>{{#if city}}{{city}} {{/if}}{{#if state}}{{state}}{{/if}}</p>
+                <div style="height: 36px; width: {{ star_width }}; overflow-x: hidden">
+                    <img src="/assets/stars.png" alt="stars" style="height: 100%;">
                 </div>
             </div>
+            <div class="card-action">
+                <a href="/customer-profile/{{ id }}">View Profile</a>
+                <a href="#modal4" data-id="{{id}}" class="modal-trigger customer-review">Review</a>
+
+            </div>
         </div>
+    </div>
     {{/each}}
 </div>
-  
+
 </div>

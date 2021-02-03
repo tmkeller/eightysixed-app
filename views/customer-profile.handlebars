@@ -1,9 +1,7 @@
-
-
 <div class="container centered-panel">
   <div class="row">
     <div class="col s4">
-      <img src="/assets/customers/placeholder.png" alt="Customer image">
+      <img src="{{pic}}" alt="Customer image">
     </div>
     <div class="col s8">
       <h2>{{first_name}} {{last_name}}</h2>
@@ -24,45 +22,49 @@
   </div>
   {{#if (isdefined user)}}
   {{#each reviews}}
-<div class="row card">
-  <div class="row" style="float:right;">
-     <button class="delete_review" data-reviewId="{{id}}">Delete</button>
-     <button class="modal-trigger edit_review" href="#modal5" data-reviewId="{{id}}">Edit</button>
-  </div> 
- <div class="entry">
-</div>
-      <div class="col s12">
-        <p class="col s6 wordBreak"style="word-break:break-all; width:100vw">Title: {{ title }}</p>
-        <p>Review: {{ body }}</p>
-        <hr>
-        <div class="col 8m">
-         <li>{{ createdAt }}</li>
-         </div>
-        <div style="float: right;" class="col 4m">
-         <div>{{rating}}/10</div>
-         </div>
-      </div>
-      <div class="col s9"><p>{{ text }}</p></div>
+  <div class="row card">
+    <div class="row" style="float:right;">
+      <button class="delete_review" data-reviewId="{{id}}">Delete</button>
+      <button class="modal-trigger edit_review" href="#modal5" data-reviewId="{{id}}">Edit</button>
     </div>
+    <div class="entry">
+    </div>
+    <div class="col s12">
+      <p class="col s6 wordBreak" style="word-break:break-all; width:100vw">Title: {{ title }}</p>
+      <p>Review: {{ body }}</p>
+      <hr>
+      <div class="col 8m">
+        <li>{{ createdAt }}</li>
+      </div>
+      <div style="float: right;" class="col 4m">
+        <div>{{rating}}/10</div>
+      </div>
+    </div>
+    <div class="col s9">
+      <p>{{ text }}</p>
+    </div>
+  </div>
   {{/each}}
   {{else}}
   {{#each reviews}}
   <div class="row card">
- <div class="entry">
-</div>
-      <div class="col s12">
-        <p class="col s6 wordBreak"style="word-break:break-all; width:100vw">Title: {{ title }}</p>
-        <p>Review: {{ body }}</p>
-        <hr>
-        <div class="col 8m">
-         <li>{{ createdAt }}</li>
-         </div>
-        <div style="float: right;" class="col 4m">
-         <div>{{rating}}/10</div>
-         </div>
-      </div>
-      <div class="col s9"><p>{{ text }}</p></div>
+    <div class="entry">
     </div>
-     {{/each}}
+    <div class="col s12">
+      <p class="col s6 wordBreak" style="word-break:break-all; width:100vw">Title: {{ title }}</p>
+      <p>Review: {{ body }}</p>
+      <hr>
+      <div class="col 8m">
+        <li>{{ createdAt }}</li>
+      </div>
+      <div style="float: right;" class="col 4m">
+        <div>{{rating}}/10</div>
+      </div>
+    </div>
+    <div class="col s9">
+      <p>{{ text }}</p>
+    </div>
+  </div>
+  {{/each}}
   {{/if}}
 </div>

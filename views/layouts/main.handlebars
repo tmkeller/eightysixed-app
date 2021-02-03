@@ -1,50 +1,56 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Turning the Tables</title>
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" integrity="sha512-UJfAaOlIRtdR+0P6C3KUoTDAxVTuy3lnSXLyLKlHYJlcSU8Juge/mjeaxDNMlw9LgeIotgz5FP8eUQPhX1q10A==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+        integrity="sha512-UJfAaOlIRtdR+0P6C3KUoTDAxVTuy3lnSXLyLKlHYJlcSU8Juge/mjeaxDNMlw9LgeIotgz5FP8eUQPhX1q10A=="
+        crossorigin="anonymous" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&family=Dancing+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&family=Dancing+Script&display=swap"
+        rel="stylesheet">
 
-    <link rel="stylesheet" href="/css/style.css"> 
+    <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
     <nav class="green">
-    <div class="nav-wrapper">
-        <a style="margin-left: 2vw" class="brand-logo header_title left">The Turning Of Tables</a>
-        <ul class="right ">
-        {{#if business}} <!-- Get the business nav -->
-            <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Account</a>
-            <!-- Dropdown Structure -->
-            <ul id='dropdown1' class='dropdown-content'>
-            <span class="dropdown-span">{{ user.email }}</span>
-            <li><a class="modal-trigger" href="#modal2" >Update profile</a></li>
-            <li class="divider" tabindex="-1"></li>
-            <li><a href="#!">three</a></li>
-            <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
-            <li><a href="/logout" class="logout"><button>Logout</button></a></li>
-            </ul>
-            <li><a href="sass.html"><i class="material-icons">search</i></a></li>
-            <li><a href="badges.html"><i class="material-icons">view_module</i></a></li>
-            <li><a href="collapsible.html"><i class="material-icons">refresh</i></a></li>
-            <li><a href="mobile.html"><i class="material-icons">more_vert</i></a></li>
-            <li><a href="/business-main/{{ business.id }}">Business Profile</a></li>
-        {{else}}
-            {{#if customer}}
+        <div class="nav-wrapper">
+            <a style="margin-left: 2vw" class="brand-logo header_title left"><img src="/assets/TTT-logo.png"
+                    alt="TTT logo" height="69px" width="100px"></a>
+            <ul class="right ">
+                {{#if business}}
+                <!-- Get the business nav -->
                 <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Account</a>
                 <!-- Dropdown Structure -->
                 <ul id='dropdown1' class='dropdown-content'>
-                <span class="dropdown-span">{{ customer.email }}</span>
-                <li><a href="#!">two</a></li>
-                <li class="divider" tabindex="-1"></li>
-                <li><a href="#!">three</a></li>
-                <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
-                <li><a href="/logout"><button>Logout</button></a></li>
+                    <span class="dropdown-span">{{ user.email }}</span>
+                    <li><a class="modal-trigger" href="#modal2">Update profile</a></li>
+                    <li class="divider" tabindex="-1"></li>
+                    <li><a href="#!">three</a></li>
+                    <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
+                    <li><a href="/logout" class="logout"><button>Logout</button></a></li>
+                </ul>
+                <li><a href="sass.html"><i class="material-icons">search</i></a></li>
+                <li><a href="badges.html"><i class="material-icons">view_module</i></a></li>
+                <li><a href="collapsible.html"><i class="material-icons">refresh</i></a></li>
+                <li><a href="mobile.html"><i class="material-icons">more_vert</i></a></li>
+                <li><a href="/business-main/{{ business.id }}">Business Profile</a></li>
+                {{else}}
+                {{#if customer}}
+                <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Account</a>
+                <!-- Dropdown Structure -->
+                <ul id='dropdown1' class='dropdown-content'>
+                    <span class="dropdown-span">{{ customer.email }}</span>
+                    <li><a href="#!">two</a></li>
+                    <li class="divider" tabindex="-1"></li>
+                    <li><a href="#!">three</a></li>
+                    <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
+                    <li><a href="/logout"><button>Logout</button></a></li>
                 </ul>
                 <li><a href="sass.html"><i class="material-icons">search</i></a></li>
                 <li><a href="badges.html"><i class="material-icons">view_module</i></a></li>
@@ -52,38 +58,40 @@
                 <li><a href="mobile.html"><i class="material-icons">more_vert</i></a></li>
                 <li><a href="/">Home</a></li>
                 <li><a href="/customer-profile/{{ customer.id }}">Customer Profile</a></li>
-            {{else}}
+                {{else}}
                 <li><a href="/">Home</a></li>
                 <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Sign in</a>
-            {{/if}}
-        {{/if}}
-        </ul>
-    </div>
+                {{/if}}
+                {{/if}}
+            </ul>
+        </div>
     </nav>
     {{!-- sign in modal --}}
     <div id="modal1" class="modal">
-    {{> sign-in }}
+        {{> sign-in }}
     </div>
     {{!-- modal for adding business --}}
     <div id="modal2" class="modal">
-    {{> sign-up }}
+        {{> sign-up }}
     </div>
     {{!-- modal for adding gust --}}
     <div id="modal3" class="modal">
-    {{> add-guest }}
+        {{> add-guest }}
     </div>
     {{!-- modal for adding review --}}
     <div id="modal4" class="modal">
-    {{> add-review-modal }}
+        {{> add-review-modal }}
     </div>
     <div id="modal5" class="modal">
-    {{> edit-review-modal }}
+        {{> edit-review-modal }}
     </div>
 
     <!-- Main Body of the site -->
     {{{ body }}}
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" integrity="sha512-NiWqa2rceHnN3Z5j6mSAvbwwg3tiwVNxiAQaaSMSXnRRDh5C2mk/+sKQRw8qjV1vN4nf8iK2a0b048PnHbyx+Q==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"
+    integrity="sha512-NiWqa2rceHnN3Z5j6mSAvbwwg3tiwVNxiAQaaSMSXnRRDh5C2mk/+sKQRw8qjV1vN4nf8iK2a0b048PnHbyx+Q=="
+    crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
 <script src="/js/front-end.js"></script>
@@ -91,5 +99,5 @@
 <script src="/js/front_comment.js"></script>
 <script src="/js/front_customer.js"></script>
 <script src="/js/front_review.js"></script>
-</html>
 
+</html>
