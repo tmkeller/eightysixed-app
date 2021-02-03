@@ -234,12 +234,10 @@ module.exports = function (app) {
       return newObj;
     });
     if (business) {
-      const reviewByBusiness = business.dataValues.Reviews.map((obj)=>{return obj.toJSON()})//////////////////
-      console.log(reviewByBusiness)
-      
+      const reviewByBusiness = business.dataValues.Reviews.map((obj)=>{return obj.toJSON()})
       const hbsObj = await {
         businessData: business.toJSON(),
-        rev: reviewByBusiness,
+        rev: reviewByBusiness.reverse(),
         customers: jsonData,
         // This is necessary any time you're rendering a page
         // where the user should be logged in. Looks like this for customers:
