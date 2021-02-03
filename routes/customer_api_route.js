@@ -49,6 +49,7 @@ module.exports = function (app) {
     res.status(200).json(data);
   });
 
+  // grabs customer with matching id as params
   app.get("/api/customer/:id", async (req, res) => {
     const data = await db.Customer.findOne({
       where: {
@@ -62,7 +63,6 @@ module.exports = function (app) {
   });
   //////////customer search on business page////////
   app.get("/search-results/:first_name", async (req, res) => {
-    console.log(req.params);
     db.Customer.findAll({
       where: {
         first_name: req.params.first_name,
@@ -75,13 +75,11 @@ module.exports = function (app) {
         guests: jsonData,
         user: req.session.user || req.session.business,
       };
-      console.log(hbsObj);
       res.render("search-results", hbsObj);
     });
   });
 
   app.post("/api/customer/search", async (req, res) => {
-    console.log(req.body);
     const data = await db.Customer.findOne({
       where: {
         email: req.body.email,
@@ -95,7 +93,7 @@ module.exports = function (app) {
     res.status(200).json(data);
   });
 
-  // update route for updating the info in the table Customer in the db: WIP
+  // update route for updating the info in the table Customer in the db:
   app.put("/api/customer/:id", async (req, res) => {
     const data = await db.Customer.update(req.body, {
       where: { id: req.body.id },

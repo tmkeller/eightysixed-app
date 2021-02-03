@@ -55,17 +55,7 @@ module.exports = function (app) {
     });
     res.render("index", data).status(200).json(data);
   });
-  ////////////////////////////////////////////////////////////
-  // app.get("/business/:id", async (req, res) => {
-  //   const data = await db.Business.findOne({
-  //     where: {id: req.params.id}
-  //   }).catch((err) => {
-  //     res.status(500);
-  //     console.error(err);
-  //   });
-  //   res.render("business-main", data);
-  // });
-  ////////////////////////////////////////////////////////////////
+
   // cookies and session storage
   app.get("/readsessions/business", (req, res) => {
     res.json(req.session).send(req.session.email);
