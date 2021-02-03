@@ -183,8 +183,10 @@ module.exports = function (app) {
         }
         return newObj;
       });
+      const businessJson = business.toJSON();
+      businessJson[businessJson.category] = true;
       const hbsObj = await {
-        businessData: business.toJSON(),
+        businessData: businessJson,
         customers: jsonData,
         // This is necessary any time you're rendering a page
         // where the user should be logged in. Looks like this for customers:
@@ -235,10 +237,10 @@ module.exports = function (app) {
     });
     if (business) {
       const reviewByBusiness = business.dataValues.Reviews.map((obj)=>{return obj.toJSON()})//////////////////
-      console.log(reviewByBusiness)
-      
+      const businessJson = business.toJSON();
+      businessJson[businessJson.category] = true;
       const hbsObj = await {
-        businessData: business.toJSON(),
+        businessData: businessJson,
         rev: reviewByBusiness,
         customers: jsonData,
         // This is necessary any time you're rendering a page
@@ -250,6 +252,7 @@ module.exports = function (app) {
         const state = hbsObj.businessData.state.replace(/ /g, "");
         hbsObj.businessData[state] = true;
       }
+      console.log( "hbsObj", hbsObj );
       res.render("business-main", hbsObj);
     } else {
       const hbsObj = {
