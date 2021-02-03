@@ -13,6 +13,54 @@ h1 {
     color: #46351D;
 }
 
+h2.customer_header {
+    font-family: "Dancing Script", cursive;
+    color: #46351D;
+}
+
+.reviews_header {
+    background-color: #397367;
+    padding: 10px;
+    border-radius: 7px;
+    border: solid 1px #666;
+    box-shadow: 4px 3px 8px 1px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 4px 3px 8px 1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 4px 3px 8px 1px rgba(0,0,0,0.75);
+}
+
+.reviews_header h2 {
+    color: white;
+    text-align: center;
+    font-family: 'Annie Use Your Telescope', cursive;
+    margin: 0;
+}
+
+.row.card div.review_column {
+    padding: 0px 10px 15px;
+}
+
+.review_title {
+    font-size: 22px;
+    font-family: 'Annie Use Your Telescope', cursive;
+    margin-bottom: 0px;
+    text-align: center;
+}
+
+.upper_hr {
+    width: 50%;
+    height: 2px;
+}
+
+.review_body {
+    padding-bottom:30px;
+    text-align: center;
+}
+
+.review_business_name {
+    font-family: "Dancing Script", cursive;
+    font-size: 20px;
+}
+
 .header_title{
     font-family: 'Annie Use Your Telescope', cursive;
 }

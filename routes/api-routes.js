@@ -1,6 +1,17 @@
 // requires DB
 const db = require("../models");
-const { score, rate, average } = require( 'average-rating' );
+
+const average = function( arr ) {
+  let total = 0;
+  let count = 0;
+
+  for ( let i = 0; i < arr.length; i++ ) {
+    total += arr[ i ];
+    count++;
+  }
+
+  return total/count;
+}
 
 module.exports = function (app) {
   // landing page route
@@ -58,7 +69,12 @@ module.exports = function (app) {
       where: {
         id: req.params.id,
       },
-      include: [db.Review]
+      include: [
+        { 
+          model: db.Review,
+          include: [ db.Business ] 
+        }
+      ]
     }).catch((err) => {
       res.status(500).json(err);
     });
@@ -86,7 +102,10 @@ module.exports = function (app) {
       res.render("404", hbsObj);
     } else {
       const reviews = customer.Reviews.map((obj) => {
-        return obj.toJSON();
+        const newObj = obj.toJSON();
+        newObj.businessName = newObj.Business.name;
+        newObj.star_width = Math.floor((obj.rating / 5) * 187) + "px";
+        return newObj;
       });
       let ratings = reviews.map( ( obj ) => {
         return obj.rating;
@@ -105,6 +124,7 @@ module.exports = function (app) {
         password: customer.dataValues.password,
         pic: ( customer.dataValues.pic || '/assets/icons/icon-default-cust.jpg' ),
         star_width: star_width,
+        business: customer.dataValues.BusinessId,
         createdAt: customer.dataValues.updatedAt,
         updatedAt: customer.dataValues.createdAt,
         reviews: reversedReviews,
