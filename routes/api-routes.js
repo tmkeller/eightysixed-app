@@ -149,60 +149,6 @@ module.exports = function (app) {
     }
   });
 
-  //   main business landing page (after login)
-  app.get("/business-main", async function (req, res) {
-    if (!req.session.business) {
-      res.render("401");
-    } else {
-      const customers = await db.Customer.findAll({
-        where: {
-          BusinessId: req.session.business.id,
-        },
-        include: [db.Review],
-      }).catch((err) => {
-        res.status(500).json(err);
-      });
-      const business = await db.Business.findOne({
-        where: {
-          id: req.session.business.id,
-        },
-      }).catch((err) => {
-        res.status(500).json(err);
-      });
-
-      const jsonData = customers.map((obj) => {
-        const newObj = obj.toJSON();
-        const reviews = obj.Reviews.map((rev) => {
-          return rev.toJSON();
-        });
-        let ratings = reviews.map((obj) => {
-          return obj.rating;
-        });
-        const avg_rating = average(ratings);
-        const star_width = Math.floor((avg_rating / 5) * 187) + "px";
-        newObj.star_width = star_width;
-        if (!newObj.pic) {
-          newObj.pic = "/assets/icons/icon-default-cust.jpg";
-        }
-        return newObj;
-      });
-
-      const hbsObj = await {
-        businessData: business.toJSON(),
-        customers: jsonData,
-        // This is necessary any time you're rendering a page
-        // where the user should be logged in. Looks like this for customers:
-        // customer: req.session.customer
-        business: req.session.business,
-      };
-      if (hbsObj.businessData.state) {
-        const state = hbsObj.businessData.state.replace(/ /g, "");
-        hbsObj.businessData[state] = true;
-      }
-      res.render("business-main", hbsObj);
-    }
-  });
-
   // grabs the customers for a business that is logged in and renders the rating on the card
   app.get("/business-main/:id", async function (req, res) {
     const customers = await db.Customer.findAll({
@@ -242,23 +188,26 @@ module.exports = function (app) {
       const reviewByBusiness = business.dataValues.Reviews.map((obj) => {
         return obj.toJSON();
       }); //////////////////
-      if (business.category === "Bar") {
-        business.dataValues.pic || "/assets/icon_bar.png";
+      const businessJson = business.toJSON();
+      businessJson[businessJson.category] = true;
+
+      if (businessJson.category === "Bar") {
+        businessJson.pic = businessJson.pic || "/assets/icon_bar.png";
       }
-      if (business.category === "Cafe") {
-        business.dataValues.pic || "/assets/icon_cafe.png";
+      if (businessJson.category === "Cafe") {
+        businessJson.pic = businessJson.pic || "/assets/icon_cafe.png";
       }
-      if (business.category === "Hotel") {
-        business.dataValues.pic || "/assets/icon_hotel.png";
+      if (businessJson.category === "Hotel") {
+        businessJson.pic = businessJson.pic || "/assets/icon_hotel.png";
       }
-      if (business.category === "Restaurant") {
-        business.dataValues.pic || "/assets/icon_restaurant.png";
+      if (businessJson.category === "Restaurant") {
+        businessJson.pic = businessJson.pic || "/assets/icon_restaurant.png";
       }
       console.log(reviewByBusiness);
       console.log(business.category);
 
       const hbsObj = await {
-        businessData: business.toJSON(),
+        businessData: businessJson,
         rev: reviewByBusiness,
         customers: jsonData,
         // This is necessary any time you're rendering a page
@@ -270,6 +219,7 @@ module.exports = function (app) {
         const state = hbsObj.businessData.state.replace(/ /g, "");
         hbsObj.businessData[state] = true;
       }
+      console.log("hbsObj", hbsObj);
       res.render("business-main", hbsObj);
     } else {
       const hbsObj = {

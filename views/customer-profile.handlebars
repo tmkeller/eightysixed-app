@@ -23,26 +23,6 @@
     </div>
   </div>
   {{#each reviews}}
-  <div class="row card">
-    <div class="col s12 review_column">
-      <h4 class="review_title">"{{ title }}"</h4>
-      <hr class="upper_hr">
-      <p class="review_body">"{{ body }}"<br/>
-      - <span class="review_business_name">{{ businessName }}</span></p>
-      <hr class="lower_hr">
-      <div class="col 8m">
-        <p class="">{{ createdAt }}</p>
-        {{#if creatorLoggedIn }}
-          <button class="delete_review" data-reviewId="{{id}}">Delete</button>
-          <button class="modal-trigger edit_review" href="#modal5" data-reviewId="{{id}}">Edit</button>
-        {{/if}}
-      </div>
-      <div style="float: right;" class="col 4m">
-        <div style="height: 36px; width: {{ star_width }}; overflow-x: hidden">
-          <img src="/assets/stars.png" alt="stars" style="height: 100%;">
-        </div>
-      </div>
-    </div>
-  </div>
+    {{> render-review }}
   {{/each}}
 </div>
