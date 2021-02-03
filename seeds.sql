@@ -20,16 +20,6 @@ INSERT INTO `customers` (`first_name`, `last_name`, `isClaimed`,`city`, `state`,
 ("Harmon", "Kardin", true, "Seattle", "Washington", 98105, "zinckev@hotmail.com", "$2b$10$uAQmJIsVslJrbd8e7XS2V.LurYkNygMsmHDPD6Agi9wmN9Gw0HZIe", "/assets/img_cust/notaperson_man2.jfif", "2021-01-28 15:00:00", "2021-01-28 15:00:00", "3"),
 ("Jennifer", "Lewis", true, "Seattle", "Washington", 98104, "timothy.m.keller@gmail.com", "$2b$10$uAQmJIsVslJrbd8e7XS2V.LurYkNygMsmHDPD6Agi9wmN9Gw0HZIe", "/assets/img_cust/notaperson_woman3.jfif", "2021-01-28 15:00:00", "2021-01-28 15:00:00", "4");
 
-INSERT INTO `comments` (`title`,`body`,`createdAt`,`updatedAt`,`ReviewId`,`CustomerId`) VALUES
-("I grew up in a different time","I'll try to do better next time, now that I know!","2021-01-31 15:00:00","2021-02-02 15:00:00","9","9"),
-("Well, actually...","Your service was about a level three, too. You could be a little more realistic!","2021-01-31 15:00:00","2021-02-02 15:00:00","21","9"),
-("You're welcome","I try to spread the love","2021-01-31 15:00:00","2021-02-02 15:00:00","22","10"),
-("Tip reflected the service","You went above and beyond, refilling waters, clearing dirty dishes, knowing our names. Amazeballs.","2021-01-31 15:00:00","2021-02-02 15:00:00","10","10"),
-("I should be able to sit however long I want","I mean, we paid for the table, right?","2021-01-31 15:00:00","2021-02-02 15:00:00","23","11"),
-("I'm not, but my dad's a server","Thanks! You can tell everything about a person's character from how they treat service workers!","2021-01-31 15:00:00","2021-02-02 15:00:00","11","11"),
-("This is my favorite bar","I wouldn't spend my Thursday nights anywhere else!","2021-01-31 15:00:00","2021-02-02 15:00:00","24","12"),
-("Thanks for the great review","Your BBQ are awesome. Keep up the great work.","2021-01-31 15:00:00","2021-02-02 15:00:00","12","12");
-
 INSERT INTO `reviews` (`title`, `body`, `rating`,`pic`, `pictwo`, `createdAt`, `updatedAt`, `BusinessId`, `CustomerId`) VALUES
 ("Kids trashed the place","it took me 20 minutes to clean up after them","1", "/assets/img_rev/trashed-table.jpg", null,"2021-02-02 15:00:00","2021-02-02 15:00:00","1","1"),
 ("Treated us poorly","Grabbed my butt as I passed the table.","3", null, null,"2021-02-02 15:00:00","2021-02-02 14:30:00","2","2"),
@@ -56,3 +46,12 @@ INSERT INTO `reviews` (`title`, `body`, `rating`,`pic`, `pictwo`, `createdAt`, `
 ("Was really sweet, but...","Lingered at the table AN HOUR after paying check on a FRIDAY","3", null, null,"2021-02-02 15:00:00","2021-02-02 13:06:00","2","11"),
 ("Awesome guest!","Can't wait to see you again!","5", "/assets/img_rev/pic-smiling.jfif", null,"2021-02-02 15:00:00","2021-02-02 15:21:00","1","12");
 
+INSERT INTO `comments` (`title`,`body`,`createdAt`,`updatedAt`,`ReviewId`,`CustomerId`) VALUES
+("I grew up in a different time","I'll try to do better next time, now that I know!","2021-01-31 15:00:00","2021-02-02 15:00:00","9","9"),
+("Well, actually...","Your service was about a level three, too. You could be a little more realistic!","2021-01-31 15:00:00","2021-02-02 15:00:00","21","9"),
+("You're welcome","I try to spread the love","2021-01-31 15:00:00","2021-02-02 15:00:00","22","10"),
+("Tip reflected the service","You went above and beyond, refilling waters, clearing dirty dishes, knowing our names. Amazeballs.","2021-01-31 15:00:00","2021-02-02 15:00:00","10","10"),
+("I should be able to sit however long I want","I mean, we paid for the table, right?","2021-01-31 15:00:00","2021-02-02 15:00:00","23","11"),
+("I'm not, but my dad's a server","Thanks! You can tell everything about a person's character from how they treat service workers!","2021-01-31 15:00:00","2021-02-02 15:00:00","11","11"),
+("This is my favorite bar","I wouldn't spend my Thursday nights anywhere else!","2021-01-31 15:00:00","2021-02-02 15:00:00","24","12"),
+("Thanks for the great review","Your BBQ are awesome. Keep up the great work.","2021-01-31 15:00:00","2021-02-02 15:00:00","12","12");
