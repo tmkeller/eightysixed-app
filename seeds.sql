@@ -1,6 +1,6 @@
 USE turn_tables_db;
 
-INSERT INTO `businesses` (`name`, `address`, `state`, `city`, `zip5`, `phone`, `category`, `website`, `email`, `password`, `pic`, `createdAt`, `updatedAt`) VALUES
+INSERT INTO `businesses` (`name`, `address`, `state`, `city`, `zip5`, `phone`, `category`, `website`, `email`, `password`, `profilePic`, `createdAt`, `updatedAt`) VALUES
 ("Shea's Bar","123 Alki Ave","Washington","Seattle","98116","2065551212","Bar","http://sheashoes.com","silmarile@hotmail.com","$2b$10$uAQmJIsVslJrbd8e7XS2V.LurYkNygMsmHDPD6Agi9wmN9Gw0HZIe","/assets/img_biz/logo-sheas.png","2021-01-28 15:00:00", "2021-01-28 15:00:00"),
 ("Kevin's Cafe","45 Orange Rd","Washington","Bellingham","98116","4255551212","Cafe","http://sixfootfive.com","zinckev@gmail.com","$2b$10$uAQmJIsVslJrbd8e7XS2V.LurYkNygMsmHDPD6Agi9wmN9Gw0HZIe","/assets/img_biz/logo-kevinscafe.png","2021-01-28 15:00:00", "2021-01-28 15:00:00"),
 ("Hotel Keller","565 Rock Blvd","Washington","Shoreline","98116","4255551212","Hotel","http://hotelkeller.com","timothy.m.keller@gmail.com","$2b$10$uAQmJIsVslJrbd8e7XS2V.LurYkNygMsmHDPD6Agi9wmN9Gw0HZIe","/assets/img_biz/logo-keller.png","2021-01-28 15:00:00", "2021-01-28 15:00:00"),
