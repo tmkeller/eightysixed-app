@@ -134,7 +134,7 @@ module.exports = function (app) {
       const jsonData = data.map((obj) => {
         const newObj = obj.toJSON();
         let avg_rating = 4.6; // This is test code. Delete it when we can get average ratings.
-        obj.star_width = Math.floor((avg_rating / 5) * 187) + "px";
+        newObj.star_width = Math.floor((avg_rating / 5) * 187) + "px";
         if ( !newObj.pic ) {
           newObj.pic = '/assets/icons/icon-default-cust.jpg'
         }
