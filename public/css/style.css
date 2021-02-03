@@ -88,6 +88,8 @@ p {
     white-space: normal;
 }
 
-.lever{
-    margin: 0px 0px 0px 0px;
+.box{
+    overflow: scroll;
+    max-height: 20vw;
+    overflow-x: hidden;
 }
