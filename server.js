@@ -1,6 +1,7 @@
 var express = require("express");
 const db = require("./models");
 const session = require("express-session");
+require('dotenv').config();
 
 // Sets up the Express App
 // =============================================================
@@ -15,7 +16,7 @@ app.use(express.json());
 
 app.use(
   session({
-    secret: "keyboard cat",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: { maxAge: 1000 * 60 * 60 * 2 },

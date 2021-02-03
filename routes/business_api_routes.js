@@ -49,7 +49,7 @@ module.exports = function (app) {
 
   // get route for reading the whole table business in the db:
   app.get("/api/business", async (req, res) => {
-    const data = await db.Business.findall().catch((err) => {
+    const data = await db.Business.findAll().catch((err) => {
       res.status(500);
       console.error(err);
     });
@@ -61,14 +61,24 @@ module.exports = function (app) {
     res.json(req.session).send(req.session.email);
   });
 
-  // update route for updating the info in the table business in the db: WIP
+  // update route for updating the info in the table business in the db:
   app.put("/api/business/:id", async (req, res) => {
+    const newPwd = (req.body.password = bcrypt.hashSync(
+      req.body.password,
+      bcrypt.genSaltSync(10),
+      null
+    ));
+    // update the password that comes from req.body to be the new hashed password
+    req.body.password = newPwd;
+
+    // update the database with that hashed password
     const data = await db.Business.update(req.body, {
       where: { id: req.body.id },
     }).catch((err) => {
       res.status(500);
       console.error(err);
     });
+
     res.status(200).json(data);
   });
 
