@@ -103,6 +103,11 @@ module.exports = function (app) {
     } else {
       const reviews = customer.Reviews.map((obj) => {
         const newObj = obj.toJSON();
+        if ( !!req.session.business && newObj.Business.id === req.session.business.id ) {
+          newObj.creatorLoggedIn = true;
+        } else {
+          newObj.creatorLoggedIn = false;
+        }
         newObj.businessName = newObj.Business.name;
         newObj.star_width = Math.floor((obj.rating / 5) * 187) + "px";
         return newObj;

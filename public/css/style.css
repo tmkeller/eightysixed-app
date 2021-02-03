@@ -18,6 +18,11 @@ h2.customer_header {
     color: #46351D;
 }
 
+img.customer_profile_pic {
+    max-width: 100%;
+    margin-top: 30px;
+}
+
 .reviews_header {
     background-color: #397367;
     padding: 10px;
@@ -59,6 +64,10 @@ h2.customer_header {
 .review_business_name {
     font-family: "Dancing Script", cursive;
     font-size: 20px;
+}
+
+.delete_review, .edit_review {
+    float: left;
 }
 
 .header_title{

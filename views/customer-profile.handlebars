@@ -1,7 +1,7 @@
 <div class="container centered-panel">
   <div class="row">
     <div class="col s4">
-      <img src="{{pic}}" alt="Customer image">
+      <img class="customer_profile_pic" src="{{pic}}" alt="Customer image">
     </div>
     <div class="col s8">
       <h2 class="customer_header">{{first_name}} {{last_name}}</h2>
@@ -31,17 +31,17 @@
       - <span class="review_business_name">{{ businessName }}</span></p>
       <hr class="lower_hr">
       <div class="col 8m">
-        <p>{{ createdAt }}</p>
+        <p class="">{{ createdAt }}</p>
+                {{#if creatorLoggedIn }}
+          <button class="delete_review" data-reviewId="{{id}}">Delete</button>
+          <button class="modal-trigger edit_review" href="#modal5" data-reviewId="{{id}}">Edit</button>
+        {{/if}}
       </div>
       <div style="float: right;" class="col 4m">
         <div style="height: 36px; width: {{ star_width }}; overflow-x: hidden">
           <img src="/assets/stars.png" alt="stars" style="height: 100%;">
         </div>
       </div>
-      {{#if businessName}}
-        <button class="delete_review" data-reviewId="{{id}}">Delete</button>
-        <button class="modal-trigger edit_review" href="#modal5" data-reviewId="{{id}}">Edit</button>
-      {{/if}}
     </div>
   </div>
   {{/each}}
