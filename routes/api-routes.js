@@ -6,10 +6,13 @@ module.exports = function (app) {
   app.get("/", function (req, res) {
     db.Customer.findAll().then((data) => {
       const jsonData = data.map((obj) => {
-        obj.avg_rating = 4.6; // This is test code. Delete it when we can get average ratings.
-        obj.dataValues.star_width =
-          Math.floor((obj.avg_rating / 5) * 187) + "px";
-        return obj.toJSON();
+        const newObj = obj.toJSON();
+        let avg_rating = 4.6; // This is test code. Delete it when we can get average ratings.
+        obj.star_width = Math.floor((avg_rating / 5) * 187) + "px";
+        if ( !newObj.pic ) {
+          newObj.pic = '/assets/icons/icon-default-cust.jpg'
+        }
+        return newObj;
       });
       const hbsObj = {
         guests: jsonData,
@@ -19,6 +22,7 @@ module.exports = function (app) {
       } else if (req.session.customer) {
         hbsObj.customer = req.session.customer;
       }
+      console.log( jsonData );
       res.render("index", hbsObj);
     });
   });

@@ -1,7 +1,6 @@
 /* font-family: 'Annie Use Your Telescope', cursive;
 font-family: 'Dancing Script', cursive; */
 .validate{
-    
     height: 2vw
 }
 body{
@@ -16,6 +15,12 @@ h1 {
 
 .header_title{
     font-family: 'Annie Use Your Telescope', cursive;
+}
+
+.card span.card-title {
+    color: #46351D;
+    font-family: 'Annie Use Your Telescope', cursive;
+    font-size: 34px;
 }
 
 .dropdown-span {
