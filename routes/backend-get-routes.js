@@ -41,7 +41,7 @@ module.exports = function (app) {
         const state = hbsObj.businessData.state.replace(/ /g, "");
         hbsObj.businessData[state] = true;
       }
-      console.log( jsonData )
+      console.log( hbsObj )
       res.render("business-main", hbsObj);
     } else {
       const hbsObj = {
