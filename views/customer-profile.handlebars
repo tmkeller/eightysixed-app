@@ -32,7 +32,7 @@
       <hr class="lower_hr">
       <div class="col 8m">
         <p class="">{{ createdAt }}</p>
-                {{#if creatorLoggedIn }}
+        {{#if creatorLoggedIn }}
           <button class="delete_review" data-reviewId="{{id}}">Delete</button>
           <button class="modal-trigger edit_review" href="#modal5" data-reviewId="{{id}}">Edit</button>
         {{/if}}
