@@ -205,14 +205,14 @@ module.exports = function (app) {
       where: {
         BusinessId: req.params.id,
       },
-      include: [db.Review]
+      include: [db.Review],
     }).catch((err) => {
       res.status(500).json(err);
     });
     const business = await db.Business.findOne({
       where: {
         id: req.params.id,
-      },
+      },include: [db.Review]
     }).catch((err) => {
       res.status(500).json(err);
     });
@@ -234,8 +234,12 @@ module.exports = function (app) {
       return newObj;
     });
     if (business) {
+      const reviewByBusiness = business.dataValues.Reviews.map((obj)=>{return obj.toJSON()})//////////////////
+      console.log(reviewByBusiness)
+      
       const hbsObj = await {
         businessData: business.toJSON(),
+        rev: reviewByBusiness,
         customers: jsonData,
         // This is necessary any time you're rendering a page
         // where the user should be logged in. Looks like this for customers:
@@ -246,7 +250,6 @@ module.exports = function (app) {
         const state = hbsObj.businessData.state.replace(/ /g, "");
         hbsObj.businessData[state] = true;
       }
-      console.log( hbsObj )
       res.render("business-main", hbsObj);
     } else {
       const hbsObj = {
