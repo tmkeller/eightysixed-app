@@ -24,14 +24,12 @@ module.exports = function (sequelize, DataTypes) {
     Customer.hasMany(models.Review);
   };
   // adds encryption  for password and sets it as base 10
-  Customer.beforeCreate(function (customer) {
-    if (customer.password) {
-      customer.password = bcrypt.hashSync(
-        customer.password,
-        bcrypt.genSaltSync(10),
-        null
-      );
-    }
+    Customer.beforeUpdate(function (customer) {
+    customer.password = bcrypt.hashSync(
+      customer.password,
+      bcrypt.genSaltSync(10),
+      null
+    );
   });
   return Customer;
 };
