@@ -88,3 +88,8 @@ p {
     white-space: normal;
 }
 
+.box{
+    overflow: scroll;
+    max-height: 20vw;
+    overflow-x: hidden;
+}
