@@ -1,17 +1,17 @@
 // requires DB
 const db = require("../models");
 
-const average = function( arr ) {
+const average = function (arr) {
   let total = 0;
   let count = 0;
 
-  for ( let i = 0; i < arr.length; i++ ) {
-    total += arr[ i ];
+  for (let i = 0; i < arr.length; i++) {
+    total += arr[i];
     count++;
   }
 
-  return total/count;
-}
+  return total / count;
+};
 
 module.exports = function (app) {
   // landing page route
@@ -19,13 +19,13 @@ module.exports = function (app) {
     db.Customer.findAll({ include: [db.Review] }).then((data) => {
       const jsonData = data.map((obj) => {
         const newObj = obj.toJSON();
-        const revav = obj.Reviews.map( ( rev ) => {
+        const revav = obj.Reviews.map((rev) => {
           return rev.rating;
-        })
-        let avg_rating = average( revav );
+        });
+        let avg_rating = average(revav);
         newObj.star_width = Math.floor((avg_rating / 5) * 187) + "px";
-        if ( !newObj.pic ) {
-          newObj.pic = '/assets/icons/icon-default-cust.jpg'
+        if (!newObj.pic) {
+          newObj.pic = "/assets/icons/icon-default-cust.jpg";
         }
         return newObj;
       });
@@ -70,11 +70,11 @@ module.exports = function (app) {
         id: req.params.id,
       },
       include: [
-        { 
+        {
           model: db.Review,
-          include: [ db.Business ] 
-        }
-      ]
+          include: [db.Business],
+        },
+      ],
     }).catch((err) => {
       res.status(500).json(err);
     });
@@ -84,7 +84,7 @@ module.exports = function (app) {
       business = await db.Business.findOne({
         where: {
           id: req.session.business.id,
-        }
+        },
       }).catch((err) => {
         res.status(500).json(err);
       });
@@ -103,7 +103,10 @@ module.exports = function (app) {
     } else {
       const reviews = customer.Reviews.map((obj) => {
         const newObj = obj.toJSON();
-        if ( !!req.session.business && newObj.Business.id === req.session.business.id ) {
+        if (
+          !!req.session.business &&
+          newObj.Business.id === req.session.business.id
+        ) {
           newObj.creatorLoggedIn = true;
         } else {
           newObj.creatorLoggedIn = false;
@@ -112,10 +115,10 @@ module.exports = function (app) {
         newObj.star_width = Math.floor((obj.rating / 5) * 187) + "px";
         return newObj;
       });
-      let ratings = reviews.map( ( obj ) => {
+      let ratings = reviews.map((obj) => {
         return obj.rating;
       });
-      const avg_rating = average( ratings );
+      const avg_rating = average(ratings);
       const star_width = Math.floor((avg_rating / 5) * 187) + "px";
       const reversedReviews = reviews.reverse();
       const hbsObj = {
@@ -127,7 +130,7 @@ module.exports = function (app) {
         zip: customer.dataValues.zip5,
         email: customer.dataValues.email,
         password: customer.dataValues.password,
-        pic: ( customer.dataValues.pic || '/assets/icons/icon-default-cust.jpg' ),
+        pic: customer.dataValues.pic || "/assets/icons/icon-default-cust.jpg",
         star_width: star_width,
         createdAt: customer.dataValues.updatedAt,
         updatedAt: customer.dataValues.createdAt,
@@ -141,7 +144,7 @@ module.exports = function (app) {
       } else if (req.session.customer) {
         hbsObj.customer = req.session.customer;
       }
-      console.log( hbsObj );
+      console.log(hbsObj);
       res.render("customer-profile", hbsObj);
     }
   });
@@ -155,7 +158,7 @@ module.exports = function (app) {
         where: {
           BusinessId: req.session.business.id,
         },
-        include: [db.Review]
+        include: [db.Review],
       }).catch((err) => {
         res.status(500).json(err);
       });
@@ -172,17 +175,18 @@ module.exports = function (app) {
         const reviews = obj.Reviews.map((rev) => {
           return rev.toJSON();
         });
-        let ratings = reviews.map( ( obj ) => {
+        let ratings = reviews.map((obj) => {
           return obj.rating;
         });
-        const avg_rating = average( ratings );
+        const avg_rating = average(ratings);
         const star_width = Math.floor((avg_rating / 5) * 187) + "px";
         newObj.star_width = star_width;
-        if ( !newObj.pic ) {
-          newObj.pic = '/assets/icons/icon-default-cust.jpg'
+        if (!newObj.pic) {
+          newObj.pic = "/assets/icons/icon-default-cust.jpg";
         }
         return newObj;
       });
+
       const hbsObj = await {
         businessData: business.toJSON(),
         customers: jsonData,
@@ -212,7 +216,8 @@ module.exports = function (app) {
     const business = await db.Business.findOne({
       where: {
         id: req.params.id,
-      },include: [db.Review]
+      },
+      include: [db.Review],
     }).catch((err) => {
       res.status(500).json(err);
     });
@@ -222,21 +227,36 @@ module.exports = function (app) {
       const reviews = obj.Reviews.map((rev) => {
         return rev.toJSON();
       });
-      let ratings = reviews.map( ( obj ) => {
+      let ratings = reviews.map((obj) => {
         return obj.rating;
       });
-      const avg_rating = average( ratings );
+      const avg_rating = average(ratings);
       const star_width = Math.floor((avg_rating / 5) * 187) + "px";
       newObj.star_width = star_width;
-      if ( !newObj.pic ) {
-        newObj.pic = '/assets/icons/icon-default-cust.jpg'
+      if (!newObj.pic) {
+        newObj.pic = "/assets/icons/icon-default-cust.jpg";
       }
       return newObj;
     });
     if (business) {
-      const reviewByBusiness = business.dataValues.Reviews.map((obj)=>{return obj.toJSON()})//////////////////
-      console.log(reviewByBusiness)
-      
+      const reviewByBusiness = business.dataValues.Reviews.map((obj) => {
+        return obj.toJSON();
+      }); //////////////////
+      if (business.category === "Bar") {
+        business.dataValues.pic || "/assets/icon_bar.png";
+      }
+      if (business.category === "Cafe") {
+        business.dataValues.pic || "/assets/icon_cafe.png";
+      }
+      if (business.category === "Hotel") {
+        business.dataValues.pic || "/assets/icon_hotel.png";
+      }
+      if (business.category === "Restaurant") {
+        business.dataValues.pic || "/assets/icon_restaurant.png";
+      }
+      console.log(reviewByBusiness);
+      console.log(business.category);
+
       const hbsObj = await {
         businessData: business.toJSON(),
         rev: reviewByBusiness,

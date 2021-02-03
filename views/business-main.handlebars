@@ -17,18 +17,18 @@
     </div>
     <div class="col s6 box">
         <div class="row">
-           {{#each rev}}
-            
-               <div class="card">
-                   <h6 class="row" style="text-align: center;">{{title}}</h6>
-                    <div class="row" style="text-align: center;">{{body}}</div>
-                   <div class="row" style="text-align: center;">{{rating}}</div>  
-                   
-                    <div class="card-action">
-                        <a href="/customer-profile/{{ CustomerId }}">View Profile</a>
-                    </div>
+            {{#each rev}}
+
+            <div class="card">
+                <h6 class="row" style="text-align: center;">{{title}}</h6>
+                <div class="row" style="text-align: center;">{{body}}</div>
+                <div class="row" style="text-align: center;">{{rating}}</div>
+
+                <div class="card-action">
+                    <a href="/customer-profile/{{ CustomerId }}">View Profile</a>
                 </div>
-            
+            </div>
+
             {{/each}}
         </div>
     </div>
