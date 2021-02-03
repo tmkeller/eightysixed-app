@@ -1,13 +1,17 @@
 // requires DB
 const db = require("../models");
+const { score, rate, average } = require( 'average-rating' );
 
 module.exports = function (app) {
   // landing page route
   app.get("/", function (req, res) {
-    db.Customer.findAll().then((data) => {
+    db.Customer.findAll({ include: [db.Review] }).then((data) => {
       const jsonData = data.map((obj) => {
         const newObj = obj.toJSON();
-        let avg_rating = 4.6; // This is test code. Delete it when we can get average ratings.
+        const revav = obj.Reviews.map( ( rev ) => {
+          return rev.rating;
+        })
+        let avg_rating = average( revav );
         newObj.star_width = Math.floor((avg_rating / 5) * 187) + "px";
         if ( !newObj.pic ) {
           newObj.pic = '/assets/icons/icon-default-cust.jpg'
@@ -54,7 +58,7 @@ module.exports = function (app) {
       where: {
         id: req.params.id,
       },
-      include: [db.Review],
+      include: [db.Review]
     }).catch((err) => {
       res.status(500).json(err);
     });
@@ -64,7 +68,7 @@ module.exports = function (app) {
       business = await db.Business.findOne({
         where: {
           id: req.session.business.id,
-        },
+        }
       }).catch((err) => {
         res.status(500).json(err);
       });
@@ -84,6 +88,11 @@ module.exports = function (app) {
       const reviews = customer.Reviews.map((obj) => {
         return obj.toJSON();
       });
+      let ratings = reviews.map( ( obj ) => {
+        return obj.rating;
+      });
+      const avg_rating = average( ratings );
+      const star_width = Math.floor((avg_rating / 5) * 187) + "px";
       const reversedReviews = reviews.reverse();
       const hbsObj = {
         id: customer.dataValues.id,
@@ -95,6 +104,7 @@ module.exports = function (app) {
         email: customer.dataValues.email,
         password: customer.dataValues.password,
         pic: ( customer.dataValues.pic || '/assets/icons/icon-default-cust.jpg' ),
+        star_width: star_width,
         createdAt: customer.dataValues.updatedAt,
         updatedAt: customer.dataValues.createdAt,
         reviews: reversedReviews,
@@ -107,6 +117,7 @@ module.exports = function (app) {
       } else if (req.session.customer) {
         hbsObj.customer = req.session.customer;
       }
+      console.log( hbsObj );
       res.render("customer-profile", hbsObj);
     }
   });
@@ -120,6 +131,7 @@ module.exports = function (app) {
         where: {
           BusinessId: req.session.business.id,
         },
+        include: [db.Review]
       }).catch((err) => {
         res.status(500).json(err);
       });
@@ -131,10 +143,17 @@ module.exports = function (app) {
         res.status(500).json(err);
       });
 
-      const jsonData = data.map((obj) => {
+      const jsonData = customers.map((obj) => {
         const newObj = obj.toJSON();
-        let avg_rating = 4.6; // This is test code. Delete it when we can get average ratings.
-        newObj.star_width = Math.floor((avg_rating / 5) * 187) + "px";
+        const reviews = obj.Reviews.map((rev) => {
+          return rev.toJSON();
+        });
+        let ratings = reviews.map( ( obj ) => {
+          return obj.rating;
+        });
+        const avg_rating = average( ratings );
+        const star_width = Math.floor((avg_rating / 5) * 187) + "px";
+        newObj.star_width = star_width;
         if ( !newObj.pic ) {
           newObj.pic = '/assets/icons/icon-default-cust.jpg'
         }
@@ -162,6 +181,7 @@ module.exports = function (app) {
       where: {
         BusinessId: req.params.id,
       },
+      include: [db.Review]
     }).catch((err) => {
       res.status(500).json(err);
     });
@@ -175,8 +195,15 @@ module.exports = function (app) {
 
     const jsonData = customers.map((obj) => {
       const newObj = obj.toJSON();
-      let avg_rating = 4.6; // This is test code. Delete it when we can get average ratings.
-      newObj.star_width = Math.floor((avg_rating / 5) * 187) + "px";
+      const reviews = obj.Reviews.map((rev) => {
+        return rev.toJSON();
+      });
+      let ratings = reviews.map( ( obj ) => {
+        return obj.rating;
+      });
+      const avg_rating = average( ratings );
+      const star_width = Math.floor((avg_rating / 5) * 187) + "px";
+      newObj.star_width = star_width;
       if ( !newObj.pic ) {
         newObj.pic = '/assets/icons/icon-default-cust.jpg'
       }
