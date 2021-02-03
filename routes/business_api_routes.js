@@ -61,7 +61,7 @@ module.exports = function (app) {
     res.json(req.session).send(req.session.email);
   });
 
-  // update route for updating the info in the table business in the db: WIP
+  // update route for updating the info in the table business in the db:
   app.put("/api/business/:id", async (req, res) => {
     const newPwd = (req.body.password = bcrypt.hashSync(
       req.body.password,
@@ -69,12 +69,9 @@ module.exports = function (app) {
       null
     ));
     // update the password that comes from req.body to be the new hashed password
-    // you can update he password inside req.body by saying somethig like req.body."whatever you called the key for password" = "new variable you created with the hashed password"
-
     req.body.password = newPwd;
 
     // update the database with that hashed password
-
     const data = await db.Business.update(req.body, {
       where: { id: req.body.id },
     }).catch((err) => {
