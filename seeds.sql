@@ -19,3 +19,5 @@ INSERT INTO `customers` (`first_name`, `last_name`, `isClaimed`,`city`, `state`,
 ("Camilla", "Parker-Bowles", true, "West Seattle", "Washington", 98116, "silmarile@hotmail.com", "$2b$10$uAQmJIsVslJrbd8e7XS2V.LurYkNygMsmHDPD6Agi9wmN9Gw0HZIe", "/assets/img_cust/pic-Camilla.jpg", "2021-01-28 15:00:00", "2021-01-28 15:00:00", "2"),
 ("Harmon", "Kardin", true, "Seattle", "Washington", 98105, "zinckev@hotmail.com", "$2b$10$uAQmJIsVslJrbd8e7XS2V.LurYkNygMsmHDPD6Agi9wmN9Gw0HZIe", "/assets/img_cust/notaperson_man2.jfif", "2021-01-28 15:00:00", "2021-01-28 15:00:00", "3"),
 ("Jennifer", "Lewis", true, "Seattle", "Washington", 98104, "timothy.m.keller@gmail.com", "$2b$10$uAQmJIsVslJrbd8e7XS2V.LurYkNygMsmHDPD6Agi9wmN9Gw0HZIe", "/assets/img_cust/notaperson_woman3.jfif", "2021-01-28 15:00:00", "2021-01-28 15:00:00", "4");
+
+INSERT INTO `reviews` (`first_name`, `last_name`, `isClaimed`,`city`, `state`, `zip5`, `email`,`password`,`pic`,`createdAt`, `updatedAt`, `BusinessId`) VALUES 
