@@ -28,7 +28,7 @@ module.exports = function (app) {
           newObj.pic = '/assets/icons/icon-default-cust.jpg'
         }
         return newObj;
-      }).catch(err => console.log("TEST HOME ROUTE", err));
+      });
       const hbsObj = {
         guests: jsonData,
       };
