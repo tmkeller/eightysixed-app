@@ -63,23 +63,34 @@ module.exports = function (app) {
 
   // update route for updating the info in the table business in the db:
   app.put("/api/business/:id", async (req, res) => {
-    const newPwd = (req.body.password = bcrypt.hashSync(
-      req.body.password,
-      bcrypt.genSaltSync(10),
-      null
-    ));
-    // update the password that comes from req.body to be the new hashed password
-    req.body.password = newPwd;
+    if (!req.body.password) {
+      req.body.password === req.body.password;
+      const data = await db.Business.update(req.body, {
+        where: { id: req.body.id },
+      }).catch((err) => {
+        res.status(500);
+        console.error(err);
+      });
+      res.status(200).json(data);
+    } else {
+      const newPwd = (req.body.password = bcrypt.hashSync(
+        req.body.password,
+        bcrypt.genSaltSync(10),
+        null
+      ));
+      // update the password that comes from req.body to be the new hashed password
+      req.body.password = newPwd;
 
-    // update the database with that hashed password
-    const data = await db.Business.update(req.body, {
-      where: { id: req.body.id },
-    }).catch((err) => {
-      res.status(500);
-      console.error(err);
-    });
+      // update the database with that hashed password
+      const data = await db.Business.update(req.body, {
+        where: { id: req.body.id },
+      }).catch((err) => {
+        res.status(500);
+        console.error(err);
+      });
 
-    res.status(200).json(data);
+      res.status(200).json(data);
+    }
   });
 
   // delete route for deleting the info in the table business in the db:

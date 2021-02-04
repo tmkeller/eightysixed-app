@@ -19,7 +19,7 @@ module.exports = function (sequelize, DataTypes) {
       validate: { isEmail: true },
     },
     password: DataTypes.STRING,
-    profilePic: DataTypes.STRING,
+    pic: DataTypes.STRING,
   });
 
   // allows foreign keys to be attached through the business id

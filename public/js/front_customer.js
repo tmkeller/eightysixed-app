@@ -11,14 +11,21 @@ $(".switch").on("change", function (event) {
 // triggers the modal for signing in and sends the info to check if correct
 $(".sign-button").on("click", function (event) {
   event.preventDefault();
+
   // conditional if sign in is correct
   if (accountValue[0] === true) {
+
     $.post("/api/customer/login", {
-      email: $(".sign_email").val(),
       password: $(".sign_pass").val(),
+      email: $(".sign_email").val(),
+      
     })
       .then((response) => {
-        window.location.href = "/customer-profile";
+        $.get("/customer-profile/" + response.id, {}).then((res) => {
+          window.location.href = "/customer-profile/" + response.id;
+          localStorage.setItem("id", response.id);
+      
+        });
       })
       .fail((err) => {
         console.log(err);
@@ -40,7 +47,7 @@ $(".sign-button").on("click", function (event) {
       })
       .fail((err) => {
         console.log(err);
-        alert("Sign-in failed");
+        alert("Incorrect Username or Password");
       });
   }
 });
@@ -52,3 +59,30 @@ $(".customer_search").on("click", function (event) {
     $(".firstName-search").val("");
   });
 });
+
+$(".claim_button_set").on("click", function(event){
+  event.preventDefault()
+  let setPass = $(".set_pass").val();
+  let confirmPass = $(".confirm-password").val();
+  if(setPass === confirmPass){
+    $("#modal6").hide()
+  const customerClaim = {
+      email: $(".claim_email").val(),
+      password: $(".set_pass").val(),
+      isClaimed: 1
+  }
+
+$.ajax({
+  url: "/api/customer",
+  method: "PUT",
+  data: customerClaim
+}).then(res=>{
+  console.log(res)
+  location.reload()
+
+})
+
+}
+}) 
+
+

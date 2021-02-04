@@ -1,7 +1,21 @@
 <div class="container centered-panel">
   <div class="row">
     <div class="col s4">
-      <img class="customer_profile_pic" src="{{pic}}" alt="Customer image">
+      <div class="row">
+       <img class="customer_profile_pic" src="{{pic}}" alt="Customer image">
+      </div>
+      
+      <div class="row" style="margin-left: 1.5vw">
+        {{#if isClaimed}} 
+        <p>Account has been claimed</p>
+        {{/if}}
+        {{#unless isClaimed}}
+       <button href="#modal6" class="claim modal-trigger" id="modal6">Is this you?</button>
+        {{/unless}}
+
+
+      </div>
+      
     </div>
     <div class="col s8">
       <h2 class="customer_header">{{first_name}} {{last_name}}</h2>

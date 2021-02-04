@@ -94,15 +94,26 @@ module.exports = function (app) {
   });
 
   // update route for updating the info in the table Customer in the db:
-  app.put("/api/customer/:id", async (req, res) => {
+
+  // 
+  app.put("/api/customer", async (req, res) => {
+    const newPwd = (req.body.password = bcrypt.hashSync(
+      req.body.password,
+      bcrypt.genSaltSync(10),
+      null
+    ));
+    // update the password that comes from req.body to be the new hashed password
+    req.body.password = newPwd;
+    // update the database with that hashed password
     const data = await db.Customer.update(req.body, {
-      where: { id: req.body.id },
+      where: { email: req.body.email },
     }).catch((err) => {
       res.status(500);
       console.error(err);
     });
     res.status(200).json(data);
   });
+  // 
 
   // delete route for deleting the info in the table Customer in the db:
   app.delete("/api/customer/:id", async (req, res) => {
@@ -113,5 +124,37 @@ module.exports = function (app) {
       console.error(err);
     });
     res.status(200).json(data);
+  });
+  //////////
+  app.post("/api/customer/login", async (req, res) => {
+    console.log(req.body)
+    console.log("test")
+    const data = await db.Customer.findOne({
+      where: {email: req.body.email},
+     }).catch((err) => {
+      res.status(500);
+      console.error(err);
+    });
+
+    if (!data) {
+      res.status(404).send("username or password is incorrect");
+    } else {
+      if (bcrypt.compareSync(req.body.password, data.password)) {
+        req.session.customer = {
+          id: data.id,
+          first_name: data.name,
+          last_name: data.email,
+          isClaimed: data.isClaimed,
+          city: data.city,
+          state: data.state,
+          zip5: data.zip5,
+          email: data.email,
+          pic: data.pic,
+        };
+        res.status(200).json(data);
+      } else {
+        res.status(401).send("username or password is incorrect");
+      }
+    }
   });
 };
