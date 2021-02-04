@@ -19,38 +19,39 @@
 </head>
 
 <body>
-    <nav class="green">
+    <nav class="green top_nav">
         <div class="nav-wrapper">
-            <a style="margin-left: 2vw" class="brand-logo header_title left"><img src="/assets/TTT-logo.png"
-                    alt="TTT logo" height="69px" width="100px"></a>
+            <a href="/" class="brand-logo header_title left">
+            <img src="/assets/TTT-logo.png" class="logo_image" alt="TTT logo"></a>
             <ul class="right ">
                 {{#if business}}
                     <!-- Get the business nav -->
                     <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Welcome, {{ business.name }}!</a>
                     <!-- Dropdown Structure -->
                     <ul id='dropdown1' class='dropdown-content'>
-                        <li><a class="modal-trigger" href="#modal2">Update profile</a></li>
+                        <li><a href="/business-main/{{ business.id }}">Business Profile</a></li>
+                        <li><a class="modal-trigger" href="#modal2">Update Profile</a></li>
                         <li class="divider" tabindex="-1"></li>
                         <li><a href="/logout" class="logout"><button>Logout</button></a></li>
                     </ul>
                     <li><a href="/">Home</i></a></li>
                     <li><a href="/about-us">About us</i></a></li>
-                    <li><a href="/business-main/{{ business.id }}">Business Profile</a></li>
                     <li><span class="dropdown-span"></span></li>
                 {{else}}
                     {{#if customer}}
                         <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Welcome, {{ customer.name }}!</a>
                         <!-- Dropdown Structure -->
                         <ul id='dropdown1' class='dropdown-content'>
-                            <li><a class="modal-trigger" href="#modal2">Update profile</a></li>
+                            <li><a href="/customer-profile/{{ customer.id }}">Customer Profile</a></li>
+                            <li><a class="modal-trigger" href="#modal2">Update Profile</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="/logout"><button>Logout</button></a></li>
                         </ul>
                         <li><a href="/">Home</a></li>
                         <li><a href="/about-us">About us</i></a></li>
-                        <li><a href="/customer-profile/{{ customer.id }}">Customer Profile</a></li>
                         <li><span class="dropdown-span"></span></li>
                     {{else}}
+                        <li><a href="/about-us">About us</i></a></li>
                         <li><a href="/">Home</a></li>
                         <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Sign in</a>
                     {{/if}}
@@ -86,8 +87,7 @@
     <footer class="page-footer green">
         <div class="footer-copyright">
         <div class="container">
-        © 2021 Turning the Tables
-        <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            <div class="col s12 center">© 2021 Turning the Tables</div>
         </div>
         </div>
     </footer> 
