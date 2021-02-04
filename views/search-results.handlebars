@@ -1,20 +1,19 @@
 <div class="row">
     {{#each guests}}
-        <div class="col s12 m6 l4">
-            <div class="card">
+        <div class="col s12 m4 l3 xl3">
+            <div class="card customer_card">
                 <div class="card-image">
                     <img src="{{pic}}">
-                    <span class="card-title">{{first_name}} {{last_name}}</span>
                 </div>
                 <div class="card-content">
+                    <span class="card-title">{{first_name}} {{last_name}}</span>
                     <p>{{#if city}}{{city}} {{/if}}{{#if state}}{{state}}{{/if}}</p>
-                    <div style="height: 36px; width: {{ star_width }}; overflow-x: hidden">
+                    <div style="height: 36px; width: {{ star_width }}; overflow-x: hidden; overflow-y: hidden;">
                         <img src="/assets/stars.png" alt="stars" style="height: 100%;">
                     </div>
                 </div>
                 <div class="card-action">
-                    <a href="/customer-profile/{{ id }}">View Profile</a>
-                    <a href="#modal4" data-id="{{id}}" class="modal-trigger customer-review">Review</a>
+                    <a href="/customer-profile/{{ id }}" data-CustomerId="{{ id }}" class="CustomerId">View Profile</a>
                 </div>
             </div>
         </div>
