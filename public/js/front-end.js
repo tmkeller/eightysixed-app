@@ -30,8 +30,10 @@ $(document).ready(function () {
     }
   });
 
-  // Create img URL to hold cloudinary result
+  // Create img URL to hold cloudinary result, using category based default
   let cloudBizURL = "/assets/icon_restaurant.png";
+    
+  $("#cloudinary-bttn").on("click", function (event) {
 
   // Adding Cloudinary event listener
   var bizWidget = cloudinary.createUploadWidget({ 
@@ -41,22 +43,18 @@ $(document).ready(function () {
         console.log("Done! Here is the image info: ", result.info);
         console.log(result.info.secure_url);
         cloudBizURL = result.info.secure_url;
-      } else {
-        console.log("Upload failed.", error)   
-      }
+      } 
     });
-    
-  $("#cloudinary-bttn").on("click", function (event) {
-      bizWidget.open();
+    bizWidget.open();
   });
-
+ 
   // Submits sign-up form
   $(".sign-up-button").on("click", function (event) {
     event.preventDefault();
 
     let pass = $(".password-company").val();
     let confirm = $(".verify-password").val();
-    const companyData = {
+    let companyData = {
       name: $(".company_name").val(),
       address: $(".address").val(),
       addresstwo: $(".addresstwo").val(),
