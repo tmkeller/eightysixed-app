@@ -28,6 +28,25 @@ $(document).ready(function () {
       categoryArray.pop();
     }
   });
+
+  // Create img URL to hold cloudinary result
+  let cloudBizURL = "/assets/icon_restaurant.png";
+
+  // Adding Cloudinary event listener
+  var bizWidget = cloudinary.createUploadWidget({ 
+    cloudName: "turning-the-tables", 
+    uploadPreset: "tt-business" }, (error, result) => { 
+      if (!error && result && result.event === "success") { 
+        console.log('Done! Here is the image info: ', result.info);
+        cloudBizURL = result.info.secure_url;
+        console.log(result.info.secure_url);
+      }
+    });
+    
+  $("#cloudinary-bttn").on("click", function (event) {
+      bizWidget.open();
+  });
+
   // Submits sign-up form
   $(".sign-up-button").on("click", function (event) {
     event.preventDefault();
@@ -45,7 +64,7 @@ $(document).ready(function () {
       category: $("#category_name").val(),
       website: $(".websight").val(),
       password: pass,
-      pic: $(".company_image").val(),
+      profilePic: cloudBizURL,
       email: $(".company_email").val(),
     };
     if (pass === confirm) {
