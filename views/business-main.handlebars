@@ -1,32 +1,31 @@
 <div class="row">
     <div class="col s3 m2" style="padding: 0%;">
         <!-- src="{{ pic }}" -->
-        <img style="width; 100%" src="{{ businessData.profilePic }}">
+        <img style=" margin-top: 5px; margin-left:5px ; max-width: 75%" src="{{ businessData.pic }}">
     </div>
     <div class="col s12 m3">
         <h4>{{ businessData.name }}</h4>
         <address>
-        <p style="margin: 5px;">{{ businessData.address }}
-        <p style="margin: 5px;">{{ businessData.addresstwo }}</p>
-        <p style="margin: 5px;">{{ businessData.city }}, {{ businessData.state }} </p>
-        <p style="margin: 5px;">Zip: {{ businessData.zip5 }}</p>
-        <p style="margin: 5px;">Phone: {{ businessData.phone }}</p>
-        <p style="margin: 5px;">Category: {{ businessData.category }}</p>
-        <a href="{{ businessData.website }}">{{ businessData.website }}</a><br>
-        <a href="mailto:{{ businessData.email }}">{{ businessData.email }}</a>
+            <p style="margin: 5px;">{{ businessData.address }}
+            <p style="margin: 5px;">{{ businessData.addresstwo }}</p>
+            <p style="margin: 5px;">{{ businessData.city }}, {{ businessData.state }} </p>
+            <p style="margin: 5px;">Zip: {{ businessData.zip5 }}</p>
+            <p style="margin: 5px;">Phone: {{ businessData.phone }}</p>
+            <p style="margin: 5px;">Category: {{ businessData.category }}</p>
+            <a href="{{ businessData.website }}">{{ businessData.website }}</a><br>
+            <a href="mailto:{{ businessData.email }}">{{ businessData.email }}</a>
         </address>
     </div>
     <div class="col s12 m6 box">
         <div class="row">
-           {{#each rev}}
-            
-               <div class="card">
-                   <h6 class="row" style="text-align: center;">{{title}}</h6>
-                    <div class="row" style="text-align: center;">{{body}}</div>
-                    <div class="row" style="text-align: center;">{{rating}}</div>  
-                    <div class="card-action">
+            {{#each rev}}
+
+            <div class="card">
+                <h6 class="row" style="text-align: center;">{{title}}</h6>
+                <div class="row" style="text-align: center;">{{body}}</div>
+                <div class="row" style="text-align: center;">{{rating}}</div>
+                <div class="card-action">
                     <a href="/customer-profile/{{ CustomerId }}">View Profile</a>
-                    </div>
                 </div>
             </div>
 
@@ -36,19 +35,19 @@
 </div>
 <div class="row">
     <div class="input-field col s12 m2 l1">
-    <a class="waves-effect waves-light btn add_cus modal-trigger" href="#modal3">Add Customer</a>
+        <a class="waves-effect waves-light btn add_cus modal-trigger" href="#modal3">Add Customer</a>
     </div>
     <div class="col s12 m4">
         {{!-- <input id="icon_prefix" class="firstName-search" type="text" class="validate"> --}}
         {{!-- /////////////////// --}}
         <div class="input-field row">
-          <div class="col s9">
-          <input id="search" placeholder="First Name" class="firstName-search" type="search" required>
-          <i class="material-icons">close</i>
-          </div>
-          <div class="col s3">
-          <a style="float:right"class="waves-effect waves-light btn btn-small customer_search">Search</a>
-          </div>
+            <div class="col s9">
+                <input id="search" placeholder="First Name" class="firstName-search" type="search" required>
+                <i class="material-icons">close</i>
+            </div>
+            <div class="col s3">
+                <a style="float:right" class="waves-effect waves-light btn btn-small customer_search">Search</a>
+            </div>
         </div>
     </div>
     <div class="input-field col s12 m6"></div>
