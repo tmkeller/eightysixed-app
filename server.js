@@ -1,7 +1,7 @@
 var express = require("express");
 const db = require("./models");
 const session = require("express-session");
-require('dotenv').config();
+require("dotenv").config();
 
 // Sets up the Express App
 // =============================================================
@@ -27,10 +27,11 @@ app.use(
 app.use(express.static("public"));
 /////////////////////////////////
 const handlebars = require("express-handlebars");
-const helper = handlebars.create({});
-helper.handlebars.registerHelper("isdefined", function (value) {
-  return value !== undefined;
-});
+// const helper = handlebars.create({});
+
+// helper.handlebars.registerHelper("isdefined", function (value) {
+//   return value !== undefined;
+// });
 
 //Sets our app to use the handlebars engine
 app.set("view engine", "handlebars");

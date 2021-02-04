@@ -13,7 +13,7 @@ h1 {
     color: #46351D;
 }
 
-h2.customer_header {
+h2 {
     font-family: "Dancing Script", cursive;
     color: #46351D;
 }
@@ -40,8 +40,33 @@ img.customer_profile_pic {
     margin: 0;
 }
 
+p.about-us-p {
+    font-family: 'Annie Use Your Telescope', cursive;
+    font-size: 21px;
+    word-break: unset;
+    word-wrap: unset;
+    overflow-wrap: unset;
+    -webkit-hyphens: unset;
+    -moz-hyphens: unset;
+    -ms-hyphens: unset;
+    hyphens: unset;
+}
+
 .row.card div.review_column {
     padding: 0px 10px 15px;
+}
+
+#index-banner {
+    background-image: url("../assets/turn-the-tables.jpg");
+}
+
+.header_h1 {
+    font-family: "Dancing Script", cursive;
+}
+
+.header_text {
+    font-family: 'Annie Use Your Telescope', cursive;
+    color: white;
 }
 
 .review_title {
@@ -80,6 +105,10 @@ img.customer_profile_pic {
     font-size: 34px;
 }
 
+.dropdown-span {
+    color: black;
+}
+
 p {
     word-break: break-all;
     white-space: normal;
@@ -89,4 +118,8 @@ p {
     overflow: scroll;
     max-height: 20vw;
     overflow-x: hidden;
+}
+
+div.hiddendiv.common {
+    width: 0;
 }

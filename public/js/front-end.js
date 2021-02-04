@@ -3,6 +3,7 @@ const ids = localStorage.getItem("id");
 
 // the triggers and click events for the modals
 $(document).ready(function () {
+
   const categoryArray = [];
   // The .dropdown() and .modal() functions were not working, so these initializations
   // for dropdowns and modals had to be done in vanilla Javascript.
@@ -28,13 +29,32 @@ $(document).ready(function () {
       categoryArray.pop();
     }
   });
+
+  // Create img URL to hold cloudinary result, using category based default
+  let cloudBizURL = "/assets/icon_restaurant.png";
+    
+  $("#cloudinary-bttn").on("click", function (event) {
+
+  // Adding Cloudinary event listener
+  var bizWidget = cloudinary.createUploadWidget({ 
+    cloudName: "turning-the-tables", 
+    uploadPreset: "tt-business" }, (error, result) => { 
+      if (!error && result && result.event === "success") { 
+        console.log("Done! Here is the image info: ", result.info);
+        console.log(result.info.secure_url);
+        cloudBizURL = result.info.secure_url;
+      } 
+    });
+    bizWidget.open();
+  });
+ 
   // Submits sign-up form
   $(".sign-up-button").on("click", function (event) {
     event.preventDefault();
 
     let pass = $(".password-company").val();
     let confirm = $(".verify-password").val();
-    const companyData = {
+    let companyData = {
       name: $(".company_name").val(),
       address: $(".address").val(),
       addresstwo: $(".addresstwo").val(),
@@ -45,7 +65,7 @@ $(document).ready(function () {
       category: $("#category_name").val(),
       website: $(".websight").val(),
       password: pass,
-      pic: $(".company_image").val(),
+      pic: cloudBizURL,
       email: $(".company_email").val(),
     };
     if (pass === confirm) {
