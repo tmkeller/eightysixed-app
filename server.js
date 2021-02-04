@@ -1,7 +1,7 @@
 var express = require("express");
 const db = require("./models");
 const session = require("express-session");
-require('dotenv').config();
+require("dotenv").config();
 
 // Sets up the Express App
 // =============================================================
