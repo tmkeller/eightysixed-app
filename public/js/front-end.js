@@ -3,6 +3,7 @@ const ids = localStorage.getItem("id");
 
 // the triggers and click events for the modals
 $(document).ready(function () {
+
   const categoryArray = [];
   // The .dropdown() and .modal() functions were not working, so these initializations
   // for dropdowns and modals had to be done in vanilla Javascript.

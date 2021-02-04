@@ -4,12 +4,10 @@ const db = require("../models");
 const average = function( arr ) {
   let total = 0;
   let count = 0;
-
   for ( let i = 0; i < arr.length; i++ ) {
     total += arr[ i ];
     count++;
   }
-
   return total/count;
 }
 
