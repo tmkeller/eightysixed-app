@@ -40,6 +40,14 @@ module.exports = function (app) {
           website: data.website,
           pic: data.pic,
         };
+        if (req.session.business.state) {
+          const state = req.session.business.state.replace(/ /g, "");
+          req.session.business[state] = true;
+        }
+        if (req.session.business.category) {
+          const category = req.session.business.category.replace(/ /g, "");
+          req.session.business[category] = true;
+        }
         res.status(200).json(data);
       } else {
         res.status(401).send("username or password is incorrect");
