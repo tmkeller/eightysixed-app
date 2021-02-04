@@ -44,6 +44,19 @@ img.customer_profile_pic {
     padding: 0px 10px 15px;
 }
 
+#index-banner {
+    background-image: url("../assets/turn-the-tables.jpg");
+}
+
+.header_h1 {
+    font-family: "Dancing Script", cursive;
+}
+
+.header_text {
+    font-family: 'Annie Use Your Telescope', cursive;
+    color: white;
+}
+
 .review_title {
     font-size: 22px;
     font-family: 'Annie Use Your Telescope', cursive;
@@ -78,6 +91,10 @@ img.customer_profile_pic {
     color: #46351D;
     font-family: 'Annie Use Your Telescope', cursive;
     font-size: 34px;
+}
+
+.dropdown-span {
+    color: black;
 }
 
 p {
