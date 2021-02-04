@@ -34,6 +34,7 @@
                         <li><a href="/logout" class="logout"><button>Logout</button></a></li>
                     </ul>
                     <li><a href="/">Home</i></a></li>
+                    <li><a href="/about-us">About us</i></a></li>
                     <li><a href="/business-main/{{ business.id }}">Business Profile</a></li>
                     <li><span class="dropdown-span"></span></li>
                 {{else}}
@@ -46,6 +47,7 @@
                             <li><a href="/logout"><button>Logout</button></a></li>
                         </ul>
                         <li><a href="/">Home</a></li>
+                        <li><a href="/about-us">About us</i></a></li>
                         <li><a href="/customer-profile/{{ customer.id }}">Customer Profile</a></li>
                         <li><span class="dropdown-span"></span></li>
                     {{else}}
@@ -81,6 +83,14 @@
 
     <!-- Main Body of the site -->
     {{{ body }}}
+    <footer class="page-footer green">
+        <div class="footer-copyright">
+        <div class="container">
+        © 2021 Turning the Tables
+        <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+        </div>
+        </div>
+    </footer> 
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"
     integrity="sha512-NiWqa2rceHnN3Z5j6mSAvbwwg3tiwVNxiAQaaSMSXnRRDh5C2mk/+sKQRw8qjV1vN4nf8iK2a0b048PnHbyx+Q=="

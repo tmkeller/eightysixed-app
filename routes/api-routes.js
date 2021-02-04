@@ -61,6 +61,29 @@ module.exports = function (app) {
     res.render("404", hbsObj);
   });
 
+  app.get( "/about-us", async function( req, res ) {
+    let business;
+    if (req.session.business) {
+      business = await db.Business.findOne({
+        where: {
+          id: req.session.business.id,
+        },
+      }).catch((err) => {
+        res.status(500).json(err);
+      });
+    }
+    const hbsObj = {};
+    if (business) {
+      hbsObj.businessData = business.toJSON();
+    }
+    if (req.session.business) {
+      hbsObj.business = req.session.business;
+    } else if (req.session.customer) {
+      hbsObj.customer = req.session.customer;
+    }
+    res.render("about-us", hbsObj);
+  })
+
   //  route to the customer profile page
   app.get("/customer-profile/:id", async function (req, res) {
     const customer = await db.Customer.findOne({

@@ -13,7 +13,7 @@ h1 {
     color: #46351D;
 }
 
-h2.customer_header {
+h2 {
     font-family: "Dancing Script", cursive;
     color: #46351D;
 }
@@ -38,6 +38,18 @@ img.customer_profile_pic {
     text-align: center;
     font-family: 'Annie Use Your Telescope', cursive;
     margin: 0;
+}
+
+p.about-us-p {
+    font-family: 'Annie Use Your Telescope', cursive;
+    font-size: 21px;
+    word-break: unset;
+    word-wrap: unset;
+    overflow-wrap: unset;
+    -webkit-hyphens: unset;
+    -moz-hyphens: unset;
+    -ms-hyphens: unset;
+    hyphens: unset;
 }
 
 .row.card div.review_column {
@@ -106,4 +118,8 @@ p {
     overflow: scroll;
     max-height: 20vw;
     overflow-x: hidden;
+}
+
+div.hiddendiv.common {
+    width: 0;
 }
