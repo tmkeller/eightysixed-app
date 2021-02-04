@@ -4,14 +4,12 @@ const db = require("../models");
 const average = function (arr) {
   let total = 0;
   let count = 0;
-
   for (let i = 0; i < arr.length; i++) {
     total += arr[i];
     count++;
   }
-
-  return total / count;
-};
+  return total/count;
+}
 
 module.exports = function (app) {
   // landing page route
@@ -62,6 +60,29 @@ module.exports = function (app) {
     }
     res.render("404", hbsObj);
   });
+
+  app.get( "/about-us", async function( req, res ) {
+    let business;
+    if (req.session.business) {
+      business = await db.Business.findOne({
+        where: {
+          id: req.session.business.id,
+        },
+      }).catch((err) => {
+        res.status(500).json(err);
+      });
+    }
+    const hbsObj = {};
+    if (business) {
+      hbsObj.businessData = business.toJSON();
+    }
+    if (req.session.business) {
+      hbsObj.business = req.session.business;
+    } else if (req.session.customer) {
+      hbsObj.customer = req.session.customer;
+    }
+    res.render("about-us", hbsObj);
+  })
 
   //  route to the customer profile page
   app.get("/customer-profile/:id", async function (req, res) {

@@ -3,6 +3,7 @@ const ids = localStorage.getItem("id");
 
 // the triggers and click events for the modals
 $(document).ready(function () {
+
   const categoryArray = [];
   // The .dropdown() and .modal() functions were not working, so these initializations
   // for dropdowns and modals had to be done in vanilla Javascript.
@@ -29,31 +30,31 @@ $(document).ready(function () {
     }
   });
 
-  // Create img URL to hold cloudinary result
+  // Create img URL to hold cloudinary result, using category based default
   let cloudBizURL = "/assets/icon_restaurant.png";
+    
+  $("#cloudinary-bttn").on("click", function (event) {
 
   // Adding Cloudinary event listener
   var bizWidget = cloudinary.createUploadWidget({ 
     cloudName: "turning-the-tables", 
     uploadPreset: "tt-business" }, (error, result) => { 
       if (!error && result && result.event === "success") { 
-        console.log('Done! Here is the image info: ', result.info);
-        cloudBizURL = result.info.secure_url;
+        console.log("Done! Here is the image info: ", result.info);
         console.log(result.info.secure_url);
-      }
+        cloudBizURL = result.info.secure_url;
+      } 
     });
-    
-  $("#cloudinary-bttn").on("click", function (event) {
-      bizWidget.open();
+    bizWidget.open();
   });
-
+ 
   // Submits sign-up form
   $(".sign-up-button").on("click", function (event) {
     event.preventDefault();
 
     let pass = $(".password-company").val();
     let confirm = $(".verify-password").val();
-    const companyData = {
+    let companyData = {
       name: $(".company_name").val(),
       address: $(".address").val(),
       addresstwo: $(".addresstwo").val(),
@@ -64,7 +65,7 @@ $(document).ready(function () {
       category: $("#category_name").val(),
       website: $(".websight").val(),
       password: pass,
-      profilePic: cloudBizURL,
+      pic: cloudBizURL,
       email: $(".company_email").val(),
     };
     if (pass === confirm) {
@@ -78,7 +79,12 @@ $(document).ready(function () {
           window.location.href = "/";
         })
         .fail((err) => {
-          alert("Signup failed");
+          alert("Be sure to enter valid email, 5 digit zip, password, and/or a name. Required fields are highlighted.");
+          $(".zip").addClass("invalid")
+          $(".company_email").addClass("invalid")
+          $(".company_name").addClass("invalid")
+          $(".password-company").addClass("invalid")
+          $(".verify-password").addClass("invalid")
         });
     } else {
       // If password does not match
@@ -154,6 +160,10 @@ $(document).ready(function () {
       data: customerProfile,
     }).then((res) => {
       location.reload();
-    });
+    }).fail((err) => {
+      $(".customer_email").val('')
+      .attr("placeholder", "First, Last, Zip, required!")
+      .addClass("invalid")
+    })
   });
 });

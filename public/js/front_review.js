@@ -19,7 +19,9 @@ $(".customer-review").on("click", function (event) {
       data: addCustomerByRest,
     }).then((response) => {
       location.reload();
-    });
+    }).fail((err)=>{
+      $(".stars").val('').addClass("invalid").attr("placeholder", "Val 1-5")
+    })
   });
 });
 // deletes the review that was posted

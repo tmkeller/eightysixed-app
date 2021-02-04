@@ -13,7 +13,7 @@ h1 {
     color: #46351D;
 }
 
-h2.customer_header {
+h2 {
     font-family: "Dancing Script", cursive;
     color: #46351D;
 }
@@ -21,6 +21,12 @@ h2.customer_header {
 img.customer_profile_pic {
     max-width: 100%;
     margin-top: 30px;
+}
+
+.top_nav, .parallax-container,  {
+    box-shadow: -1px 5px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: -1px 5px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 5px 5px 0px rgba(0,0,0,0.75);
 }
 
 .reviews_header {
@@ -40,8 +46,37 @@ img.customer_profile_pic {
     margin: 0;
 }
 
+p.about-us-p {
+    font-family: 'Annie Use Your Telescope', cursive;
+    font-size: 21px;
+    word-break: unset;
+    word-wrap: unset;
+    overflow-wrap: unset;
+    -webkit-hyphens: unset;
+    -moz-hyphens: unset;
+    -ms-hyphens: unset;
+    hyphens: unset;
+}
+
+.logo_image {
+    width: 84px;
+}
+
 .row.card div.review_column {
     padding: 0px 10px 15px;
+}
+
+#index-banner {
+    background-image: url("../assets/turn-the-tables.jpg");
+}
+
+.header_h1 {
+    font-family: "Dancing Script", cursive;
+}
+
+.header_text {
+    font-family: 'Annie Use Your Telescope', cursive;
+    color: white;
 }
 
 .review_title {
@@ -66,6 +101,16 @@ img.customer_profile_pic {
     font-size: 20px;
 }
 
+.customer_search {
+    width: 100%;
+}
+
+.customer_search_input {
+    padding-left: 2px;
+    background-color: white;
+    border-radius: 5px;
+}
+
 .delete_review, .edit_review {
     float: left;
 }
@@ -80,6 +125,10 @@ img.customer_profile_pic {
     font-size: 34px;
 }
 
+.dropdown-span {
+    color: black;
+}
+
 p {
     word-break: break-all;
     white-space: normal;
@@ -90,3 +139,19 @@ p {
     max-height: 20vw;
     overflow-x: hidden;
 }
+
+div.hiddendiv.common {
+    width: 0;
+}
+
+
+/* .cuspropic {
+    height: 25vw;
+}
+
+@media (max-width: 600px ){
+    .cuspropic{
+        height: 100%;
+        width: 100%;
+    }
+} */
