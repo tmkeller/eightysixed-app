@@ -69,12 +69,20 @@ module.exports = function (app) {
       },
     }).then((data) => {
       const jsonData = data.map((obj) => {
-        return obj.toJSON();
+        let newObj = obj.toJSON();
+        if ( !newObj.pic ) {
+          newObj.pic = "/assets/icons/icon-default-cust.jpg"
+        }
+        return newObj;
       });
       const hbsObj = {
-        guests: jsonData,
-        user: req.session.user || req.session.business,
+        guests: jsonData
       };
+      if (req.session.business) {
+        hbsObj.business = req.session.business;
+      } else if (req.session.customer) {
+        hbsObj.customer = req.session.customer;
+      }
       res.render("search-results", hbsObj);
     });
   });

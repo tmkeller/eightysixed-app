@@ -54,9 +54,8 @@ $(".sign-button").on("click", function (event) {
 // customer search function allows the user to search the customer DB for a customer
 $(".customer_search").on("click", function (event) {
   event.preventDefault();
-  $.get("/search-results/" + $(".firstName-search").val(), {}).then((res) => {
-    window.location.href = "/search-results/" + $(".firstName-search").val();
-    $(".firstName-search").val("");
+  $.get("/search-results/" + $("#search").val(), {}).then((res) => {
+    window.location.href = "/search-results/" + $("#search").val();
   });
 });
 

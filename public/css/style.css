@@ -23,6 +23,12 @@ img.customer_profile_pic {
     margin-top: 30px;
 }
 
+.top_nav, .parallax-container,  {
+    box-shadow: -1px 5px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: -1px 5px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 5px 5px 0px rgba(0,0,0,0.75);
+}
+
 .reviews_header {
     background-color: #397367;
     padding: 10px;
@@ -50,6 +56,10 @@ p.about-us-p {
     -moz-hyphens: unset;
     -ms-hyphens: unset;
     hyphens: unset;
+}
+
+.logo_image {
+    width: 84px;
 }
 
 .row.card div.review_column {
@@ -89,6 +99,16 @@ p.about-us-p {
 .review_business_name {
     font-family: "Dancing Script", cursive;
     font-size: 20px;
+}
+
+.customer_search {
+    width: 100%;
+}
+
+.customer_search_input {
+    padding-left: 2px;
+    background-color: white;
+    border-radius: 5px;
 }
 
 .delete_review, .edit_review {
