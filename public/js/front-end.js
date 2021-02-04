@@ -38,9 +38,11 @@ $(document).ready(function () {
     cloudName: "turning-the-tables", 
     uploadPreset: "tt-business" }, (error, result) => { 
       if (!error && result && result.event === "success") { 
-        console.log('Done! Here is the image info: ', result.info);
-        cloudBizURL = result.info.secure_url;
+        console.log("Done! Here is the image info: ", result.info);
         console.log(result.info.secure_url);
+        cloudBizURL = result.info.secure_url;
+      } else {
+        console.log("Upload failed.", error)   
       }
     });
     
@@ -65,7 +67,7 @@ $(document).ready(function () {
       category: $("#category_name").val(),
       website: $(".websight").val(),
       password: pass,
-      profilePic: cloudBizURL,
+      pic: cloudBizURL,
       email: $(".company_email").val(),
     };
     if (pass === confirm) {
