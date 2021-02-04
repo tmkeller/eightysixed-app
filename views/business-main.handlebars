@@ -4,7 +4,7 @@
         <img style=" margin-top: 5px; margin-left:5px ; max-width: 75%" src="{{ businessData.pic }}">
     </div>
     <div class="col s12 m3">
-        <h4>{{ businessData.name }}</h4>
+        <h4>{{ name }}</h4>
         <address>
             <p style="margin: 5px;">{{ businessData.address }}
             <p style="margin: 5px;">{{ businessData.addresstwo }}</p>
@@ -27,6 +27,7 @@
                 <div class="card-action">
                     <a href="/customer-profile/{{ CustomerId }}">View Profile</a>
                 </div>
+            
             </div>
 
             {{/each}}

@@ -125,6 +125,7 @@ module.exports = function (app) {
         id: customer.dataValues.id,
         first_name: customer.dataValues.first_name,
         last_name: customer.dataValues.last_name,
+        isClaimed: customer.dataValues.isClaimed,
         city: customer.dataValues.city,
         state: customer.dataValues.state,
         zip: customer.dataValues.zip5,
@@ -188,6 +189,7 @@ module.exports = function (app) {
       const reviewByBusiness = business.dataValues.Reviews.map((obj) => {
         return obj.toJSON();
       }); //////////////////
+
       const businessJson = business.toJSON();
       businessJson[businessJson.category] = true;
 

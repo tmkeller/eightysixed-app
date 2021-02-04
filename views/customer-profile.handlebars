@@ -6,7 +6,14 @@
       </div>
       
       <div class="row" style="margin-left: 1.5vw">
-        <button href="#modal6" class="claim modal-trigger" id="modal6">Is this you?</button>
+        {{#if isClaimed}} 
+        <p>Account has been claimed</p>
+        {{/if}}
+        {{#unless isClaimed}}
+       <button href="#modal6" class="claim modal-trigger" id="modal6">Is this you?</button>
+        {{/unless}}
+
+
       </div>
       
     </div>
