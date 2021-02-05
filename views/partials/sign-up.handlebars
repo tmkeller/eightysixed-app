@@ -101,15 +101,10 @@
           <option class="st" value="Wyoming" {{#if business.Wyoming}}selected{{/if}}>Wyoming</option>
         </select>
       </div>
-
-      <div class="input-field col s4" style="margin: 2px 0px 2px 0px">
+      <div class="input-field col s6" style="margin: 2px 0px 2px 0px">
         <input placeholder="Zip" id="textarea5" class="materialize-textarea zip" data-length="120"
           style="padding: 0px; height: 44px" value="{{#if business}}{{business.zip5}}{{/if}}">
       </div>
-    <div class="input-field col s4" style="margin: 2px 0px 2px 0px">
-      <input placeholder="Zip" id="textarea5" class="materialize-textarea zip" data-length="120"
-        style="padding: 0px; height: 44px" value="{{#if businessData}}{{businessData.zip5}}{{/if}}">
-    </div>
     </div>
     <div class="row">
       <div class="input-field col s6" style="margin: 2px 0px 2px 0px">
@@ -127,59 +122,35 @@
           value="{{#if business}}{{business.email}}{{/if}}">
       </div>
     </div>
-</div>
-<div class="row">
-  <div class="input-field col s6" style="margin: 2px 0px 2px 0px">
-    <input placeholder="Phone" id="icon_telephone" type="tel" class="validate phone" style="padding: 0px; height: 25px"
-      value="{{#if businessData}}{{businessData.phone}}{{/if}}">
-  </div>
-  <div class="input-field col s6" style="margin: 2px 0px 2px 0px;">
-    <input placeholder="Website" class="validate websight" style="padding: 0px; height: 25px"
-      value="{{#if businessData}}{{businessData.website}}{{/if}}">
-  </div>
-</div>
-<div class="row">
-  <div class="input-field col s12" style="margin: 2px;">
-    <input placeholder="Email" type="email" class="validate company_email" style="padding: 0px; height: 25px"
-      value="{{#if businessData}}{{businessData.email}}{{/if}}">
-  </div>
-</div>
-<div class="row">
-  <div class="input-field col s12" style="margin: 2px;">
-    <input placeholder="Password" type="password" class="password-company" style="padding: 0px; height: 25px">
-  </div>
-</div>
-<div class="row">
-  <div class="input-field col s12" style="margin: 2px;">
-    <input placeholder="Confirm Password" type="password" class="verify-password" style="padding: 0px; height: 25px">
-  </div>
-</div>
-<div class="row">
-  <div class="col m8">
-    <div class="file-field input-field">
-      <div class="btn btn-small" id="cloudinary-bttn">
-        <span>File</span>
-        <input type="hidden">
+    <div class="row">
+      <div class="input-field col s6">
+        <input placeholder="Password" type="password" class="password-company" style="padding: 0px; height: 25px">
       </div>
-      <div class="file-path-wrapper">
-        <input class="file-path validate company_image" type="text">
+      <div class="input-field col s6">
+        <input placeholder="Confirm Password" type="password" class="verify-password" style="padding: 0px; height: 25px">
       </div>
     </div>
-    <button
-      class="btn col m4 waves-effect waves-light btn-small {{#if business}}update-button{{else}}sign-up-button{{/if}}"
-      name="action" {{#if business.id}}data-id="{{business.id}}" {{/if}}>
-      Submit
-      <i class="material-icons right">send</i>
-    </button>
-    <p class="invalid"></p>
-  </div>
-  <button
-    class="btn col m4 waves-effect waves-light btn-small {{#if businessData}}update-button{{else}}sign-up-button{{/if}}"
-    name="action" {{#if businessData.id}}data-id="{{businessData.id}}" {{/if}}>
-    Submit
-    <i class="material-icons right">send</i>
-  </button>
-  <p class="invalid"></p>
-</div>
-</form>
+    <div class="row">
+      <div class="col s8">
+        <div class="file-field input-field">
+          <div class="btn btn-small" id="cloudinary-bttn">
+            <span>File</span>
+            <input type="hidden">
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate company_image" type="text">
+          </div>
+        </div>
+      </div>
+      <div class="col s4">
+        <button
+          class="btn waves-effect waves-light btn-small {{#if business}}update-button{{else}}sign-up-button{{/if}}"
+          name="action" {{#if business.id}}data-id="{{business.id}}" {{/if}}>
+          Submit
+          <i class="material-icons right">send</i>
+        </button>
+        <p class="invalid"></p>
+      </div>
+    </div>
+  </form>
 </div>
