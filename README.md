@@ -24,19 +24,18 @@ In the most current build, businesses can create a profile, then log in to creat
 * View it on mobile by scanning the QR Code below:
 <br>
 <p align="center">
-<img src="./assets/qr-code-TTT.png" width="300">
+<img src="./assets/qr-code-TTT.png" width="300" alt="QR code for mobile readers">
 </p>
 <br>
-=============================
+
 
 ### Winner of Best Presentation award for the Winter 2020/21 University of Washington coding bootcamp.
 <p>
 
-[![Turn the Tables Presentation](./assets/TTT.Presentation.png)](./assets/TTT-Presentation.pdf)
+[![Turn the Tables Presentation](./assets/TTT-Presentation.png)](./assets/TTT-Presentation.pdf)
 
 </p>
 
-=============================
 ## Authors
 
 | Name | Email  | Github  | LinkedIn |
