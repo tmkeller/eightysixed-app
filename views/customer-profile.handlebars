@@ -21,9 +21,13 @@
       <h2 class="customer_header">{{first_name}} {{last_name}}</h2>
       <ul>
         <li>
-          <div class="stars_average" style="width: {{ star_width }};">
-            <img src="/assets/stars.png" alt="stars" style="height: 100%;">
-          </div>
+          {{#if star_width}}
+            <div class="stars_average" style="width: {{ star_width }};">
+              <img src="/assets/stars.png" alt="stars" style="height: 100%;">
+            </div>
+          {{else}}
+            <p>No ratings yet.</p>
+          {{/if}}
         </li>
         <li>{{#if city}}{{city}} {{/if}}{{#if state}}{{state}}{{/if}}</li>
       </ul>
