@@ -31,7 +31,7 @@ $(document).ready(function () {
   });
 
   // Create img URL to hold cloudinary result, using category based default
-  let cloudBizURL = "/assets/icon_restaurant.png";
+  let cloudBizURL = "";
     
   $("#cloudinary-bttn").on("click", function (event) {
 
