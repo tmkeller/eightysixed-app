@@ -1,7 +1,5 @@
 # Turn the Tables
 
-[![License: CC0-1.0](https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg)](http://creativecommons.org/publicdomain/zero/1.0/)
-
 ## Table of Contents
 1. [Description](#description)
 2. [Authors](#authors)
@@ -12,9 +10,29 @@
 7. [Tests](#tests)
 8. [Questions](#questions)
 9. [License](#license)
-## Description
-A Node/Express/Sequelize/Handlebars app that allows businesses to create and review their customers! Winner of Best Presentation award for the Winter 2020/21 University of Washington coding bootcamp.
 
+## Description
+A Node/Express/Sequelize/Handlebars app that inverts the traditional reviews site model.  We allow businesses to create and review their customers. The higher their rating, the more access to customer rewards. Turn the Tables, when fully developed, will provide an avenue for businesses and guests to build a better rapport, by offering rewards, educational resources, and even conflict resolution (when needed.)
+
+In the most current build, businesses can create a profile, then log in to create customers, create reviews for customers, update and delete those reviews and customers. In the next build, "claimed" customers will be also able to log in to edit their profile info, comment on reviews left about them, and message to the business to open a discussion about their reviews, and receive rewards from multiple businesses.
+
+
+
+## Deployed Application
+
+* View the deployed application on [Heroku](http://bit.ly/turn-the-tables-app)
+* View it on mobile by scanning the QR Code below:
+<p>
+![QR Code for mobile scanners](./assets/qr-code-TTT.png)
+</p>
+=============================
+
+### Winner of Best Presentation award for the Winter 2020/21 University of Washington coding bootcamp.
+<p>
+[Turn the Tables Presentation](./assets/TTT-Presentation.png)
+</p>
+
+=============================
 ## Authors
 
 | Name | Email  | Github  | LinkedIn |
@@ -22,7 +40,7 @@ A Node/Express/Sequelize/Handlebars app that allows businesses to create and rev
 | Benjamin Hopkins | bjhops17@gmail.com | [![Github](./assets/github.png)](https://github.com/bh007183) | [![LinkedIn](./assets/linkedin.png)](https://www.linkedin.com/in/ben-hopkins-24a41357/) |
 | Timothy M. Keller | timothy.m.keller@gmail.com | [![Github](./assets/github.png)](https://github.com/tmkeller) | [![LinkedIn](./assets/linkedin.png)](https://linkedin.com/in/tim-keller-3ab55bb1/) |
 | Kevin Lyons | Zinckev@hotmail.com | [![Github](./assets/github.png)](https://github.com/lax-walrus) | [![LinkedIn](./assets/linkedin.png)](https://www.linkedin.com/in/kevin-lyons-237a171b9/) |
-| S.D. Mulaney | seagda@gmail.com | [![Github](./assets/github.png)](https://github.com/seagda) | [![LinkedIn](./assets/linkedin.png)](https://www.linkedin.com/in/shea-m-mullaney/) |
+| S.D. Mulaney | -- | [![Github](./assets/github.png)](https://github.com/seagda) | [![LinkedIn](./assets/linkedin.png)](https://www.linkedin.com/in/shea-m-mullaney/) |
 <br>
 <br>
 
@@ -53,7 +71,7 @@ Navigate to the installation directory, open up terminal or command prompt, and 
 No testing suite is designated at this time.
 
 ## Questions
-Contact [bh007183](https://github.com/bh007183), [tmkeller](https://github.com/tmkeller), [Lax-Walrus](https://github.com/lax-walrus), and [seagda](https://github.com/seagda) on Github.
+Contact [bh007183](https://github.com/bh007183), [tmkeller](https://github.com/tmkeller), [Lax-Walrus](https://github.com/lax-walrus, and [seagda](https://github.com/seagda) on Github.
 
 ## License
-[CC0](http://creativecommons.org/publicdomain/zero/1.0/)
+You agree that this repository, its contents, elements, and as well as underlying concept and structure, are covered [under a GPLv3 license](https://www.gnu.org/licenses/gpl-3.0.txt). Code may be downloaded, modified, and/or distributed solely for non-commerical, personal, or educational purposes. Any and all derivatives must similarly be used solely for non-commerical, personal, or educational purposes. Copyleft 2021 by the [Authors](#authors)
