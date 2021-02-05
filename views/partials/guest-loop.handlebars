@@ -8,9 +8,13 @@
                 <div class="card-content">
                     <span style="white-space: hide" class="card-title">{{first_name}} {{last_name}}</span>
                     <p >{{#if city}}{{city}} {{/if}}{{#if state}}{{state}}{{/if}}</p>
-                    <div class="stars_average" style="width: {{ star_width }};">
-                        <img src="/assets/stars.png" alt="stars" style="height: 100%;">
-                    </div>
+                    {{#if star_width}}
+                        <div class="stars_average" style="width: {{ star_width }};">
+                            <img src="/assets/stars.png" alt="stars" style="height: 100%;">
+                        </div>
+                    {{else}}
+                        <p>No ratings yet.</p>
+                    {{/if}}
                 </div>
                 <div class="card-action">
                     <a href="/customer-profile/{{ id }}" data-CustomerId="{{ id }}" class="CustomerId">View Profile</a>

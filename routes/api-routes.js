@@ -21,7 +21,7 @@ module.exports = function (app) {
           return rev.rating;
         });
         if (!revav) {
-          newObj.star_width = "0px"
+          newObj.star_width = false;
         } else {
           let avg_rating = average(revav);
           newObj.star_width = Math.floor((avg_rating / 5) * 187) + "px";
@@ -129,7 +129,7 @@ module.exports = function (app) {
         }
         newObj.businessName = newObj.Business.name;
         if (!newObj.rating) {
-          newObj.star_width = "0px";
+          newObj.star_width = false;
         } else {
           newObj.star_width = Math.floor((newObj.rating / 5) * 187) + "px";
         }
@@ -137,20 +137,18 @@ module.exports = function (app) {
       });
       // Get a collection of all numeric ratings in an array.
       let ratings = reviews.map((obj) => {
-console.log("obj.Rating: ", obj.rating)
         return obj.rating;
       });
       
       let star_width; 
-      if (!ratings) {
-        star_width = "0px";
+      if ( ratings.length == 0 ) {
+        star_width = false;
       } else {
         // average all those ratings.
         const avg_rating = average(ratings);
         // Calculate the pixel width and reverse them.
         star_width = Math.floor((avg_rating / 5) * 187) + "px";
       }
-console.log("star_width:", star_width)
       const reversedReviews = reviews.reverse();
       // Create our hbsObj to 
       const hbsObj = {
@@ -209,7 +207,7 @@ console.log("star_width:", star_width)
       });
     
       if (!ratings) {
-        newObj.star_width="0px";
+        newObj.star_width = false;
       } else {
         const avg_rating = average(ratings);
         newObj.star_width = Math.floor((avg_rating / 5) * 187) + "px";
