@@ -123,8 +123,8 @@ $(document).ready(function () {
       zip5: $(".zip").val(),
       phone: $(".phone").val(),
       category: $("#category_name").val(),
-      website: $(".websight").val(),
-      pic: $(".company_image").val(),
+      website: $(".website").val(),
+      pic: cloudBizURL,
       email: $(".company_email").val(),
     };
     if (pass) {
