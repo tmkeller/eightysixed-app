@@ -234,7 +234,7 @@ module.exports = function (app) {
       const hbsObj = await {
         businessData: businessJson,
         rev: reviewByBusiness.reverse(),
-        customers: jsonData,
+        guests: jsonData,
         // This is necessary any time you're rendering a page
         // where the user should be logged in. Looks like this for customers:
         // customer: req.session.customer
