@@ -1,5 +1,5 @@
 <div class="card sign_up_sheet" style="margin: 50px">
-  <form class="row sign-up-form" style="max-width: 70%;">
+  <form class="row sign-up-form">
     <div class="row">
       {{#if business}}
       <style>
@@ -8,11 +8,11 @@
         }
       </style>
       {{/if}}
-      <div class="input-field col s12" style="margin: 2px 0px 2px 0px">
+      <div class="input-field col s6">
         <input placeholder="Name" id="company_name" type="text" class="company_name"
           value="{{#if business}}{{business.name}}{{/if}}">
       </div>
-      <div class="col s12">
+      <div class="col s6">
         <select name="category" id="category_name">
           {{#unless business}}
           <option value="" disabled selected>Category</option>
@@ -26,23 +26,21 @@
     </div>
 
     <div class="row">
-      <div class="input-field col s12" style="margin: 2px 0px 2px 0px">
-        <input placeholder="Address" id="textarea2" class="materialize-textarea address" data-length="120"
-          style="padding: 0px;" value="{{#if business.address}}{{business.address}}{{/if}}">
+      <div class="input-field col s12">
+        <input placeholder="Address" id="textarea2" class="materialize-textarea address" data-length="120" value="{{#if business.address}}{{business.address}}{{/if}}">
       </div>
     </div>
     <div class="row">
-      <div class="input-field col s6" style="margin: 2px 0px 2px 0px">
-        <input placeholder="Address 2 (optional)" id="textarea3" class="materialize-textarea addresstwo"
-          data-length="120" style="padding: 0px;" value="{{#if business.address}}{{business.addresstwo}}{{/if}}">
+      <div class="input-field col s6">
+        <input placeholder="Address (cont)" id="textarea3" class="materialize-textarea addresstwo"
+          data-length="120" value="{{#if business.address}}{{business.addresstwo}}{{/if}}">
       </div>
-      <div class="input-field col s6" style="margin: 2px 0px 2px 0px">
-        <input placeholder="City" id="textarea6" class="materialize-textarea city" data-length="120"
-          style="padding: 0px;" value="{{#if business}}{{business.city}}{{/if}}">
+      <div class="input-field col s6">
+        <input placeholder="City" id="textarea6" class="materialize-textarea city" data-length="120" value="{{#if business}}{{business.city}}{{/if}}">
       </div>
     </div>
     <div class="row">
-      <div class="input-field col s6" style="margin: 2px 0px 2px 0px">
+      <div class="input-field col s6">
         <select class="select">
           {{#unless business}}
           <option class="st" value="State" disabled selected>State</option>
@@ -108,6 +106,10 @@
         <input placeholder="Zip" id="textarea5" class="materialize-textarea zip" data-length="120"
           style="padding: 0px; height: 44px" value="{{#if business}}{{business.zip5}}{{/if}}">
       </div>
+    <div class="input-field col s4" style="margin: 2px 0px 2px 0px">
+      <input placeholder="Zip" id="textarea5" class="materialize-textarea zip" data-length="120"
+        style="padding: 0px; height: 44px" value="{{#if businessData}}{{businessData.zip5}}{{/if}}">
+    </div>
     </div>
     <div class="row">
       <div class="input-field col s6" style="margin: 2px 0px 2px 0px">
@@ -125,11 +127,32 @@
           value="{{#if business}}{{business.email}}{{/if}}">
       </div>
     </div>
-
-    <div class="input-field col s4" style="margin: 2px 0px 2px 0px">
-      <input placeholder="Zip" id="textarea5" class="materialize-textarea zip" data-length="120"
-        style="padding: 0px; height: 44px" value="{{#if businessData}}{{businessData.zip5}}{{/if}}">
-    </div>
+</div>
+<div class="row">
+  <div class="input-field col s6" style="margin: 2px 0px 2px 0px">
+    <input placeholder="Phone" id="icon_telephone" type="tel" class="validate phone" style="padding: 0px; height: 25px"
+      value="{{#if businessData}}{{businessData.phone}}{{/if}}">
+  </div>
+  <div class="input-field col s6" style="margin: 2px 0px 2px 0px;">
+    <input placeholder="Website" class="validate websight" style="padding: 0px; height: 25px"
+      value="{{#if businessData}}{{businessData.website}}{{/if}}">
+  </div>
+</div>
+<div class="row">
+  <div class="input-field col s12" style="margin: 2px;">
+    <input placeholder="Email" type="email" class="validate company_email" style="padding: 0px; height: 25px"
+      value="{{#if businessData}}{{businessData.email}}{{/if}}">
+  </div>
+</div>
+<div class="row">
+  <div class="input-field col s12" style="margin: 2px;">
+    <input placeholder="Password" type="password" class="password-company" style="padding: 0px; height: 25px">
+  </div>
+</div>
+<div class="row">
+  <div class="input-field col s12" style="margin: 2px;">
+    <input placeholder="Confirm Password" type="password" class="verify-password" style="padding: 0px; height: 25px">
+  </div>
 </div>
 <div class="row">
   <div class="col m8">

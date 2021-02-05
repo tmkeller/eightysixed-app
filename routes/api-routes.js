@@ -62,20 +62,7 @@ module.exports = function (app) {
   });
 
   app.get( "/about-us", async function( req, res ) {
-    let business;
-    if (req.session.business) {
-      business = await db.Business.findOne({
-        where: {
-          id: req.session.business.id,
-        },
-      }).catch((err) => {
-        res.status(500).json(err);
-      });
-    }
     const hbsObj = {};
-    if (business) {
-      hbsObj.businessData = business.toJSON();
-    }
     if (req.session.business) {
       hbsObj.business = req.session.business;
     } else if (req.session.customer) {
@@ -111,6 +98,8 @@ module.exports = function (app) {
       });
     }
 
+    // If a customer object is returned, send user to 404 page with any
+    // active sessions.
     if (!customer) {
       const hbsObj = {
         text: "customer",
@@ -121,6 +110,8 @@ module.exports = function (app) {
         hbsObj.customer = req.session.customer;
       }
       res.render("404", hbsObj);
+    // Otherwise, map review objects to an array, ensuring delete and edit buttons 
+    // appear inside the array render, and adding the business name and star_width properties.
     } else {
       const reviews = customer.Reviews.map((obj) => {
         const newObj = obj.toJSON();
@@ -136,12 +127,16 @@ module.exports = function (app) {
         newObj.star_width = Math.floor((obj.rating / 5) * 187) + "px";
         return newObj;
       });
+      // Get a collection of all numeric ratings in an array.
       let ratings = reviews.map((obj) => {
         return obj.rating;
       });
+      // average all those ratings.
       const avg_rating = average(ratings);
+      // Calculate the pixel width and reverse them.
       const star_width = Math.floor((avg_rating / 5) * 187) + "px";
       const reversedReviews = reviews.reverse();
+      // Create our hbsObj to 
       const hbsObj = {
         id: customer.dataValues.id,
         first_name: customer.dataValues.first_name,
@@ -158,21 +153,18 @@ module.exports = function (app) {
         updatedAt: customer.dataValues.createdAt,
         reviews: reversedReviews,
       };
-      if (business) {
-        hbsObj.businessData = business.toJSON();
-      }
       if (req.session.business) {
         hbsObj.business = req.session.business;
       } else if (req.session.customer) {
         hbsObj.customer = req.session.customer;
       }
-      console.log(hbsObj);
       res.render("customer-profile", hbsObj);
     }
   });
 
   // grabs the customers for a business that is logged in and renders the rating on the card
   app.get("/business-main/:id", async function (req, res) {
+    // Get all customers that match the logged-in business, and include the reviews table with them.
     const customers = await db.Customer.findAll({
       where: {
         BusinessId: req.params.id,
@@ -181,6 +173,7 @@ module.exports = function (app) {
     }).catch((err) => {
       res.status(500).json(err);
     });
+    // Get the business that matches the ID parameter.
     const business = await db.Business.findOne({
       where: {
         id: req.params.id,
