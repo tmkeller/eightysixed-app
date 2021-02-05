@@ -22,14 +22,18 @@ In the most current build, businesses can create a profile, then log in to creat
 
 * View the deployed application on [Heroku](http://bit.ly/turn-the-tables-app)
 * View it on mobile by scanning the QR Code below:
-<p>
-![QR Code for mobile scanners](./assets/qr-code-TTT.png)
+<br>
+<p align="center">
+<img src="./assets/qr-code-TTT.png" width="300">
 </p>
+<br>
 =============================
 
 ### Winner of Best Presentation award for the Winter 2020/21 University of Washington coding bootcamp.
 <p>
-[Turn the Tables Presentation](./assets/TTT-Presentation.png)
+
+[![Turn the Tables Presentation](./assets/TTT.Presentation.png)](./assets/TTT-Presentation.pdf)
+
 </p>
 
 =============================
@@ -64,14 +68,14 @@ Navigate to the installation directory, open up terminal or command prompt, and 
  <br>
 ![Homepage customers](./assets/home-customers.png)
 
-## Contributing
-[Fork us](https://github.com/tmkeller/eightysixed-app) on Github, and please message us about pull requests.
-
 ## Tests
 No testing suite is designated at this time.
 
+## Contributing
+Please message us about pull requests, or if you'd like to get involved in this project.
+
 ## Questions
-Contact [bh007183](https://github.com/bh007183), [tmkeller](https://github.com/tmkeller), [Lax-Walrus](https://github.com/lax-walrus, and [seagda](https://github.com/seagda) on Github.
+Contact [bh007183](https://github.com/bh007183), [tmkeller](https://github.com/tmkeller), [Lax-Walrus](https://github.com/lax-walrus), and [seagda](https://github.com/seagda) on Github.
 
 ## License
 You agree that this repository, its contents, elements, and as well as underlying concept and structure, are covered [under a GPLv3 license](https://www.gnu.org/licenses/gpl-3.0.txt). Code may be downloaded, modified, and/or distributed solely for non-commerical, personal, or educational purposes. Any and all derivatives must similarly be used solely for non-commerical, personal, or educational purposes. Copyleft 2021 by the [Authors](#authors)
