@@ -20,8 +20,12 @@ module.exports = function (app) {
         const revav = obj.Reviews.map((rev) => {
           return rev.rating;
         });
-        let avg_rating = average(revav);
-        newObj.star_width = Math.floor((avg_rating / 5) * 187) + "px";
+        if (!revav) {
+          newObj.star_width = "0px"
+        } else {
+          let avg_rating = average(revav);
+          newObj.star_width = Math.floor((avg_rating / 5) * 187) + "px";
+        }
         if (!newObj.pic) {
           newObj.pic = "/assets/icons/icon-default-cust.jpg";
         }
@@ -124,17 +128,29 @@ module.exports = function (app) {
           newObj.creatorLoggedIn = false;
         }
         newObj.businessName = newObj.Business.name;
-        newObj.star_width = Math.floor((obj.rating / 5) * 187) + "px";
+        if (!newObj.rating) {
+          newObj.star_width = "0px";
+        } else {
+          newObj.star_width = Math.floor((newObj.rating / 5) * 187) + "px";
+        }
         return newObj;
       });
       // Get a collection of all numeric ratings in an array.
       let ratings = reviews.map((obj) => {
+console.log("obj.Rating: ", obj.rating)
         return obj.rating;
       });
-      // average all those ratings.
-      const avg_rating = average(ratings);
-      // Calculate the pixel width and reverse them.
-      const star_width = Math.floor((avg_rating / 5) * 187) + "px";
+      
+      let star_width; 
+      if (!ratings) {
+        star_width = "0px";
+      } else {
+        // average all those ratings.
+        const avg_rating = average(ratings);
+        // Calculate the pixel width and reverse them.
+        star_width = Math.floor((avg_rating / 5) * 187) + "px";
+      }
+console.log("star_width:", star_width)
       const reversedReviews = reviews.reverse();
       // Create our hbsObj to 
       const hbsObj = {
@@ -191,9 +207,14 @@ module.exports = function (app) {
       let ratings = reviews.map((obj) => {
         return obj.rating;
       });
-      const avg_rating = average(ratings);
-      const star_width = Math.floor((avg_rating / 5) * 187) + "px";
-      newObj.star_width = star_width;
+    
+      if (!ratings) {
+        newObj.star_width="0px";
+      } else {
+        const avg_rating = average(ratings);
+        newObj.star_width = Math.floor((avg_rating / 5) * 187) + "px";
+      }
+
       if (!newObj.pic) {
         newObj.pic = "/assets/icons/icon-default-cust.jpg";
       }
@@ -228,8 +249,6 @@ module.exports = function (app) {
       if (businessJson.category === "Restaurant") {
         businessJson.pic = businessJson.pic || "/assets/icon_restaurant.png";
       }
-      console.log(reviewByBusiness);
-      console.log(business.category);
 
       const hbsObj = await {
         businessData: businessJson,
@@ -245,7 +264,7 @@ module.exports = function (app) {
         const state = hbsObj.businessData.state.replace(/ /g, "");
         hbsObj.businessData[state] = true;
       }
-      console.log("hbsObj", hbsObj);
+
       res.render("business-main", hbsObj);
     } else {
       const hbsObj = {
