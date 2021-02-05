@@ -33,9 +33,8 @@ $(document).ready(function () {
   // Create img URL to hold cloudinary result, using category based default
   let cloudBizURL = "";
     
+  // Adding Cloudinary event listener for business create
   $("#cloudinary-bttn").on("click", function (event) {
-
-  // Adding Cloudinary event listener
   var bizWidget = cloudinary.createUploadWidget({ 
     cloudName: "turning-the-tables", 
     uploadPreset: "tt-business" }, (error, result) => { 
@@ -48,6 +47,20 @@ $(document).ready(function () {
     bizWidget.open();
   });
  
+  // Adding Cloudinary event listener for customer create
+  $("#cloudinary-cust").on("click", function (event) {
+    var custWidget = cloudinary.createUploadWidget({ 
+      cloudName: "turning-the-tables", 
+      uploadPreset: "tt-customer" }, (error, result) => { 
+        if (!error && result && result.event === "success") { 
+          console.log("Done! Here is the image info: ", result.info);
+          console.log(result.info.secure_url);
+          cloudBizURL = result.info.secure_url;
+        } 
+      });
+      custWidget.open();
+    });
+
   // Submits sign-up form
   $(".sign-up-button").on("click", function (event) {
     event.preventDefault();
@@ -150,7 +163,7 @@ $(document).ready(function () {
       zip5: $(".customer_zip").val(),
       email: $(".customer_email").val(),
       // password: $(".password-customer").val(),
-      pic: $(".customer_image").val(),
+      pic: cloudBizURL,
       BusinessId: ids,
     };
 
