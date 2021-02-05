@@ -1,5 +1,5 @@
 <div class="card sign_up_sheet" style="margin: 50px">
-  <form class="row sign-up-form" style="max-width: 70%;">
+  <form class="row sign-up-form">
     <div class="row">
       {{#if business}}
       <style>
@@ -8,11 +8,11 @@
         }
       </style>
       {{/if}}
-      <div class="input-field col s12">
+      <div class="input-field col s6">
         <input placeholder="Name" id="company_name" type="text" class="company_name"
           value="{{#if business}}{{business.name}}{{/if}}">
       </div>
-      <div class="col s12">
+      <div class="col s6">
         <select name="category" id="category_name">
           {{#unless business}}
           <option value="" disabled selected>Category</option>
@@ -27,18 +27,16 @@
 
     <div class="row">
       <div class="input-field col s12">
-        <input placeholder="Address" id="textarea2" class="materialize-textarea address" data-length="120"
-          value="{{#if business.address}}{{business.address}}{{/if}}">
+        <input placeholder="Address" id="textarea2" class="materialize-textarea address" data-length="120" value="{{#if business.address}}{{business.address}}{{/if}}">
       </div>
     </div>
     <div class="row">
       <div class="input-field col s6">
-        <input placeholder="Address 2 (optional)" id="textarea3" class="materialize-textarea addresstwo"
+        <input placeholder="Address (cont)" id="textarea3" class="materialize-textarea addresstwo"
           data-length="120" value="{{#if business.address}}{{business.addresstwo}}{{/if}}">
       </div>
       <div class="input-field col s6">
-        <input placeholder="City" id="textarea6" class="materialize-textarea city" data-length="120"
-          value="{{#if business}}{{business.city}}{{/if}}">
+        <input placeholder="City" id="textarea6" class="materialize-textarea city" data-length="120" value="{{#if business}}{{business.city}}{{/if}}">
       </div>
     </div>
     <div class="row">
@@ -103,7 +101,6 @@
           <option class="st" value="Wyoming" {{#if business.Wyoming}}selected{{/if}}>Wyoming</option>
         </select>
       </div>
-
       <div class="input-field col s4">
         <input placeholder="Zip" id="textarea5" class="materialize-textarea zip" data-length="120" value="{{#if business}}{{business.zip5}}{{/if}}">
       </div>
@@ -113,8 +110,7 @@
         <input placeholder="Phone" id="icon_telephone" type="tel" class="validate phone" value="{{#if business}}{{business.phone}}{{/if}}">
       </div>
       <div class="input-field col s6">
-        <input placeholder="Website" class="validate websight"
-          value="{{#if business}}{{business.website}}{{/if}}">
+        <input placeholder="Website" class="validate websight" value="{{#if business}}{{business.website}}{{/if}}">
       </div>
     </div>
     <div class="row">
@@ -123,64 +119,35 @@
           value="{{#if business}}{{business.email}}{{/if}}">
       </div>
     </div>
-
-    <div class="input-field col s4">
-      <input placeholder="Zip" id="textarea5" class="materialize-textarea zip" data-length="120"
-        style="padding: 0px; height: 44px" value="{{#if businessData}}{{businessData.zip5}}{{/if}}">
-    </div>
-</div>
-<div class="row">
-  <div class="input-field col s6">
-    <input placeholder="Phone" id="icon_telephone" type="tel" class="validate phone"
-      value="{{#if businessData}}{{businessData.phone}}{{/if}}">
-  </div>
-  <div class="input-field col s6">
-    <input placeholder="Website" class="validate websight"
-      value="{{#if businessData}}{{businessData.website}}{{/if}}">
-  </div>
-</div>
-<div class="row">
-  <div class="input-field col s12" style="margin: 2px;">
-    <input placeholder="Email" type="email" class="validate company_email"
-      value="{{#if businessData}}{{businessData.email}}{{/if}}">
-  </div>
-</div>
-<div class="row">
-  <div class="input-field col s12" style="margin: 2px;">
-    <input placeholder="Password" type="password" class="password-company">
-  </div>
-</div>
-<div class="row">
-  <div class="input-field col s12" style="margin: 2px;">
-    <input placeholder="Confirm Password" type="password" class="verify-password">
-  </div>
-</div>
-<div class="row">
-  <div class="col m8">
-    <div class="file-field input-field">
-      <div class="btn btn-small" id="cloudinary-bttn">
-        <span>File</span>
-        <input type="hidden">
+    <div class="row">
+      <div class="input-field col s6">
+        <input placeholder="Password" type="password" class="password-company">
       </div>
-      <div class="file-path-wrapper">
-        <input class="file-path validate company_image" type="text">
+      <div class="input-field col s6">
+        <input placeholder="Confirm Password" type="password" class="verify-password">
       </div>
     </div>
-    <button
-      class="btn col m4 waves-effect waves-light btn-small {{#if business}}update-button{{else}}sign-up-button{{/if}}"
-      name="action" {{#if business.id}}data-id="{{business.id}}" {{/if}}>
-      Submit
-      <i class="material-icons right">send</i>
-    </button>
-    <p class="invalid"></p>
-  </div>
-  <button
-    class="btn col m4 waves-effect waves-light btn-small {{#if businessData}}update-button{{else}}sign-up-button{{/if}}"
-    name="action" {{#if businessData.id}}data-id="{{businessData.id}}" {{/if}}>
-    Submit
-    <i class="material-icons right">send</i>
-  </button>
-  <p class="invalid"></p>
-</div>
-</form>
+    <div class="row">
+      <div class="col s8">
+        <div class="file-field input-field">
+          <div class="btn btn-small" id="cloudinary-bttn">
+            <span>File</span>
+            <input type="hidden">
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate company_image" type="text">
+          </div>
+        </div>
+      </div>
+      <div class="col s4">
+        <button
+          class="btn waves-effect waves-light btn-small {{#if business}}update-button{{else}}sign-up-button{{/if}}"
+          name="action" {{#if business.id}}data-id="{{business.id}}" {{/if}}>
+          Submit
+          <i class="material-icons right">send</i>
+        </button>
+        <p class="invalid"></p>
+      </div>
+    </div>
+  </form>
 </div>
