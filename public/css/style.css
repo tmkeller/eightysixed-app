@@ -1,8 +1,6 @@
 /* font-family: 'Annie Use Your Telescope', cursive;
 font-family: 'Dancing Script', cursive; */
-.validate{
-    height: 2vw
-}
+
 body{
     background-color: rgb(157, 177, 187);
 }
@@ -144,7 +142,6 @@ div.hiddendiv.common {
     width: 0;
 }
 
-
 .cuspropic {
     height: 25vw;
 }
@@ -154,4 +151,17 @@ div.hiddendiv.common {
         height: 100%;
         width: 100%;
     }
+}
+
+.validate{
+    height: 2vw;
+}
+
+.input-field{
+    margin: 2px 0px;
+}
+
+input {
+    padding: 0px; 
+    height: 25px;
 }
