@@ -165,3 +165,9 @@ input {
     padding: 0px; 
     height: 25px;
 }
+
+.stars_average {
+    height: 36px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
