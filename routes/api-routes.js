@@ -209,7 +209,7 @@ module.exports = function (app) {
         return obj.rating;
       });
     
-      if (!ratings) {
+      if (ratings.length === 0) {
         newObj.star_width = false;
       } else {
         const avg_rating = average(ratings);
