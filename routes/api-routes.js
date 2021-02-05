@@ -208,8 +208,17 @@ module.exports = function (app) {
     });
     if (business) {
       const reviewByBusiness = business.dataValues.Reviews.map((obj) => {
-        return obj.toJSON();
-      }); //////////////////
+        const newObj = obj.toJSON();
+        const star_width = Math.floor((newObj.rating / 5) * 187) + "px";
+        newObj.star_width = star_width;
+        newObj.businessName = business.name;
+        if ( req.session.business ) {
+          if ( req.session.business.id === business.id ) {
+            newObj.creatorLoggedIn = true;
+          }
+        }
+        return newObj;
+      });
 
       const businessJson = business.toJSON();
       businessJson[businessJson.category] = true;
@@ -236,6 +245,7 @@ module.exports = function (app) {
         // This is necessary any time you're rendering a page
         // where the user should be logged in. Looks like this for customers:
         // customer: req.session.customer
+
         business: req.session.business,
       };
       if (hbsObj.businessData.state) {
