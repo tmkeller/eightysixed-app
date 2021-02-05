@@ -143,3 +143,15 @@ p {
 div.hiddendiv.common {
     width: 0;
 }
+
+
+/* .cuspropic {
+    height: 25vw;
+}
+
+@media (max-width: 600px ){
+    .cuspropic{
+        height: 100%;
+        width: 100%;
+    }
+} */

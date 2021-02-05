@@ -79,7 +79,12 @@ $(document).ready(function () {
           window.location.href = "/";
         })
         .fail((err) => {
-          alert("Signup failed");
+          alert("Be sure to enter valid email, 5 digit zip, password, and/or a name. Required fields are highlighted.");
+          $(".zip").addClass("invalid")
+          $(".company_email").addClass("invalid")
+          $(".company_name").addClass("invalid")
+          $(".password-company").addClass("invalid")
+          $(".verify-password").addClass("invalid")
         });
     } else {
       // If password does not match
@@ -155,6 +160,10 @@ $(document).ready(function () {
       data: customerProfile,
     }).then((res) => {
       location.reload();
-    });
+    }).fail((err) => {
+      $(".customer_email").val('')
+      .attr("placeholder", "First, Last, Zip, required!")
+      .addClass("invalid")
+    })
   });
 });

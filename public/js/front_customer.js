@@ -29,7 +29,9 @@ $(".sign-button").on("click", function (event) {
       })
       .fail((err) => {
         console.log(err);
-        alert("Sign-in failed");
+        $(".sign_email").val("").addClass("invalid")
+        $(".sign_pass").val("").addClass("invalid")
+        $(".sign_email").attr("placeholder", "Invalid Email or Password!")
       });
   }
   // conditional if sign in is wrong
@@ -46,8 +48,9 @@ $(".sign-button").on("click", function (event) {
         });
       })
       .fail((err) => {
-        console.log(err);
-        alert("Incorrect Username or Password");
+        $(".sign_email").val("").addClass("invalid")
+        $(".sign_pass").val("").addClass("invalid")
+        $(".sign_email").attr("placeholder", "Invalid Email or Password!")
       });
   }
 });
@@ -64,7 +67,6 @@ $(".claim_button_set").on("click", function(event){
   let setPass = $(".set_pass").val();
   let confirmPass = $(".confirm-password").val();
   if(setPass === confirmPass){
-    $("#modal6").hide()
   const customerClaim = {
       email: $(".claim_email").val(),
       password: $(".set_pass").val(),
@@ -77,10 +79,17 @@ $.ajax({
   data: customerClaim
 }).then(res=>{
   console.log(res)
-  location.reload()
+  if(res[0] === 0){
+    $(".claim_email").val('').attr("placeholder", "No known email.").addClass("invalid")
+  }else{
+    location.reload()
+  }
+  
 
 })
 
+}else{
+  $(".set_pass").val("").addClass("invalid").attr("placeholder", "Password does not match!")
 }
 }) 
 
