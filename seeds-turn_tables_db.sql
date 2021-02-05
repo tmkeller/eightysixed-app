@@ -35,7 +35,7 @@ INSERT INTO `reviews` (`title`, `body`, `rating`,`pic`, `pictwo`, `createdAt`, `
 ("Our favorite regular!","They've been coming here for years!","5", null, null,"2021-02-02 15:00:00","2021-02-02 14:00:00","4","12"),
 ("Great first-time visitor","please come again.","4", "/assets/img_rev/pic-smiling.jfif", "/assets/img_rev/big-tip.jpg","2021-02-02 15:00:00","2021-02-02 15:00:00","1","1"),
 ("Treated us poorly","Grabbed my butt as I passed the table.","3", null, null,"2021-02-02 15:00:00","2021-02-02 14:00:00","2","2"),
-("Awesome guest!","Can't wait to see you again!","5", null, null,"2021-02-02 15:00:00","2021-02-02 13:00:00","3","3"),
+("Awesome guest!","Can't wait to see you again!","5", null, null,"2021-02-02 15:00:00","2021-02-02 13:00:00","2","3"),
 ("Hey, we need that table..","Lingered at the table AN HOUR after paying check on a FRIDAY", "3", null, null,"2021-02-02 15:00:00","2021-02-02 12:00:00","4","4"),
 ("Great Tipper!"," Hope to see you again","4", "/assets/img_rev/big-tip.jpg", null,"2021-02-02 15:00:00","2021-02-02 11:00:00","1","5"),
 ("Our favorite regular!","They've been coming here for years!","5", "/assets/img_rev/pic-smiling.jfif", null,"2021-02-02 15:00:00","2021-02-02 10:00:00","2","6"),
