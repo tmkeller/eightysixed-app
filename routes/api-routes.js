@@ -20,7 +20,7 @@ module.exports = function (app) {
         const revav = obj.Reviews.map((rev) => {
           return rev.rating;
         });
-        if (!revav) {
+        if (revav.length === 0) {
           newObj.star_width = false;
         } else {
           let avg_rating = average(revav);
@@ -28,6 +28,9 @@ module.exports = function (app) {
         }
         if (!newObj.pic) {
           newObj.pic = "/assets/icons/icon-default-cust.jpg";
+        }
+        if ( req.session.business ) {
+          newObj.business = req.session.business;
         }
         return newObj;
       });
@@ -212,7 +215,9 @@ module.exports = function (app) {
         const avg_rating = average(ratings);
         newObj.star_width = Math.floor((avg_rating / 5) * 187) + "px";
       }
-
+      if ( req.session.business ) {
+        newObj.business = req.session.business;
+      }
       if (!newObj.pic) {
         newObj.pic = "/assets/icons/icon-default-cust.jpg";
       }

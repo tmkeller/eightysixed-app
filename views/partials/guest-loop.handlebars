@@ -18,6 +18,9 @@
                 </div>
                 <div class="card-action">
                     <a href="/customer-profile/{{ id }}" data-CustomerId="{{ id }}" class="CustomerId">View Profile</a>
+                    {{#if business}}
+                        <a href="#modal4" data-id="{{ id }}" class="modal-trigger customer-review">Review</a>
+                    {{/if}}
                 </div>
             </div>
         </div>
